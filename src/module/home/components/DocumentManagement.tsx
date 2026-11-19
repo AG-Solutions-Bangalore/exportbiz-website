@@ -1,4 +1,5 @@
 import { CheckCircle2, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function DocumentManagement() {
   const checklist = [
@@ -22,7 +23,7 @@ export default function DocumentManagement() {
             <img
               src="/export_biz_documents_transparent.webp"
               alt="Export Documents: Commercial Invoice, Packing List, Bill of Lading"
-              className="w-full h-auto object-contain drop-shadow-xl select-none"
+              className="w-full scale-[1.11] h-auto object-contain drop-shadow-xl select-none"
               loading="lazy"
             />
           </div>
@@ -65,13 +66,13 @@ export default function DocumentManagement() {
 
           {/* CTA Button */}
           <div className="mt-8">
-            <a
-              href="/features/documentation/"
+            <Link
+              to="/features/documentation/"
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white font-semibold text-sm transition-all shadow-sm hover:shadow"
             >
               Explore Documentation
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
         </div>
 

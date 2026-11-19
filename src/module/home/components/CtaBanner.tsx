@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function CtaBanner() {
   return (
@@ -23,20 +24,20 @@ export default function CtaBanner() {
 
           {/* Right Column: CTA Buttons & Ship illustration */}
           <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-row items-start sm:items-center justify-end gap-3.5 relative">
-            <a
-              href="/request-demo/"
+            <Link
+              to="/request-demo/"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white hover:bg-blue-50 text-brand-blue font-bold text-sm shadow-md hover:shadow-lg transition-all"
             >
               Request a Free Demo
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
 
-            <a
-              href="/contact/"
+            <Link
+              to="/contact/"
               className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white/15 hover:bg-white/25 border border-white/40 text-white font-semibold text-sm backdrop-blur-sm transition-all"
             >
               Contact Us
-            </a>
+            </Link>
 
             {/* Ship illustration in bottom corner */}
             <div className="hidden xl:block absolute -bottom-8 -right-6 w-48 rounded-xl overflow-hidden shadow-md opacity-90 pointer-events-none">

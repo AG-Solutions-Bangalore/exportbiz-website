@@ -1,4 +1,5 @@
 import { Globe } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const links = [
@@ -18,13 +19,13 @@ export default function Footer() {
           
           {/* Left: Brand Logo & Product by AG Solutions */}
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-            <a href="/" className="inline-block">
+            <Link to="/" className="inline-block">
               <img
                 src="/logo_transparent.png"
                 alt="Export Biz by AG Solutions"
                 className="h-8 w-auto object-contain"
               />
-            </a>
+            </Link>
             <span className="hidden sm:inline-block text-gray-300">|</span>
             <span className="text-xs sm:text-sm text-slate-muted font-medium">
               A product by <strong className="font-semibold text-navy-900">AG Solutions</strong>
@@ -34,13 +35,13 @@ export default function Footer() {
           {/* Center: Navigation Links */}
           <nav className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2 text-xs sm:text-sm font-medium text-slate-body">
             {links.map((link, idx) => (
-              <a
+              <Link
                 key={idx}
-                href={link.href}
+                to={link.href}
                 className="hover:text-brand-blue transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -85,12 +86,12 @@ export default function Footer() {
         <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-subtle gap-2">
           <p>© {new Date().getFullYear()} Export Biz by AG Solutions. All rights reserved.</p>
           <div className="flex items-center space-x-4">
-            <a href="/policies/" className="hover:text-brand-blue transition-colors">
+            <Link to="/policies/" className="hover:text-brand-blue transition-colors">
               Privacy Policy
-            </a>
-            <a href="/terms-and-conditions/" className="hover:text-brand-blue transition-colors">
+            </Link>
+            <Link to="/terms-and-conditions/" className="hover:text-brand-blue transition-colors">
               Terms & Conditions
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,21 +1,27 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import MetricsBar from "./MetricsBar";
 
 export default function PlatformFeatures() {
   const cards = [
     {
       title: "Export Documentation",
-      description: "Prepare and organize essential export documents across the shipment lifecycle.",
+      description:
+        "Prepare and organize essential export documents across the shipment lifecycle.",
       icon: "/icon_doc.png",
-      glow: "from-blue-50/70 to-transparent",
+      glow: "from-blue-500/40 to-transparent",
       accent: "text-brand-blue",
+      bgGradient: "from-[#2853DA]/96 via-[#2853DA]/90 to-transparent",
       href: "/features/documentation/",
     },
     {
       title: "Compliance Support",
-      description: "Configure customer-specific certificates and document requirements.",
+      description:
+        "Configure customer-specific certificates and document requirements.",
       icon: "/icon_shield.png",
-      glow: "from-purple-50/70 to-transparent",
+      glow: "from-purple-500/40 to-transparent",
       accent: "text-purple-600",
+      bgGradient: "from-[#8953E5]/96 via-[#8953E5]/90 to-transparent",
       href: "/features/compliance/",
     },
     {
@@ -23,8 +29,9 @@ export default function PlatformFeatures() {
       description:
         "Review customer outstanding balances, foreign-currency billing values, and expected export incentives.",
       icon: "/icon_chart.png",
-      glow: "from-emerald-50/70 to-transparent",
+      glow: "from-emerald-500/40 to-transparent",
       accent: "text-emerald-600",
+      bgGradient: "from-[#34B267]/96 via-[#34B267]/90 to-transparent",
       href: "/features/financials/",
     },
     {
@@ -32,8 +39,9 @@ export default function PlatformFeatures() {
       description:
         "Manage costing templates, reports, multiple companies, and shared business records.",
       icon: "/icon_folder.png",
-      glow: "from-amber-50/70 to-transparent",
+      glow: "from-amber-500/40 to-transparent",
       accent: "text-amber-600",
+      bgGradient: "from-[#CF8E32]/96 via-[#CF8E32]/90 to-transparent",
       href: "/features/operations/",
     },
   ];
@@ -41,6 +49,8 @@ export default function PlatformFeatures() {
   return (
     <section className="py-12 sm:py-16 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section Header */}
+
+      <MetricsBar />
       <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
         <span className="text-xs font-bold tracking-widest text-slate-muted uppercase">
           THE EXPORT BIZ PLATFORM
@@ -50,8 +60,9 @@ export default function PlatformFeatures() {
           <span className="text-brand-blue">Connected.</span>
         </h2>
         <p className="mt-4 text-base sm:text-lg text-slate-body leading-relaxed">
-          Export Biz by AG Solutions brings documentation, compliance support, financial
-          information, reporting, and team collaboration together in one centralized workspace.
+          Export Biz by AG Solutions brings documentation, compliance support,
+          financial information, reporting, and team collaboration together in
+          one centralized workspace.
         </p>
       </div>
 
@@ -60,7 +71,7 @@ export default function PlatformFeatures() {
         {cards.map((card, idx) => (
           <div
             key={idx}
-            className={`group relative bg-white rounded-2xl p-6 sm:p-7 border border-card-border shadow-card-soft hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between overflow-hidden`}
+            className={`group relative rounded-2xl p-5 sm:p-6 border border-card-border shadow-card-soft hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between overflow-hidden bg-gradient-to-t ${card.bgGradient}`}
           >
             {/* Ambient corner glow */}
             <div
@@ -78,23 +89,23 @@ export default function PlatformFeatures() {
               </div>
 
               {/* Title & Description */}
-              <h3 className="text-lg font-bold text-navy-900 group-hover:text-brand-blue transition-colors">
+              <h3 className="text-lg font-bold text-white transition-colors">
                 {card.title}
               </h3>
-              <p className="mt-2.5 text-xs sm:text-sm text-slate-body leading-relaxed">
+              <p className="mt-2.5 text-xs sm:text-sm text-slate-200 leading-relaxed">
                 {card.description}
               </p>
             </div>
 
             {/* Bottom Arrow Button */}
             <div className="mt-6 pt-2">
-              <a
-                href={card.href}
-                className="w-8 h-8 rounded-full border border-card-border group-hover:border-brand-blue group-hover:bg-brand-blue flex items-center justify-center text-slate-400 group-hover:text-white transition-all shadow-sm"
+              <Link
+                to={card.href}
+                className={`w-12 h-12 rounded-full bg-white border border-card-border flex items-center justify-center text-black transition-all duration-300 shadow-sm hover:shadow-lg hover:scale-110 ${card.accent.replace('text-', 'border-')}`}
                 aria-label={`Explore ${card.title}`}
               >
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
+                <ArrowRight className="w-5 h-5" />
+              </Link>
             </div>
           </div>
         ))}

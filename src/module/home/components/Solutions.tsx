@@ -1,4 +1,5 @@
 import { FileSpreadsheet, ArrowLeftRight, Building } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Solutions() {
   const solutions = [
@@ -44,9 +45,9 @@ export default function Solutions() {
             {solutions.map((item, idx) => {
               const Icon = item.icon;
               return (
-                <a
+                <Link
                   key={idx}
-                  href={item.href}
+                  to={item.href}
                   className="group flex items-start gap-3.5 p-2 rounded-xl hover:bg-white/70 transition-colors"
                 >
                   <div className="w-10 h-10 rounded-xl bg-brand-blue-50 border border-brand-blue-200/70 flex items-center justify-center shrink-0 text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-colors mt-0.5">
@@ -60,7 +61,7 @@ export default function Solutions() {
                       {item.description}
                     </p>
                   </div>
-                </a>
+                </Link>
               );
             })}
           </div>

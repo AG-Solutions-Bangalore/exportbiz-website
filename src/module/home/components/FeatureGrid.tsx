@@ -8,6 +8,7 @@ import {
   Building2,
   FolderSync,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function FeatureGrid() {
   const features = [
@@ -70,9 +71,9 @@ export default function FeatureGrid() {
         {features.map((item, idx) => {
           const Icon = item.icon;
           return (
-            <a
+            <Link
               key={idx}
-              href={item.href}
+              to={item.href}
               className="group bg-white rounded-xl p-4 border border-card-border shadow-card-soft hover:shadow-card-hover hover:border-brand-blue/30 hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center text-center justify-center min-h-[120px]"
             >
               <div className="w-10 h-10 rounded-lg bg-brand-blue-50 border border-brand-blue-100/60 flex items-center justify-center text-brand-blue mb-3 group-hover:bg-brand-blue group-hover:text-white transition-colors">
@@ -81,7 +82,7 @@ export default function FeatureGrid() {
               <span className="text-xs font-bold text-navy-900 group-hover:text-brand-blue leading-snug transition-colors">
                 {item.title}
               </span>
-            </a>
+            </Link>
           );
         })}
       </div>
