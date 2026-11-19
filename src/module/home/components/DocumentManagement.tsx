@@ -1,14 +1,46 @@
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import {
+  FileText,
+  Award,
+  ClipboardList,
+  Shield,
+  Truck,
+  File,
+  ArrowRight,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function DocumentManagement() {
   const checklist = [
-    { label: "Commercial Contracts & Orders" },
-    { label: "Certificate of Origin" },
-    { label: "Invoice, Packing List & PL" },
-    { label: "Inspection Certificates" },
-    { label: "Bill of Lading (B/L)" },
-    { label: "Other Shipment Documents" },
+    {
+      label: "Commercial Contracts & Orders",
+      Icon: FileText,
+      color: "bg-blue-100 text-blue-600",
+    },
+    {
+      label: "Certificate of Origin",
+      Icon: Award,
+      color: "bg-purple-100 text-purple-600",
+    },
+    {
+      label: "Invoice, Packing List & PL",
+      Icon: ClipboardList,
+      color: "bg-indigo-100 text-indigo-600",
+    },
+    {
+      label: "Inspection Certificates",
+      Icon: Shield,
+      color: "bg-emerald-100 text-emerald-600",
+    },
+    {
+      label: "Bill of Lading (B/L)",
+      Icon: Truck,
+      color: "bg-amber-100 text-amber-600",
+    },
+    {
+      label: "Other Shipment Documents",
+      Icon: File,
+      color: "bg-slate-100 text-slate-600",
+    },
   ];
 
   return (
@@ -51,11 +83,13 @@ export default function DocumentManagement() {
           </p>
 
           {/* Checklist 2-Column Grid */}
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-y-3.5 gap-x-4">
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-2">
             {checklist.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-2.5">
-                <div className="w-5 h-5 rounded-full bg-brand-blue text-white flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
+              <div key={idx} className="flex items-center gap-2">
+                <div
+                  className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 border border-white/60 shadow-sm ${item.color}`}
+                >
+                  <item.Icon className="w-5 h-5" />
                 </div>
                 <span className="text-sm font-semibold text-navy-800">
                   {item.label}

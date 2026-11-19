@@ -9,7 +9,7 @@ export default function PlatformFeatures() {
       description:
         "Prepare and organize essential export documents across the shipment lifecycle.",
       icon: "/icon_doc.png",
-      glow: "from-blue-500/40 to-transparent",
+      glow: "from-blue-200/40 to-transparent",
       accent: "text-brand-blue",
       bgGradient: "from-[#2853DA]/96 via-[#2853DA]/90 to-transparent",
       href: "/features/documentation/",
@@ -19,7 +19,7 @@ export default function PlatformFeatures() {
       description:
         "Configure customer-specific certificates and document requirements.",
       icon: "/icon_shield.png",
-      glow: "from-purple-500/40 to-transparent",
+      glow: "from-purple-200/40 to-transparent",
       accent: "text-purple-600",
       bgGradient: "from-[#8953E5]/96 via-[#8953E5]/90 to-transparent",
       href: "/features/compliance/",
@@ -29,7 +29,7 @@ export default function PlatformFeatures() {
       description:
         "Review customer outstanding balances, foreign-currency billing values, and expected export incentives.",
       icon: "/icon_chart.png",
-      glow: "from-emerald-500/40 to-transparent",
+      glow: "from-emerald-200/40 to-transparent",
       accent: "text-emerald-600",
       bgGradient: "from-[#34B267]/96 via-[#34B267]/90 to-transparent",
       href: "/features/financials/",
@@ -39,7 +39,7 @@ export default function PlatformFeatures() {
       description:
         "Manage costing templates, reports, multiple companies, and shared business records.",
       icon: "/icon_folder.png",
-      glow: "from-amber-500/40 to-transparent",
+      glow: "from-amber-200/40 to-transparent",
       accent: "text-amber-600",
       bgGradient: "from-[#CF8E32]/96 via-[#CF8E32]/90 to-transparent",
       href: "/features/operations/",
@@ -47,7 +47,7 @@ export default function PlatformFeatures() {
   ];
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section Header */}
 
       <MetricsBar />
