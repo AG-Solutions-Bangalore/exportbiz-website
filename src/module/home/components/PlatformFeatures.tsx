@@ -75,7 +75,7 @@ export default function PlatformFeatures() {
           >
             {/* Ambient corner glow */}
             <div
-              className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${card.glow} blur-xl pointer-events-none group-hover:scale-125 transition-transform duration-500`}
+              className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-tr ${card.glow} blur-xl pointer-events-none group-hover:scale-125 transition-transform duration-500`}
             />
 
             <div>
