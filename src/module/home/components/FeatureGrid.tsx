@@ -3,42 +3,42 @@ import { Link } from "react-router-dom";
 export default function FeatureGrid() {
   const features = [
     {
-      image: "/features/icon_3d_doc.png",
+      image: "/features/icon_3d_doc.webp",
       title: "Export Documentation",
       href: "/features/documentation/",
     },
     {
-      image: "/features/icon_3d_customer.png",
+      image: "/features/icon_3d_customer.webp",
       title: "Customer Management",
       href: "/features/customers/",
     },
     {
-      image: "/features/icon_3d_costing.png",
+      image: "/features/icon_3d_costing.webp",
       title: "Costing & Product Pricing",
       href: "/features/costing/",
     },
     {
-      image: "/features/icon_3d_compliance.png",
+      image: "/features/icon_3d_compliance.webp",
       title: "Certificates & Compliance",
       href: "/features/compliance/",
     },
     {
-      image: "/features/icon_3d_incentives.png",
+      image: "/features/icon_3d_incentives.webp",
       title: "Export Incentives",
       href: "/features/incentives/",
     },
     {
-      image: "/features/icon_3d_analytics.png",
+      image: "/features/icon_3d_analytics.webp",
       title: "Reports & Analytics",
       href: "/features/analytics/",
     },
     {
-      image: "/features/icon_3d_companies.png",
+      image: "/features/icon_3d_companies.webp",
       title: "Multiple Companies",
       href: "/features/multi-company/",
     },
     {
-      image: "/features/icon_3d_sharing.png",
+      image: "/features/icon_3d_sharing.webp",
       title: "Business Files & Sharing",
       href: "/features/files/",
     },

@@ -12,7 +12,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src="/logo_transparent.png"
+              src="/logo_transparent.webp"
               alt="Export Biz by AG Solutions"
               className="h-9 w-auto object-contain"
             />

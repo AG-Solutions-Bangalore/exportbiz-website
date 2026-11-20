@@ -29,7 +29,7 @@ export default function Solutions() {
         {/* Right side background image of port / cranes / container ship */}
         <div className="absolute right-0 top-0 bottom-0 w-[42%] lg:w-[38%] xl:w-[35%] hidden md:block pointer-events-none">
           <img
-            src="/solutions_port_bg.png"
+            src="/solutions_port_bg.webp"
             alt="Port Background"
             className="w-full h-full object-cover object-right select-none"
           />

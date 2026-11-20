@@ -8,7 +8,7 @@ export default function PlatformFeatures() {
       title: "Export Documentation",
       description:
         "Prepare and organize essential export documents across the shipment lifecycle.",
-      icon: "/icon_doc.png",
+      icon: "/icon_doc.webp",
       glow: "from-blue-200/40 to-transparent",
       accent: "text-brand-blue",
       bgGradient: "from-[#2853DA]/96 via-[#2853DA]/90 to-transparent",
@@ -18,7 +18,7 @@ export default function PlatformFeatures() {
       title: "Compliance Support",
       description:
         "Configure customer-specific certificates and document requirements.",
-      icon: "/icon_shield.png",
+      icon: "/icon_shield.webp",
       glow: "from-purple-200/40 to-transparent",
       accent: "text-purple-600",
       bgGradient: "from-[#8953E5]/96 via-[#8953E5]/90 to-transparent",
@@ -28,7 +28,7 @@ export default function PlatformFeatures() {
       title: "Financial Visibility",
       description:
         "Review customer outstanding balances, foreign-currency billing values, and expected export incentives.",
-      icon: "/icon_chart.png",
+      icon: "/icon_chart.webp",
       glow: "from-emerald-200/40 to-transparent",
       accent: "text-emerald-600",
       bgGradient: "from-[#34B267]/96 via-[#34B267]/90 to-transparent",
@@ -38,7 +38,7 @@ export default function PlatformFeatures() {
       title: "Business Operations",
       description:
         "Manage costing templates, reports, multiple companies, and shared business records.",
-      icon: "/icon_folder.png",
+      icon: "/icon_folder.webp",
       glow: "from-amber-200/40 to-transparent",
       accent: "text-amber-600",
       bgGradient: "from-[#CF8E32]/96 via-[#CF8E32]/90 to-transparent",

@@ -21,7 +21,7 @@ export default function Footer() {
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <Link to="/" className="inline-block">
               <img
-                src="/logo_transparent.png"
+                src="/logo_transparent.webp"
                 alt="Export Biz by AG Solutions"
                 className="h-8 w-auto object-contain"
               />

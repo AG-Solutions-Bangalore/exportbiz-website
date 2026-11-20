@@ -1,25 +1,25 @@
 export default function MetricsBar() {
   const metrics = [
     {
-      image: "/metrics/metric_3d_exporters.png",
+      image: "/metrics/metric_3d_exporters.webp",
       value: "500+",
       label: "Exporters",
       glow: "from-blue-100/60 to-transparent",
     },
     {
-      image: "/metrics/metric_3d_documents.png",
+      image: "/metrics/metric_3d_documents.webp",
       value: "10,000+",
       label: "Documents Managed",
       glow: "from-sky-100/60 to-transparent",
     },
     {
-      image: "/metrics/metric_3d_companies.png",
+      image: "/metrics/metric_3d_companies.webp",
       value: "Multi-Company",
       label: "Support",
       glow: "from-indigo-100/60 to-transparent",
     },
     {
-      image: "/metrics/metric_3d_reliable.png",
+      image: "/metrics/metric_3d_reliable.webp",
       value: "Reliable &",
       label: "Business-Focused",
       glow: "from-blue-100/60 to-transparent",

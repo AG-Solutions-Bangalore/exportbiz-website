@@ -9,7 +9,7 @@ export default function CtaBanner() {
         {/* Right side port & container ship background image */}
         <div className="absolute right-0 top-0 bottom-0 w-[38%] hidden md:block pointer-events-none overflow-hidden">
           <img
-            src="/solutions_port_bg.png"
+            src="/solutions_port_bg.webp"
             alt="Cargo Ship and Port"
             className="w-full h-full object-cover object-right select-none"
           />

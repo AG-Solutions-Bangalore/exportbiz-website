@@ -7,7 +7,7 @@ export default function Hero() {
       {/* Background Banner Image on Desktop: perfectly fitted to the right without being too big */}
       <div
         className="absolute inset-0 bg-no-repeat bg-right bg-contain pointer-events-none hidden lg:block"
-        style={{ backgroundImage: "url('/hero_image.png')" }}
+        style={{ backgroundImage: "url('/hero_image.webp')" }}
       />
 
       {/* Subtle ambient lighting on the left */}
