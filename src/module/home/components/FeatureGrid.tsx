@@ -1,54 +1,44 @@
-import {
-  FileText,
-  Users,
-  Calculator,
-  Award,
-  Gift,
-  BarChart2,
-  Building2,
-  FolderSync,
-} from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function FeatureGrid() {
   const features = [
     {
-      icon: FileText,
+      image: "/features/icon_3d_doc.png",
       title: "Export Documentation",
       href: "/features/documentation/",
     },
     {
-      icon: Users,
+      image: "/features/icon_3d_customer.png",
       title: "Customer Management",
       href: "/features/customers/",
     },
     {
-      icon: Calculator,
+      image: "/features/icon_3d_costing.png",
       title: "Costing & Product Pricing",
       href: "/features/costing/",
     },
     {
-      icon: Award,
+      image: "/features/icon_3d_compliance.png",
       title: "Certificates & Compliance",
       href: "/features/compliance/",
     },
     {
-      icon: Gift,
+      image: "/features/icon_3d_incentives.png",
       title: "Export Incentives",
       href: "/features/incentives/",
     },
     {
-      icon: BarChart2,
+      image: "/features/icon_3d_analytics.png",
       title: "Reports & Analytics",
       href: "/features/analytics/",
     },
     {
-      icon: Building2,
+      image: "/features/icon_3d_companies.png",
       title: "Multiple Companies",
       href: "/features/multi-company/",
     },
     {
-      icon: FolderSync,
+      image: "/features/icon_3d_sharing.png",
       title: "Business Files & Sharing",
       href: "/features/files/",
     },
@@ -66,25 +56,30 @@ export default function FeatureGrid() {
         </p>
       </div>
 
-      {/* 8 Features Tiles */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4">
-        {features.map((item, idx) => {
-          const Icon = item.icon;
-          return (
-            <Link
-              key={idx}
-              to={item.href}
-              className="group bg-white rounded-xl p-4 border border-card-border shadow-card-soft hover:shadow-card-hover hover:border-brand-blue/30 hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center text-center justify-center min-h-[120px]"
-            >
-              <div className="w-10 h-10 rounded-lg bg-brand-blue-50 border border-brand-blue-100/60 flex items-center justify-center text-brand-blue mb-3 group-hover:bg-brand-blue group-hover:text-white transition-colors">
-                <Icon className="w-5 h-5" />
-              </div>
-              <span className="text-xs font-bold text-navy-900 group-hover:text-brand-blue leading-snug transition-colors">
-                {item.title}
-              </span>
-            </Link>
-          );
-        })}
+      {/* 8 Features Tiles with 3D Icons */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+        {features.map((item, idx) => (
+          <Link
+            key={idx}
+            to={item.href}
+            className="group  bg-white rounded-2xl p-3.5 sm:p-6 border border-card-border shadow-card-soft hover:shadow-card-hover hover:border-brand-blue/30 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center justify-between min-h-[135px] sm:min-h-[150px]"
+          >
+            {/* 3D Icon Container */}
+            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform duration-300">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-11 h-11 sm:w-13 sm:h-13 object-contain filter drop-shadow-md select-none"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Feature Label */}
+            <span className="text-xs font-bold text-navy-900 group-hover:text-brand-blue leading-snug transition-colors">
+              {item.title}
+            </span>
+          </Link>
+        ))}
       </div>
     </section>
   );
