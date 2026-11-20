@@ -1,7 +1,9 @@
 import { Check, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useModal } from "../../../context/ModalContext";
 
 export default function DocumentManagement() {
+  const { openDemoModal } = useModal();
+
   const checklist = [
     "Commercial Contracts & Orders",
     "Certificate of Origin",
@@ -69,13 +71,14 @@ export default function DocumentManagement() {
 
           {/* CTA Button */}
           <div className="mt-8">
-            <Link
-              to="/features/documentation/"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white font-semibold text-sm transition-all shadow-sm hover:shadow"
+            <button
+              type="button"
+              onClick={openDemoModal}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white font-semibold text-sm transition-all shadow-sm hover:shadow cursor-pointer"
             >
               Explore Documentation
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </button>
           </div>
         </div>
       </div>

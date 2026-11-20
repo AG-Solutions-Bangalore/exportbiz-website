@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react";
 import MetricsBar from "./MetricsBar";
 
 export default function PlatformFeatures() {
@@ -8,36 +7,36 @@ export default function PlatformFeatures() {
       description:
         "Prepare and organize essential export documents across the shipment lifecycle.",
       icon: "/icon_doc.webp",
-      glowBg: "from-blue-50/50 via-white to-white",
-      hoverBorder: "hover:border-blue-200",
-      arrowHover: "group-hover:border-blue-400 group-hover:text-brand-blue",
+      cardBg: "from-[#F0F6FF] via-[#F8FAFF] to-white",
+      borderColor: "border-blue-100/80 hover:border-blue-300",
+      glowColor: "bg-blue-400/15",
     },
     {
       title: "Compliance Support",
       description:
         "Configure customer-specific certificates and document requirements.",
       icon: "/icon_shield.webp",
-      glowBg: "from-purple-50/50 via-white to-white",
-      hoverBorder: "hover:border-purple-200",
-      arrowHover: "group-hover:border-purple-400 group-hover:text-purple-600",
+      cardBg: "from-[#F5F1FE] via-[#FAF7FF] to-white",
+      borderColor: "border-purple-100/80 hover:border-purple-300",
+      glowColor: "bg-purple-400/15",
     },
     {
       title: "Financial Visibility",
       description:
         "Review customer outstanding balances, foreign-currency billing values, and expected export incentives.",
       icon: "/icon_chart.webp",
-      glowBg: "from-emerald-50/50 via-white to-white",
-      hoverBorder: "hover:border-emerald-200",
-      arrowHover: "group-hover:border-emerald-400 group-hover:text-emerald-600",
+      cardBg: "from-[#EFFBF4] via-[#F6FCF8] to-white",
+      borderColor: "border-emerald-100/80 hover:border-emerald-300",
+      glowColor: "bg-emerald-400/15",
     },
     {
       title: "Business Operations",
       description:
         "Manage costing templates, reports, multiple companies, and shared business records.",
       icon: "/icon_folder.webp",
-      glowBg: "from-amber-50/50 via-white to-white",
-      hoverBorder: "hover:border-amber-200",
-      arrowHover: "group-hover:border-amber-400 group-hover:text-amber-600",
+      cardBg: "from-[#FFF9ED] via-[#FFFDF7] to-white",
+      borderColor: "border-amber-100/80 hover:border-amber-300",
+      glowColor: "bg-amber-400/15",
     },
   ];
 
@@ -62,42 +61,36 @@ export default function PlatformFeatures() {
         </p>
       </div>
 
-      {/* 4 Cards Grid: Left side full image, Right side content and button */}
+      {/* 4 Cards Grid: Left side full image, Right side content, gradient background, NO arrow button */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-5">
         {cards.map((card, idx) => (
           <div
             key={idx}
-            className={`group relative rounded-2xl p-4 sm:p-5 bg-gradient-to-br ${card.glowBg} bg-white border border-gray-100 shadow-sm hover:shadow-md ${card.hoverBorder} transition-all duration-300 flex items-center gap-3.5 sm:gap-4`}
+            className={`group relative rounded-2xl p-5 bg-gradient-to-br ${card.cardBg} border ${card.borderColor} shadow-xs hover:shadow-md transition-all duration-300 flex items-center gap-3.5 sm:gap-4 overflow-hidden`}
           >
+            {/* Ambient soft glow radiating from the icon side */}
+            <div
+              className={`absolute -left-6 -top-6 w-28 h-28 rounded-full ${card.glowColor} blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500`}
+            />
+
             {/* Left side full 3D image container */}
-            <div className="w-20 h-20 sm:w-22 sm:h-22 shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+            <div className="relative z-10 w-20 h-20 sm:w-22 sm:h-22 shrink-0 flex items-center justify-center group-hover:scale-108 transition-transform duration-300">
               <img
                 src={card.icon}
                 alt={card.title}
-                className="w-full h-full object-contain filter drop-shadow-md select-none"
+                className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.08)] select-none"
                 loading="lazy"
               />
             </div>
 
-            {/* Right side: Title, Description, and Button */}
-            <div className="flex-1 min-w-0 flex flex-col justify-between h-full">
-              <div>
-                <h3 className="text-sm sm:text-[15px] font-extrabold text-navy-900 group-hover:text-brand-blue transition-colors leading-tight">
-                  {card.title}
-                </h3>
-                <p className="mt-1.5 text-[11px] sm:text-xs text-slate-600 leading-relaxed line-clamp-3">
-                  {card.description}
-                </p>
-              </div>
-
-              {/* Small circular arrow button at bottom right */}
-              <div className="mt-2.5">
-                <div
-                  className={`w-6 h-6 rounded-full border border-gray-200 bg-white shadow-2xs flex items-center justify-center text-slate-500 ${card.arrowHover} transition-all duration-200`}
-                >
-                  <ArrowRight className="w-3 h-3" />
-                </div>
-              </div>
+            {/* Right side: Title & Description */}
+            <div className="relative z-10 flex-1 min-w-0">
+              <h3 className="text-sm sm:text-[15px] font-extrabold text-navy-900 group-hover:text-brand-blue transition-colors leading-tight">
+                {card.title}
+              </h3>
+              <p className="mt-1.5 text-[11px] sm:text-xs text-slate-600 leading-relaxed">
+                {card.description}
+              </p>
             </div>
           </div>
         ))}
