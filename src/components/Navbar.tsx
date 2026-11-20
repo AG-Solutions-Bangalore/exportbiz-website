@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronDown, ArrowRight, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import { COMPANY_INFO } from "../constants";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,7 +14,7 @@ export default function Navbar() {
           <Link to="/" className="flex items-center gap-3 group">
             <img
               src="/logo_transparent.webp"
-              alt="Export Biz by AG Solutions"
+              alt={COMPANY_INFO.fullBrandName}
               className="h-9 w-auto object-contain"
             />
           </Link>

@@ -27,7 +27,7 @@ export default function MetricsBar() {
   ];
 
   return (
-    <section className="relative z-20 -mt-10 sm:-mt-12 lg:-mt-14 py-16  max-w-6xl mx-auto px-4 sm:px-6">
+    <section className="relative z-20 -mt-10 sm:-mt-12 lg:-mt-14 py-16  max-w-7xl mx-auto px-4 sm:px-6">
       <div className="relative bg-white/95 sm:rounded-3xl py-5 sm:py-6 px-6 sm:px-10 overflow-hidden">
         {/* Top glass edge reflection */}
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent pointer-events-none" />

@@ -1,5 +1,6 @@
 import { Globe } from "lucide-react";
 import { Link } from "react-router-dom";
+import { COMPANY_INFO } from "../constants";
 
 export default function Footer() {
   const links = [
@@ -22,13 +23,13 @@ export default function Footer() {
             <Link to="/" className="inline-block">
               <img
                 src="/logo_transparent.webp"
-                alt="Export Biz by AG Solutions"
+                alt={COMPANY_INFO.fullBrandName}
                 className="h-8 w-auto object-contain"
               />
             </Link>
             <span className="hidden sm:inline-block text-gray-300">|</span>
             <span className="text-xs sm:text-sm text-slate-muted font-medium">
-              A product by <strong className="font-semibold text-navy-900">AG Solutions</strong>
+              A product by <strong className="font-semibold text-navy-900">{COMPANY_INFO.parentCompany}</strong>
             </span>
           </div>
 
@@ -48,7 +49,7 @@ export default function Footer() {
           {/* Right: Social Links */}
           <div className="flex items-center space-x-3 text-slate-muted">
             <a
-              href="https://linkedin.com"
+              href={COMPANY_INFO.socialLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="p-1.5 rounded-full hover:text-brand-blue hover:bg-brand-blue-50 transition-colors"
@@ -59,7 +60,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://youtube.com"
+              href={COMPANY_INFO.socialLinks.youtube}
               target="_blank"
               rel="noopener noreferrer"
               className="p-1.5 rounded-full hover:text-brand-blue hover:bg-brand-blue-50 transition-colors"
@@ -70,11 +71,11 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://agsolutions.com"
+              href={COMPANY_INFO.parentWebsite}
               target="_blank"
               rel="noopener noreferrer"
               className="p-1.5 rounded-full hover:text-brand-blue hover:bg-brand-blue-50 transition-colors"
-              aria-label="AG Solutions Website"
+              aria-label={`${COMPANY_INFO.parentCompany} Website`}
             >
               <Globe className="w-4 h-4" />
             </a>
@@ -84,7 +85,7 @@ export default function Footer() {
 
         {/* Bottom subtle copyright */}
         <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-subtle gap-2">
-          <p>© {new Date().getFullYear()} Export Biz by AG Solutions. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {COMPANY_INFO.fullBrandName}. All rights reserved. <span className="opacity-70">v{COMPANY_INFO.version}</span></p>
           <div className="flex items-center space-x-4">
             <Link to="/policies/" className="hover:text-brand-blue transition-colors">
               Privacy Policy
