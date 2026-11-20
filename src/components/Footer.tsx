@@ -1,15 +1,17 @@
-import { Globe } from "lucide-react";
+import { Globe, ArrowUpRight, Mail, Phone, MapPin, Sparkles, ShieldCheck } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { COMPANY_INFO } from "../constants";
 import SocialLinks from "./SocialLinks";
 import { useModal } from "../context/ModalContext";
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 export default function Footer() {
   const { openDemoModal } = useModal();
   const location = useLocation();
   const isHome = location.pathname === "/" || location.pathname === "";
 
-  const links = [
+  const navLinks = [
     { label: "Home", href: "/#hero" },
     { label: "Why Us", href: "/#why-us" },
     { label: "Documents", href: "/#documents" },
@@ -33,79 +35,208 @@ export default function Footer() {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="mt-12 sm:mt-16 border-t border-gray-200/80 bg-white py-8 sm:py-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8">
+    <footer className="relative bg-[#070D1E] text-slate-300 pt-16 sm:pt-16 pb-6 overflow-hidden border-t border-slate-800/80">
+      {/* Ambient background lighting and subtle glowing orb */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[300px] bg-brand-blue/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute -bottom-20 right-10 w-[400px] h-[300px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
+
+      {/* Subtle grid backdrop pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+        style={{ backgroundImage: "radial-gradient(#38bdf8 1px, transparent 1px)", backgroundSize: "32px 32px" }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Top Main Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-slate-800/80">
           
-          {/* Left: Brand Logo (Larger size) & Product by AG Solutions (Bold AG Solutions) */}
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-            <Link to="/" className="inline-block">
+          {/* Brand & Parent Company Pitch (5 Cols) */}
+          <div className="lg:col-span-5 space-y-5">
+            <div className="flex items-center gap-3">
               <img
                 src="/logo_transparent.webp"
                 alt={COMPANY_INFO.fullBrandName}
-                className="h-10 sm:h-11 w-auto object-contain"
+                className="h-11 sm:h-12 w-auto object-contain filter brightness-0 invert opacity-95"
               />
-            </Link>
-            <span className="hidden sm:inline-block text-gray-300">|</span>
-            <span className="text-xs sm:text-sm text-slate-muted font-medium">
-              A product by <strong className="font-extrabold text-navy-900 tracking-tight text-sm sm:text-base">{COMPANY_INFO.parentCompany}</strong>
-            </span>
+            </div>
+
+            <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
+              The next-generation export documentation and operations workspace. Designed for manufacturers, trading houses, and multi-company groups worldwide.
+            </p>
+
+            {/* Parent company badges & website link with icon */}
+            <div className="flex flex-wrap items-center gap-2.5">
+              <a
+                href={COMPANY_INFO.parentWebsite}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 hover:border-brand-blue/60 text-xs text-slate-300 hover:text-white transition-all backdrop-blur-sm group"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>A product by</span>
+                <strong className="text-white font-bold tracking-wide group-hover:text-blue-300 transition-colors">
+                  {COMPANY_INFO.parentCompany}
+                </strong>
+                <ArrowUpRight className="w-3 h-3 text-slate-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              </a>
+
+              <a
+                href={COMPANY_INFO.parentWebsite}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 hover:bg-blue-500/20 text-xs font-semibold text-blue-300 hover:text-white transition-all group"
+              >
+                <Globe className="w-3.5 h-3.5 text-brand-blue group-hover:rotate-12 transition-transform" />
+                <span>ag-solutions.in</span>
+                <ArrowUpRight className="w-3 h-3 text-blue-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              </a>
+            </div>
+
+            {/* Social Media Links with authentic brand colors */}
+            <div className="pt-2 space-y-2">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-slate-400 flex items-center gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-brand-blue" />
+                Official Social Channels
+              </span>
+              <SocialLinks colorful={true} className="flex items-center space-x-2.5" />
+            </div>
           </div>
 
-          {/* Center: Single-Page Navigation Links */}
-          <nav className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2 text-xs sm:text-sm font-semibold text-slate-600">
-            {links.map((link, idx) => (
-              link.label === "Contact" ? (
+          {/* Quick Navigation (3 Cols) */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-xs font-bold tracking-widest text-slate-400 uppercase flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-blue" />
+              Navigation
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              {navLinks.map((link, idx) => (
+                <li key={idx}>
+                  {link.label === "Contact" ? (
+                    <button
+                      type="button"
+                      onClick={openDemoModal}
+                      className="text-slate-400 hover:text-white transition-colors cursor-pointer flex items-center gap-1 group"
+                    >
+                      <span>{link.label}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-brand-blue" />
+                    </button>
+                  ) : (
+                    <a
+                      href={link.href}
+                      onClick={(e) => handleScrollTo(e, link.href)}
+                      className="text-slate-400 hover:text-white transition-colors cursor-pointer flex items-center gap-1 group"
+                    >
+                      <span>{link.label}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-brand-blue" />
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact & Live Demo CTA Card (4 Cols) */}
+          <div className="lg:col-span-4 space-y-4">
+            <h4 className="text-xs font-bold tracking-widest text-slate-400 uppercase flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-blue" />
+              Get In Touch
+            </h4>
+
+            <div className="bg-slate-900/70 border border-slate-800/80 rounded-2xl p-5 space-y-3.5 backdrop-blur-md">
+              <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-300">
+                <div className="w-7 h-7 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-brand-blue shrink-0">
+                  <Mail className="w-3.5 h-3.5" />
+                </div>
+                <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-white transition-colors truncate">
+                  {COMPANY_INFO.email}
+                </a>
+              </div>
+
+              <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-300">
+                <div className="w-7 h-7 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-brand-blue shrink-0">
+                  <Phone className="w-3.5 h-3.5" />
+                </div>
+                <a href={`tel:${COMPANY_INFO.phoneRaw}`} className="hover:text-white transition-colors">
+                  {COMPANY_INFO.phoneDisplay}
+                </a>
+              </div>
+
+              <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-300">
+                <div className="w-7 h-7 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-brand-blue shrink-0">
+                  <MapPin className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-slate-300 text-xs truncate">
+                  {COMPANY_INFO.address.full}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-300">
+                <div className="w-7 h-7 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-brand-blue shrink-0">
+                  <Globe className="w-3.5 h-3.5" />
+                </div>
+                <div className="flex items-center justify-between flex-1">
+                  <a
+                    href={COMPANY_INFO.parentWebsite}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors flex items-center gap-1 text-slate-200 font-medium"
+                  >
+                    <span>ag-solutions.in</span>
+                    <ArrowUpRight className="w-3 h-3 text-brand-blue" />
+                  </a>
+                  <span className="text-[10px] text-slate-400 font-mono">Parent Website</span>
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <div className="pt-2">
                 <button
-                  key={idx}
                   type="button"
                   onClick={openDemoModal}
-                  className="hover:text-brand-blue transition-colors cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-brand-blue hover:bg-brand-blue-hover text-white text-xs font-bold transition-all shadow-md hover:shadow-brand-blue/25 cursor-pointer"
                 >
-                  {link.label}
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Request Live Demonstration</span>
                 </button>
-              ) : (
-                <a
-                  key={idx}
-                  href={link.href}
-                  onClick={(e) => handleScrollTo(e, link.href)}
-                  className="hover:text-brand-blue transition-colors cursor-pointer"
-                >
-                  {link.label}
-                </a>
-              )
-            ))}
-          </nav>
-
-          {/* Right: Social Links */}
-          <div className="flex items-center space-x-3 text-slate-muted">
-            <SocialLinks />
-            <a
-              href={COMPANY_INFO.parentWebsite}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-1.5 rounded-full hover:text-brand-blue hover:bg-brand-blue-50 transition-colors"
-              aria-label={`${COMPANY_INFO.parentCompany} Website`}
-            >
-              <Globe className="w-4 h-4" />
-            </a>
+              </div>
+            </div>
           </div>
 
         </div>
 
-        {/* Bottom subtle copyright */}
-        <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-subtle gap-2">
-          <p>© {new Date().getFullYear()} {COMPANY_INFO.fullBrandName}. All rights reserved. <span className="opacity-70">v{COMPANY_INFO.version}</span></p>
-          <div className="flex items-center space-x-4">
-            <Link to="/policies/" className="hover:text-brand-blue transition-colors">
+        {/* Bottom Bar: Copyright, Policies & Back to Top */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="w-4 h-4 text-brand-blue shrink-0" />
+            <p>© {CURRENT_YEAR} {COMPANY_INFO.fullBrandName}. All rights reserved.</p>
+            <span className="text-slate-600">·</span>
+            <span className="font-mono text-[10px] text-slate-500">v{COMPANY_INFO.version}</span>
+          </div>
+
+          <div className="flex items-center space-x-5">
+            <Link to="/policies/" className="hover:text-slate-300 transition-colors">
               Privacy Policy
             </Link>
-            <Link to="/terms-and-conditions/" className="hover:text-brand-blue transition-colors">
+            <Link to="/terms-and-conditions/" className="hover:text-slate-300 transition-colors">
               Terms & Conditions
             </Link>
+            <button
+              type="button"
+              onClick={scrollToTop}
+              className="text-slate-400 hover:text-white font-medium transition-colors cursor-pointer flex items-center gap-1"
+            >
+              <span>Back to Top</span>
+              <span className="text-xs">↑</span>
+            </button>
           </div>
         </div>
+
       </div>
     </footer>
   );

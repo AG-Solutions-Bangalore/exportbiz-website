@@ -6,7 +6,7 @@ export const COMPANY_INFO = {
   tagline: "Simplified Export Documentation & Operations",
   parentCompany: "AG Solutions",
   fullBrandName: "Export Biz by AG Solutions",
-  version: "2.4.0",
+  version: "1.0.0",
 
   // Contact & Communication
   email: "info@exportbiz.in",
