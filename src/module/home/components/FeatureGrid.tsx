@@ -54,15 +54,15 @@ export default function FeatureGrid() {
         </p>
       </div>
 
-      {/* 8 Features Tiles with larger 3D Icons & text as requested */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-3.5">
+      {/* 8 Features Tiles with larger 3D Icons & reduced gap on small devices */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-3 lg:gap-3.5">
         {features.map((item, idx) => (
           <div
             key={idx}
-            className="group bg-white rounded-2xl p-4 sm:p-5 border border-gray-100 shadow-xs hover:shadow-md hover:border-brand-blue/30 hover:-translate-y-1 transition-all duration-200 flex flex-col items-center text-center justify-between min-h-[165px] sm:min-h-[180px]"
+            className="group bg-white rounded-2xl p-2.5 sm:p-4 lg:p-5 border border-gray-100 shadow-xs hover:shadow-md hover:border-brand-blue/30 hover:-translate-y-1 transition-all duration-200 flex flex-col items-center text-center justify-between min-h-[145px] sm:min-h-[165px] lg:min-h-[180px]"
           >
-            {/* Larger 3D Icon Container */}
-            <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+            {/* Even Bigger 3D Icon Container on small devices */}
+            <div className="w-20 h-20 sm:w-20 sm:h-20 lg:w-20 lg:h-20 flex items-center justify-center mb-1.5 sm:mb-2.5 group-hover:scale-110 transition-transform duration-300">
               <img
                 src={item.image}
                 alt={item.title}
@@ -71,8 +71,8 @@ export default function FeatureGrid() {
               />
             </div>
 
-            {/* Feature Label: Increased font size and line height */}
-            <span className="text-xs sm:text-[13px] font-bold text-navy-900 group-hover:text-brand-blue leading-snug transition-colors">
+            {/* Feature Label: Compact and readable */}
+            <span className="text-[11px] sm:text-xs lg:text-[13px] font-bold text-navy-900 group-hover:text-brand-blue leading-tight sm:leading-snug transition-colors">
               {item.title}
             </span>
           </div>
