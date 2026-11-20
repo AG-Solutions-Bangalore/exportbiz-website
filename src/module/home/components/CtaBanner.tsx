@@ -1,15 +1,25 @@
 import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useModal } from "../../../context/ModalContext";
 
 export default function CtaBanner() {
+  const { openDemoModal } = useModal();
+
+  const handleScrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const elem = document.getElementById("contact");
+    if (elem) {
+      elem.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="py-4 sm:py-6 lg:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-4 sm:py-6 lg:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#1B68F8] via-[#2470F9] to-[#3B82F6] shadow-md border border-blue-400/30">
         
         {/* Right side port & container ship background image */}
         <div className="absolute right-0 top-0 bottom-0 w-[38%] hidden md:block pointer-events-none overflow-hidden">
           <img
-            src="/solutions_port_bg.webp"
+            src="/cargo_ship_image.png"
             alt="Cargo Ship and Port"
             className="w-full h-full object-cover object-right select-none"
           />
@@ -32,20 +42,22 @@ export default function CtaBanner() {
 
           {/* Middle: Action Buttons */}
           <div className="md:col-span-4 lg:col-span-4 flex flex-wrap items-center gap-3">
-            <Link
-              to="/request-demo/"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-blue-50 text-[#1B68F8] font-bold text-xs sm:text-sm shadow-sm hover:shadow transition-all"
+            <button
+              type="button"
+              onClick={openDemoModal}
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-blue-50 text-[#1B68F8] font-bold text-xs sm:text-sm shadow-sm hover:shadow transition-all cursor-pointer"
             >
               Request a Free Demo
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </button>
 
-            <Link
-              to="/contact/"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/50 text-white font-semibold text-xs sm:text-sm backdrop-blur-xs transition-all"
+            <a
+              href="#contact"
+              onClick={handleScrollToContact}
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/50 text-white font-semibold text-xs sm:text-sm backdrop-blur-xs transition-all cursor-pointer"
             >
               Contact Us
-            </Link>
+            </a>
           </div>
 
           {/* Right spacer for background image display */}

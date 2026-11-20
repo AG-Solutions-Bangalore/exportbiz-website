@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 export default function FeatureGrid() {
   const features = [
     {
@@ -45,40 +43,39 @@ export default function FeatureGrid() {
   ];
 
   return (
-    <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="features" className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight">
+      <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy-900 tracking-tight">
           Explore the Complete Feature Set
         </h2>
-        <p className="mt-2.5 text-sm sm:text-base text-slate-body">
+        <p className="mt-2.5 text-sm sm:text-base text-slate-600">
           A comprehensive suite of tools to manage your export business end to end.
         </p>
       </div>
 
-      {/* 8 Features Tiles with 3D Icons */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+      {/* 8 Features Tiles with larger 3D Icons & text as requested */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3.5 sm:gap-4">
         {features.map((item, idx) => (
-          <Link
+          <div
             key={idx}
-            to={item.href}
-            className="group  bg-white rounded-2xl p-3.5 sm:p-6 border border-card-border shadow-card-soft hover:shadow-card-hover hover:border-brand-blue/30 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center justify-between min-h-[135px] sm:min-h-[150px]"
+            className="group bg-white rounded-2xl p-4 sm:p-5 border border-gray-100 shadow-xs hover:shadow-md hover:border-brand-blue/30 hover:-translate-y-1 transition-all duration-200 flex flex-col items-center text-center justify-between min-h-[155px] sm:min-h-[170px]"
           >
-            {/* 3D Icon Container */}
-            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform duration-300">
+            {/* Larger 3D Icon Container */}
+            <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-11 h-11 sm:w-13 sm:h-13 object-contain filter drop-shadow-md select-none"
+                className="w-13 h-13 sm:w-15 sm:h-15 object-contain filter drop-shadow-md select-none"
                 loading="lazy"
               />
             </div>
 
-            {/* Feature Label */}
-            <span className="text-xs font-bold text-navy-900 group-hover:text-brand-blue leading-snug transition-colors">
+            {/* Feature Label: Increased font size and line height */}
+            <span className="text-xs sm:text-[13px] font-bold text-navy-900 group-hover:text-brand-blue leading-tight transition-colors">
               {item.title}
             </span>
-          </Link>
+          </div>
         ))}
       </div>
     </section>

@@ -1,51 +1,22 @@
-import {
-  FileText,
-  Award,
-  ClipboardList,
-  Shield,
-  Truck,
-  File,
-  ArrowRight,
-} from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function DocumentManagement() {
   const checklist = [
-    {
-      label: "Commercial Contracts & Orders",
-      Icon: FileText,
-      color: "bg-blue-100 text-blue-600",
-    },
-    {
-      label: "Certificate of Origin",
-      Icon: Award,
-      color: "bg-purple-100 text-purple-600",
-    },
-    {
-      label: "Invoice, Packing List & PL",
-      Icon: ClipboardList,
-      color: "bg-indigo-100 text-indigo-600",
-    },
-    {
-      label: "Inspection Certificates",
-      Icon: Shield,
-      color: "bg-emerald-100 text-emerald-600",
-    },
-    {
-      label: "Bill of Lading (B/L)",
-      Icon: Truck,
-      color: "bg-amber-100 text-amber-600",
-    },
-    {
-      label: "Other Shipment Documents",
-      Icon: File,
-      color: "bg-slate-100 text-slate-600",
-    },
+    "Commercial Contracts & Orders",
+    "Certificate of Origin",
+    "Invoice, Packing List & PL",
+    "Inspection Certificates",
+    "Bill of Lading (B/L)",
+    "Other Shipment Documents",
   ];
 
   return (
-    <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+    <section id="documents" className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden relative">
+      {/* Background soft ambient gradient curve on the right as per client audio */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-l from-blue-100/40 via-sky-50/20 to-transparent rounded-full blur-3xl pointer-events-none" />
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center relative z-10">
         
         {/* Left Column: Floating Documents Mockup */}
         <div className="lg:col-span-6 relative flex justify-center items-center">
@@ -84,15 +55,13 @@ export default function DocumentManagement() {
 
           {/* Checklist 2-Column Grid */}
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-2">
-            {checklist.map((item, idx) => (
+            {checklist.map((label, idx) => (
               <div key={idx} className="flex items-center gap-2">
-                <div
-                  className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 border border-white/60 shadow-sm ${item.color}`}
-                >
-                  <item.Icon className="w-5 h-5" />
+                <div className="w-5 h-5 rounded-full bg-brand-blue flex items-center justify-center shrink-0">
+                  <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
                 </div>
                 <span className="text-sm font-semibold text-navy-800">
-                  {item.label}
+                  {label}
                 </span>
               </div>
             ))}

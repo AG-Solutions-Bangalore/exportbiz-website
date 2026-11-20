@@ -1,13 +1,22 @@
 import { ArrowRight, Play, Building2, FileText, BarChart3 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useModal } from "../../../context/ModalContext";
 
 export default function Hero() {
+  const { openDemoModal } = useModal();
+
+  const handleScrollToFeatures = () => {
+    const elem = document.getElementById("features");
+    if (elem) {
+      elem.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="relative overflow-hidden bg-[#EAF3FE] py-8 sm:py-12">
+    <section id="hero" className="relative overflow-hidden bg-[#EAF3FE] pt-8 pb-16 sm:pt-12 sm:pb-20">
       {/* Background Banner Image on Desktop: perfectly fitted to the right without being too big */}
       <div
         className="absolute inset-0 bg-no-repeat bg-right bg-contain pointer-events-none hidden lg:block"
-        style={{ backgroundImage: "url('/hero_image.webp')" }}
+        style={{ backgroundImage: "url('/hero_image.png')" }}
       />
 
       {/* Subtle ambient lighting on the left */}
@@ -17,10 +26,10 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Left Column: Content (Restrained to left half so it doesn't cover the laptop banner image) */}
           <div className="lg:col-span-7 xl:col-span-6 text-left">
-            {/* Pill Badge */}
+            {/* Pill Badge: "& BUSINESS" removed as per client feedback */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-badge-bg border border-badge-border mb-5 sm:mb-6 shadow-xs">
               <span className="text-[11px] sm:text-xs font-bold text-badge-text tracking-wider uppercase">
-                EXPORT DOCUMENTATION & BUSINESS MANAGEMENT SOFTWARE
+                EXPORT DOCUMENTATION MANAGEMENT SOFTWARE
               </span>
             </div>
 
@@ -43,23 +52,25 @@ export default function Hero() {
 
             {/* Action CTA Buttons */}
             <div className="mt-7 sm:mt-8 flex flex-wrap items-center gap-3.5 sm:gap-4">
-              <Link
-                to="/request-demo/"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white font-semibold text-sm sm:text-base shadow-md hover:shadow-lg transition-all"
+              <button
+                type="button"
+                onClick={openDemoModal}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white font-semibold text-sm sm:text-base shadow-md hover:shadow-lg transition-all cursor-pointer"
               >
                 Request a Free Demo
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </button>
 
-              <Link
-                to="/features/"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 rounded-full bg-white hover:bg-gray-50 text-navy-800 font-semibold text-sm sm:text-base border border-gray-300 shadow-sm transition-all"
+              <button
+                type="button"
+                onClick={handleScrollToFeatures}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 rounded-full bg-white hover:bg-gray-50 text-navy-800 font-semibold text-sm sm:text-base border border-gray-300 shadow-sm transition-all cursor-pointer"
               >
                 <div className="w-5 h-5 rounded-full border border-navy-800/60 flex items-center justify-center">
                   <Play className="w-2.5 h-2.5 fill-navy-800 text-navy-800 ml-0.5" />
                 </div>
                 Explore Features
-              </Link>
+              </button>
             </div>
 
             {/* Key Highlights Row */}

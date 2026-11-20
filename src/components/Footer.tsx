@@ -1,48 +1,66 @@
 import { Globe } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { COMPANY_INFO } from "../constants";
 
 export default function Footer() {
+  const location = useLocation();
+  const isHome = location.pathname === "/" || location.pathname === "";
+
   const links = [
-    { label: "Home", href: "/" },
-    { label: "Product", href: "/product/" },
-    { label: "Features", href: "/features/" },
-    { label: "Solutions", href: "/solutions/" },
-    { label: "Extended Version", href: "/extended-version/" },
-    { label: "About Us", href: "/about-us/" },
-    { label: "Contact", href: "/contact/" },
+    { label: "Home", href: "/#hero" },
+    { label: "Why Us", href: "/#why-us" },
+    { label: "Documents", href: "/#documents" },
+    { label: "Features", href: "/#features" },
+    { label: "Solutions", href: "/#solutions" },
+    { label: "Contact", href: "/#contact" },
   ];
+
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/#") && isHome) {
+      e.preventDefault();
+      const targetId = href.replace("/#", "");
+      if (targetId === "hero") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        const elem = document.getElementById(targetId);
+        if (elem) {
+          elem.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  };
 
   return (
     <footer className="mt-12 sm:mt-16 border-t border-gray-200/80 bg-white py-8 sm:py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8">
           
-          {/* Left: Brand Logo & Product by AG Solutions */}
+          {/* Left: Brand Logo (Larger size) & Product by AG Solutions (Bold AG Solutions) */}
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <Link to="/" className="inline-block">
               <img
                 src="/logo_transparent.webp"
                 alt={COMPANY_INFO.fullBrandName}
-                className="h-8 w-auto object-contain"
+                className="h-10 sm:h-11 w-auto object-contain"
               />
             </Link>
             <span className="hidden sm:inline-block text-gray-300">|</span>
             <span className="text-xs sm:text-sm text-slate-muted font-medium">
-              A product by <strong className="font-semibold text-navy-900">{COMPANY_INFO.parentCompany}</strong>
+              A product by <strong className="font-extrabold text-navy-900 tracking-tight text-sm sm:text-base">{COMPANY_INFO.parentCompany}</strong>
             </span>
           </div>
 
-          {/* Center: Navigation Links */}
-          <nav className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2 text-xs sm:text-sm font-medium text-slate-body">
+          {/* Center: Single-Page Navigation Links */}
+          <nav className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2 text-xs sm:text-sm font-semibold text-slate-600">
             {links.map((link, idx) => (
-              <Link
+              <a
                 key={idx}
-                to={link.href}
-                className="hover:text-brand-blue transition-colors"
+                href={link.href}
+                onClick={(e) => handleScrollTo(e, link.href)}
+                className="hover:text-brand-blue transition-colors cursor-pointer"
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
           </nav>
 

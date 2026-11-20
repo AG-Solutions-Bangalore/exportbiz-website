@@ -1,5 +1,4 @@
 import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
 import MetricsBar from "./MetricsBar";
 
 export default function PlatformFeatures() {
@@ -9,103 +8,96 @@ export default function PlatformFeatures() {
       description:
         "Prepare and organize essential export documents across the shipment lifecycle.",
       icon: "/icon_doc.webp",
-      glow: "from-blue-200/40 to-transparent",
-      accent: "text-brand-blue",
-      bgGradient: "from-[#2853DA]/96 via-[#2853DA]/90 to-transparent",
-      href: "/features/documentation/",
+      glowBg: "from-blue-50/50 via-white to-white",
+      hoverBorder: "hover:border-blue-200",
+      arrowHover: "group-hover:border-blue-400 group-hover:text-brand-blue",
     },
     {
       title: "Compliance Support",
       description:
         "Configure customer-specific certificates and document requirements.",
       icon: "/icon_shield.webp",
-      glow: "from-purple-200/40 to-transparent",
-      accent: "text-purple-600",
-      bgGradient: "from-[#8953E5]/96 via-[#8953E5]/90 to-transparent",
-      href: "/features/compliance/",
+      glowBg: "from-purple-50/50 via-white to-white",
+      hoverBorder: "hover:border-purple-200",
+      arrowHover: "group-hover:border-purple-400 group-hover:text-purple-600",
     },
     {
       title: "Financial Visibility",
       description:
         "Review customer outstanding balances, foreign-currency billing values, and expected export incentives.",
       icon: "/icon_chart.webp",
-      glow: "from-emerald-200/40 to-transparent",
-      accent: "text-emerald-600",
-      bgGradient: "from-[#34B267]/96 via-[#34B267]/90 to-transparent",
-      href: "/features/financials/",
+      glowBg: "from-emerald-50/50 via-white to-white",
+      hoverBorder: "hover:border-emerald-200",
+      arrowHover: "group-hover:border-emerald-400 group-hover:text-emerald-600",
     },
     {
       title: "Business Operations",
       description:
         "Manage costing templates, reports, multiple companies, and shared business records.",
       icon: "/icon_folder.webp",
-      glow: "from-amber-200/40 to-transparent",
-      accent: "text-amber-600",
-      bgGradient: "from-[#CF8E32]/96 via-[#CF8E32]/90 to-transparent",
-      href: "/features/operations/",
+      glowBg: "from-amber-50/50 via-white to-white",
+      hoverBorder: "hover:border-amber-200",
+      arrowHover: "group-hover:border-amber-400 group-hover:text-amber-600",
     },
   ];
 
   return (
-    <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Section Header */}
-
+    <section id="why-us" className="pt-0 pb-12 sm:pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Metrics Bar overlapping Hero bottom */}
       <MetricsBar />
-      <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-        <span className="text-xs font-bold tracking-widest text-slate-muted uppercase">
+
+      {/* Section Header */}
+      <div className="text-center max-w-3xl mx-auto mt-12 sm:mt-16 mb-10 sm:mb-14">
+        <span className="text-xs font-bold tracking-widest text-slate-500 uppercase">
           THE EXPORT BIZ PLATFORM
         </span>
-        <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-navy-900 tracking-tight">
+        <h2 className="mt-2.5 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy-900 tracking-tight">
           Everything Your Export Business Needs.{" "}
           <span className="text-brand-blue">Connected.</span>
         </h2>
-        <p className="mt-4 text-base sm:text-lg text-slate-body leading-relaxed">
+        <p className="mt-3.5 text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
           Export Biz by AG Solutions brings documentation, compliance support,
           financial information, reporting, and team collaboration together in
           one centralized workspace.
         </p>
       </div>
 
-      {/* 4 Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* 4 Cards Grid: Left side full image, Right side content and button */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-5">
         {cards.map((card, idx) => (
           <div
             key={idx}
-            className={`group relative rounded-2xl p-5 sm:p-6 border border-card-border shadow-card-soft hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between overflow-hidden bg-gradient-to-t ${card.bgGradient}`}
+            className={`group relative rounded-2xl p-4 sm:p-5 bg-gradient-to-br ${card.glowBg} bg-white border border-gray-100 shadow-sm hover:shadow-md ${card.hoverBorder} transition-all duration-300 flex items-center gap-3.5 sm:gap-4`}
           >
-            {/* Ambient corner glow */}
-            <div
-              className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-tr ${card.glow} blur-xl pointer-events-none group-hover:scale-125 transition-transform duration-500`}
-            />
-
-            <div>
-              {/* 3D Icon */}
-              <div className="w-16 h-16 mb-5 flex items-center justify-start">
-                <img
-                  src={card.icon}
-                  alt={card.title}
-                  className="w-14 h-14 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform"
-                />
-              </div>
-
-              {/* Title & Description */}
-              <h3 className="text-lg font-bold text-white transition-colors">
-                {card.title}
-              </h3>
-              <p className="mt-2.5 text-xs sm:text-sm text-slate-200 leading-relaxed">
-                {card.description}
-              </p>
+            {/* Left side full 3D image container */}
+            <div className="w-20 h-20 sm:w-22 sm:h-22 shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+              <img
+                src={card.icon}
+                alt={card.title}
+                className="w-full h-full object-contain filter drop-shadow-md select-none"
+                loading="lazy"
+              />
             </div>
 
-            {/* Bottom Arrow Button */}
-            <div className="mt-6 pt-2">
-              <Link
-                to={card.href}
-                className={`w-12 h-12 rounded-full bg-white border border-card-border flex items-center justify-center text-black transition-all duration-300 shadow-sm hover:shadow-lg hover:scale-110 ${card.accent.replace('text-', 'border-')}`}
-                aria-label={`Explore ${card.title}`}
-              >
-                <ArrowRight className="w-5 h-5" />
-              </Link>
+            {/* Right side: Title, Description, and Button */}
+            <div className="flex-1 min-w-0 flex flex-col justify-between h-full">
+              <div>
+                <h3 className="text-sm sm:text-[15px] font-extrabold text-navy-900 group-hover:text-brand-blue transition-colors leading-tight">
+                  {card.title}
+                </h3>
+                <p className="mt-1.5 text-[11px] sm:text-xs text-slate-600 leading-relaxed line-clamp-3">
+                  {card.description}
+                </p>
+              </div>
+
+              {/* Small circular arrow button at bottom right */}
+              <div className="mt-2.5">
+                <div
+                  className={`w-6 h-6 rounded-full border border-gray-200 bg-white shadow-2xs flex items-center justify-center text-slate-500 ${card.arrowHover} transition-all duration-200`}
+                >
+                  <ArrowRight className="w-3 h-3" />
+                </div>
+              </div>
             </div>
           </div>
         ))}

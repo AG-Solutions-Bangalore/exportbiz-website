@@ -24,12 +24,12 @@ export default function Solutions() {
   ];
 
   return (
-    <section className="py-4 sm:py-6 lg:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="solutions" className="py-4 sm:py-6 lg:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="relative bg-[#F5F8FE] border border-blue-100 rounded-2xl overflow-hidden shadow-sm">
         {/* Right side background image of port / cranes / container ship */}
-        <div className="absolute right-0 top-0 bottom-0 w-[42%] lg:w-[38%] xl:w-[35%] hidden md:block pointer-events-none">
+        <div className="absolute -right-20 top-0 bottom-0 w-[42%] lg:w-[38%] xl:w-[35%] hidden md:block pointer-events-none">
           <img
-            src="/solutions_port_bg.webp"
+            src="/Sunset_Container_Port.png"
             alt="Port Background"
             className="w-full h-full object-cover object-right select-none"
           />

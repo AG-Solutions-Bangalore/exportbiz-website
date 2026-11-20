@@ -1,8 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import { ModalProvider, useModal } from "../../context/ModalContext";
+import { EnquiryModal } from "../../module/Enquiry";
 
-export default function MainLayout() {
+function LayoutContent() {
+  const { isDemoModalOpen, closeDemoModal } = useModal();
   return (
     <div className="min-h-screen flex flex-col bg-white text-navy-800">
       <Navbar />
@@ -10,6 +13,15 @@ export default function MainLayout() {
         <Outlet />
       </main>
       <Footer />
+      <EnquiryModal isOpen={isDemoModalOpen} onClose={closeDemoModal} />
     </div>
+  );
+}
+
+export default function MainLayout() {
+  return (
+    <ModalProvider>
+      <LayoutContent />
+    </ModalProvider>
   );
 }
