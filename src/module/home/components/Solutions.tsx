@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FileSpreadsheet, ArrowLeftRight, Building, ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
-import { Link } from "react-router-dom";
 import { useCreateEnquiry } from "../../Enquiry";
 
 export default function Solutions() {
@@ -63,7 +62,7 @@ export default function Solutions() {
     <section id="solutions" className="py-4 sm:py-6 lg:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="relative bg-[#F5F8FE] border border-blue-100 rounded-2xl overflow-hidden shadow-sm">
         {/* Right side background image of port / cranes / container ship */}
-        <div className="absolute -right-12 top-0 bottom-0 w-[42%] lg:w-[38%] xl:w-[35%] hidden md:block pointer-events-none">
+        <div className="absolute -right-6 sm:-right-10 lg:-right-12 top-0 bottom-0 w-[46%] lg:w-[40%] xl:w-[35%] hidden md:block pointer-events-none">
           <img
             src="/export_biz_cargo_ship.png"
             alt="Port Background"
@@ -74,11 +73,11 @@ export default function Solutions() {
         </div>
 
         {/* Content container */}
-        <div className="relative z-10 px-6 py-6 sm:px-8 sm:py-7 lg:px-10 lg:py-8 grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 items-center">
+        <div className="relative z-10 px-5 py-6 sm:px-8 sm:py-7 lg:px-10 lg:py-8 grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           {/* Left: Title, Description & Quick Demo Input */}
-          <div className="md:col-span-5 lg:col-span-5 text-left">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B1536] tracking-tight leading-tight">
+          <div className="md:col-span-6 lg:col-span-5 text-left">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0B1536] tracking-tight leading-tight">
               Solutions for Export Businesses
             </h2>
             <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed max-w-md">
@@ -104,7 +103,7 @@ export default function Solutions() {
                         if (errorMsg) setErrorMsg(null);
                       }}
                       placeholder="Enter mobile number for demo"
-                      className={`w-full pl-3.5 pr-28 py-2 text-xs sm:text-sm rounded-xl bg-white border ${
+                      className={`w-full pl-3.5 pr-28 py-2.5 text-xs sm:text-sm rounded-xl bg-white border ${
                         errorMsg ? "border-red-400 focus:border-red-500" : "border-blue-200 focus:border-brand-blue"
                       } text-navy-900 placeholder:text-slate-400 shadow-2xs outline-none transition-all`}
                     />
@@ -132,16 +131,16 @@ export default function Solutions() {
           </div>
 
           {/* Middle: 3 stacked list items */}
-          <div className="md:col-span-4 lg:col-span-4 space-y-3.5">
+          <div className="md:col-span-6 lg:col-span-4 space-y-3 sm:space-y-3.5">
             {solutions.map((item, idx) => {
               const Icon = item.icon;
               return (
-                <span
+                <div
                   key={idx}
-                  className="group flex items-center gap-3 transition-transform duration-150 hover:translate-x-0.5"
+                  className="group flex items-start sm:items-center gap-3 p-1.5 sm:p-0 rounded-xl transition-transform duration-150 hover:translate-x-0.5"
                 >
                   {/* Rounded icon badge with soft blue tint */}
-                  <div className="w-10 h-10 rounded-xl bg-white border border-blue-100 shadow-xs flex items-center justify-center shrink-0 text-[#1D68F2] group-hover:bg-[#1D68F2] group-hover:text-white transition-colors">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white border border-blue-100 shadow-xs flex items-center justify-center shrink-0 text-[#1D68F2] group-hover:bg-[#1D68F2] group-hover:text-white transition-colors mt-0.5 sm:mt-0">
                     <Icon className="w-4 h-4" />
                   </div>
                   <div>
@@ -152,13 +151,13 @@ export default function Solutions() {
                       {item.description}
                     </p>
                   </div>
-                </span>
+                </div>
               );
             })}
           </div>
 
           {/* Right spacer for the background image on desktop */}
-          <div className="hidden md:block md:col-span-3 lg:col-span-3" />
+          <div className="hidden lg:block lg:col-span-3" />
 
         </div>
       </div>

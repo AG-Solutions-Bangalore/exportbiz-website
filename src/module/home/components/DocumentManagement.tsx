@@ -21,14 +21,14 @@ export default function DocumentManagement() {
       {/* Background soft ambient gradient curve on the right as per client audio */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-l from-blue-100/40 via-sky-50/20 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center relative z-10">
         {/* Left Column: Floating Documents Mockup */}
         <div className="lg:col-span-6 relative flex justify-center items-center">
-          <div className="relative w-full max-w-[540px]">
+          <div className="relative w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[540px]">
             <img
               src="/export_biz_documents_transparent.png"
               alt="Export Documents: Commercial Invoice, Packing List, Bill of Lading"
-              className="w-full scale-[1.11] h-auto object-contain select-none"
+              className="w-full h-auto object-contain select-none"
               loading="lazy"
             />
           </div>
@@ -37,32 +37,32 @@ export default function DocumentManagement() {
         {/* Right Column: Copy & Checklist */}
         <div className="lg:col-span-6 text-left">
           {/* Eyebrow Badge */}
-          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-badge-bg border border-badge-border mb-4">
-            <span className="text-[11px] sm:text-xs font-bold text-badge-text tracking-wider uppercase">
+          <div className="inline-flex items-center px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-badge-bg border border-badge-border mb-3 sm:mb-4">
+            <span className="text-[10px] sm:text-xs font-bold text-badge-text tracking-wider uppercase">
               EXPORT DOCUMENTATION MANAGEMENT
             </span>
           </div>
 
           {/* Heading */}
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-navy-900 tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy-900 tracking-tight leading-tight">
             Every Export Document. <br />
             Organized in One Place.
           </h2>
 
           {/* Subtitle */}
-          <p className="mt-4 text-base sm:text-lg text-slate-body leading-relaxed max-w-xl">
+          <p className="mt-3 sm:mt-4 text-xs sm:text-base lg:text-lg text-slate-body leading-relaxed max-w-xl">
             Create, manage and track all key export documents from contract to
             shipment, with a clear and structured workflow.
           </p>
 
           {/* Checklist 2-Column Grid */}
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-2">
+          <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-2">
             {checklist.map((label, idx) => (
               <div key={idx} className="flex items-center gap-2">
                 <div className="w-5 h-5 rounded-full bg-brand-blue flex items-center justify-center shrink-0">
                   <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
                 </div>
-                <span className="text-sm font-semibold text-navy-800">
+                <span className="text-xs sm:text-sm font-semibold text-navy-800">
                   {label}
                 </span>
               </div>
@@ -70,11 +70,11 @@ export default function DocumentManagement() {
           </div>
 
           {/* CTA Button */}
-          <div className="mt-8">
+          <div className="mt-6 sm:mt-8">
             <button
               type="button"
               onClick={openDemoModal}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white font-semibold text-sm transition-all shadow-sm hover:shadow cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:py-3 rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white font-semibold text-xs sm:text-sm transition-all shadow-sm hover:shadow cursor-pointer"
             >
               Explore Documentation
               <ArrowRight className="w-4 h-4" />

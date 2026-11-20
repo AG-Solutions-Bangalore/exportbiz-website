@@ -5,7 +5,7 @@ export default function Hero() {
   const { openDemoModal } = useModal();
 
   return (
-    <section id="hero" className="relative overflow-hidden bg-[#EAF3FE] pt-8 pb-16 sm:pt-12 sm:pb-20">
+    <section id="hero" className="relative overflow-hidden bg-[#EAF3FE] pt-0 pb-12 sm:pt-6 sm:pb-16 lg:pb-20">
       {/* Background Banner Image on Desktop: perfectly fitted to the right without being too big */}
       <div
         className="absolute inset-0 bg-no-repeat bg-right bg-contain pointer-events-none hidden lg:block"
@@ -13,30 +13,44 @@ export default function Hero() {
       />
 
       {/* Subtle ambient lighting on the left */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-white/40 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-0 w-72 h-72 sm:w-96 sm:h-96 bg-white/40 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Left Column: Content (Restrained to left half so it doesn't cover the laptop banner image) */}
-          <div className="lg:col-span-7 xl:col-span-6 text-left">
-            {/* Pill Badge: "& BUSINESS" removed as per client feedback */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-badge-bg border border-badge-border mb-5 sm:mb-6 shadow-xs">
-              <span className="text-[11px] sm:text-xs font-bold text-badge-text tracking-wider uppercase">
+      {/* Full-width Mobile Image Hero with Centered Focal Point and Seamless Blend */}
+      <div className="relative w-full h-[220px] sm:h-[290px] overflow-hidden lg:hidden block">
+        <img
+          src="/hero_image.png"
+          alt="Export Biz Workspace Dashboard"
+          className="w-full h-full object-cover object-[72%_center] sm:object-[68%_center] select-none"
+          loading="eager"
+        />
+        {/* Soft edge gradients blending image with background */}
+        <div className="absolute inset-x-0 bottom-0 h-16 sm:h-20 bg-gradient-to-t from-[#EAF3FE] via-[#EAF3FE]/80 to-transparent pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#EAF3FE]/40 to-transparent pointer-events-none" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 -mt-8 sm:-mt-10 lg:mt-0">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+          
+          {/* Content Column: Appears below image on mobile (order-2), left column on desktop */}
+          <div className="w-full lg:col-span-7 xl:col-span-6 text-left order-2 lg:order-1">
+            {/* Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-badge-bg border border-badge-border mb-3.5 sm:mb-6 shadow-xs max-w-full">
+              <span className="text-[10px] sm:text-xs font-bold text-badge-text tracking-wider uppercase truncate">
                 EXPORT DOCUMENTATION MANAGEMENT SOFTWARE
               </span>
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 leading-[1.14] tracking-tight">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 leading-[1.15] tracking-tight">
               Your Complete <br className="hidden sm:inline" />
               Export Business. <br />
-              <span className="text-brand-blue text-nowrap">
+              <span className="text-brand-blue sm:text-nowrap">
                 One Intelligent Workspace.
               </span>
             </h1>
 
             {/* Description Subtitle */}
-            <p className="mt-4 sm:mt-5 text-sm sm:text-base lg:text-lg text-slate-900 leading-tight max-w-xl">
+            <p className="mt-3 sm:mt-5 text-xs sm:text-base lg:text-lg text-slate-800 leading-relaxed max-w-xl">
               Prepare export documents, manage certificates, calculate product
               costing, monitor customer outstanding balances, track export
               incentives, and organize your business operations — all with
@@ -44,11 +58,11 @@ export default function Hero() {
             </p>
 
             {/* Action CTA Buttons */}
-            <div className="mt-7 sm:mt-8 flex flex-wrap items-center gap-3.5 sm:gap-4">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <button
                 type="button"
                 onClick={openDemoModal}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white font-semibold text-sm sm:text-base shadow-md hover:shadow-lg transition-all cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white font-semibold text-xs sm:text-base shadow-md hover:shadow-lg transition-all cursor-pointer"
               >
                 Request a Free Demo
                 <ArrowRight className="w-4 h-4" />
@@ -58,48 +72,49 @@ export default function Hero() {
                 href="https://demo.exportbiz.in/signup"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 rounded-full bg-white hover:bg-gray-50 text-navy-800 font-semibold text-sm sm:text-base border border-gray-300 shadow-sm transition-all cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 rounded-full bg-white hover:bg-gray-50 text-navy-800 font-semibold text-xs sm:text-base border border-gray-300 shadow-sm transition-all cursor-pointer"
               >
-                <div className="w-5 h-5 rounded-full border border-navy-800/60 flex items-center justify-center">
-                  <Play className="w-2.5 h-2.5 fill-navy-800 text-navy-800 ml-0.5" />
+                <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full border border-navy-800/60 flex items-center justify-center">
+                  <Play className="w-2 h-2 sm:w-2.5 sm:h-2.5 fill-navy-800 text-navy-800 ml-0.5" />
                 </div>
                 Free Trial
               </a>
             </div>
 
             {/* Key Highlights Row */}
-            <div className="mt-8 sm:mt-10 pt-5 sm:pt-6 border-t border-brand-blue-200/60 grid grid-cols-3 gap-2 sm:gap-4 max-w-lg">
-              <div className="flex items-start gap-2">
+            <div className="mt-7 hidden sm:mt-10 pt-4 sm:pt-6 border-t border-brand-blue-200/60 md:grid grid-cols-3 gap-2 sm:gap-4 max-w-lg">
+              <div className="flex flex-col sm:flex-row items-start gap-1.5 sm:gap-2">
                 <div className="p-1 rounded-md text-brand-blue mt-0.5 shrink-0">
                   <Building2 className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
-                <span className="text-[11px] sm:text-xs md:text-sm font-semibold text-navy-900 leading-snug">
-                  Multiple Company <br />
+                <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-navy-900 leading-snug">
+                  Multiple Company <br className="hidden sm:inline" />
                   Management
                 </span>
               </div>
 
-              <div className="flex items-start gap-2">
+              <div className="flex flex-col sm:flex-row items-start gap-1.5 sm:gap-2">
                 <div className="p-1 rounded-md text-brand-blue mt-0.5 shrink-0">
                   <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
-                <span className="text-[11px] sm:text-xs md:text-sm font-semibold text-navy-900 leading-snug">
-                  Export <br />
+                <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-navy-900 leading-snug">
+                  Export <br className="hidden sm:inline" />
                   Documentation
                 </span>
               </div>
 
-              <div className="flex items-start gap-2">
+              <div className="flex flex-col sm:flex-row items-start gap-1.5 sm:gap-2">
                 <div className="p-1 rounded-md text-brand-blue mt-0.5 shrink-0">
                   <BarChart3 className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
-                <span className="text-[11px] sm:text-xs md:text-sm font-semibold text-navy-900 leading-snug">
-                  Business & <br />
+                <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-navy-900 leading-snug">
+                  Business & <br className="hidden sm:inline" />
                   Financial Visibility
                 </span>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
