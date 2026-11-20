@@ -12,21 +12,21 @@ export default function DocumentManagement() {
   ];
 
   return (
-    <section id="documents" className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden relative">
+    <section
+      id="documents"
+      className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden relative"
+    >
       {/* Background soft ambient gradient curve on the right as per client audio */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-l from-blue-100/40 via-sky-50/20 to-transparent rounded-full blur-3xl pointer-events-none" />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center relative z-10">
-        
         {/* Left Column: Floating Documents Mockup */}
         <div className="lg:col-span-6 relative flex justify-center items-center">
           <div className="relative w-full max-w-[540px]">
-            {/* Subtle glow underneath */}
-            <div className="absolute inset-0 bg-brand-blue-100/40 rounded-full blur-3xl -z-10" />
             <img
-              src="/export_biz_documents_transparent.webp"
+              src="/export_biz_documents_transparent.png"
               alt="Export Documents: Commercial Invoice, Packing List, Bill of Lading"
-              className="w-full scale-[1.11] h-auto object-contain drop-shadow-xl select-none"
+              className="w-full scale-[1.11] h-auto object-contain select-none"
               loading="lazy"
             />
           </div>
@@ -49,8 +49,8 @@ export default function DocumentManagement() {
 
           {/* Subtitle */}
           <p className="mt-4 text-base sm:text-lg text-slate-body leading-relaxed max-w-xl">
-            Create, manage and track all key export documents from contract to shipment, with a
-            clear and structured workflow.
+            Create, manage and track all key export documents from contract to
+            shipment, with a clear and structured workflow.
           </p>
 
           {/* Checklist 2-Column Grid */}
@@ -78,7 +78,6 @@ export default function DocumentManagement() {
             </Link>
           </div>
         </div>
-
       </div>
     </section>
   );

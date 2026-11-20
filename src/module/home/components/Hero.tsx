@@ -4,13 +4,6 @@ import { useModal } from "../../../context/ModalContext";
 export default function Hero() {
   const { openDemoModal } = useModal();
 
-  const handleScrollToFeatures = () => {
-    const elem = document.getElementById("features");
-    if (elem) {
-      elem.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section id="hero" className="relative overflow-hidden bg-[#EAF3FE] pt-8 pb-16 sm:pt-12 sm:pb-20">
       {/* Background Banner Image on Desktop: perfectly fitted to the right without being too big */}
@@ -61,16 +54,17 @@ export default function Hero() {
                 <ArrowRight className="w-4 h-4" />
               </button>
 
-              <button
-                type="button"
-                onClick={handleScrollToFeatures}
+              <a
+                href="https://demo.exportbiz.in/signup"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 rounded-full bg-white hover:bg-gray-50 text-navy-800 font-semibold text-sm sm:text-base border border-gray-300 shadow-sm transition-all cursor-pointer"
               >
                 <div className="w-5 h-5 rounded-full border border-navy-800/60 flex items-center justify-center">
                   <Play className="w-2.5 h-2.5 fill-navy-800 text-navy-800 ml-0.5" />
                 </div>
-                Explore Features
-              </button>
+                Free Trial
+              </a>
             </div>
 
             {/* Key Highlights Row */}

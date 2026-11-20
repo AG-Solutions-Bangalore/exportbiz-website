@@ -20,7 +20,10 @@ export default function Navbar() {
     { label: "Contact", href: "/#contact" },
   ];
 
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleScrollTo = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
     if (href.startsWith("/#") && isHome) {
       e.preventDefault();
       const targetId = href.replace("/#", "");
@@ -65,12 +68,6 @@ export default function Navbar() {
 
           {/* Action Buttons */}
           <div className="hidden sm:flex items-center space-x-3">
-            <Link
-              to="/login/"
-              className="px-5 py-2 text-sm font-semibold text-navy-800 bg-white border border-gray-300 rounded-full hover:bg-gray-50 transition-colors"
-            >
-              Login
-            </Link>
             <button
               type="button"
               onClick={openDemoModal}
@@ -89,7 +86,11 @@ export default function Navbar() {
               className="p-2 rounded-lg text-slate-body hover:text-navy-900 hover:bg-gray-100"
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -109,13 +110,6 @@ export default function Navbar() {
             </a>
           ))}
           <div className="pt-4 flex flex-col gap-2 border-t border-gray-100">
-            <Link
-              to="/login/"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center py-2.5 text-sm font-semibold text-navy-800 border border-gray-300 rounded-full"
-            >
-              Login
-            </Link>
             <button
               type="button"
               onClick={() => {

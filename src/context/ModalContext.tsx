@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useCallback } from "react";
+import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
 
 interface ModalContextType {
   isDemoModalOpen: boolean;
@@ -17,6 +17,19 @@ export const ModalProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const closeDemoModal = useCallback(() => {
     setIsDemoModalOpen(false);
+  }, []);
+
+  // One-time automatic popup trigger on initial visit
+  useEffect(() => {
+    const hasSeenAutoPopup = sessionStorage.getItem("hasSeenEnquiryPopup");
+    if (!hasSeenAutoPopup) {
+      const timer = setTimeout(() => {
+        setIsDemoModalOpen(true);
+        sessionStorage.setItem("hasSeenEnquiryPopup", "true");
+      }, 2500); // Trigger smoothly after 2.5 seconds
+
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   return (
