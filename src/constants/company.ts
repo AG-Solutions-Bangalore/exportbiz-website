@@ -33,7 +33,7 @@ export const COMPANY_INFO = {
 
   // Social Links
   socialLinks: {
-    facebook: "https://www.linkedin.com/in/export-biz-28637144b/",
+    facebook: "https://www.facebook.com/profile.php?id=61596657025110",
     instagram: "https://www.instagram.com/exportbiz_documentations/",
     linkedin: "https://www.linkedin.com/in/export-biz-28637144b/",
   },

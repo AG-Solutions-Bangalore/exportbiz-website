@@ -4,14 +4,6 @@ import { useModal } from "../../../context/ModalContext";
 export default function CtaBanner() {
   const { openDemoModal } = useModal();
 
-  const handleScrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const elem = document.getElementById("contact");
-    if (elem) {
-      elem.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section id="contact" className="py-4 sm:py-6 lg:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#1B68F8] via-[#2470F9] to-[#3B82F6] shadow-md border border-blue-400/30">
@@ -51,13 +43,13 @@ export default function CtaBanner() {
               <ArrowRight className="w-4 h-4" />
             </button>
 
-            <a
-              href="#contact"
-              onClick={handleScrollToContact}
+            <button
+              type="button"
+              onClick={openDemoModal}
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/50 text-white font-semibold text-xs sm:text-sm backdrop-blur-xs transition-all cursor-pointer"
             >
               Contact Us
-            </a>
+            </button>
           </div>
 
           {/* Right spacer for background image display */}

@@ -44,19 +44,18 @@ export default function Solutions() {
       icon: FileSpreadsheet,
       title: "Manufacturers & Exporters",
       description: "Manage export orders, documents, costing and incentives seamlessly.",
-      href: "/solutions/manufacturers/",
     },
     {
       icon: ArrowLeftRight,
       title: "Trading & Merchant Exporters",
       description: "Keep customer documents, certificates and shipments organized.",
-      href: "/solutions/merchants/",
+  
     },
     {
       icon: Building,
       title: "Multi-Company Groups",
       description: "Run and manage multiple export companies from a single platform.",
-      href: "/solutions/multi-company-groups/",
+     
     },
   ];
 
@@ -64,9 +63,9 @@ export default function Solutions() {
     <section id="solutions" className="py-4 sm:py-6 lg:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="relative bg-[#F5F8FE] border border-blue-100 rounded-2xl overflow-hidden shadow-sm">
         {/* Right side background image of port / cranes / container ship */}
-        <div className="absolute right-0 top-0 bottom-0 w-[42%] lg:w-[38%] xl:w-[35%] hidden md:block pointer-events-none">
+        <div className="absolute -right-12 top-0 bottom-0 w-[42%] lg:w-[38%] xl:w-[35%] hidden md:block pointer-events-none">
           <img
-            src="/Sunset_Container_Port.png"
+            src="/export_biz_cargo_ship.png"
             alt="Port Background"
             className="w-full h-full object-cover object-right select-none"
           />
@@ -137,9 +136,8 @@ export default function Solutions() {
             {solutions.map((item, idx) => {
               const Icon = item.icon;
               return (
-                <Link
+                <span
                   key={idx}
-                  to={item.href}
                   className="group flex items-center gap-3 transition-transform duration-150 hover:translate-x-0.5"
                 >
                   {/* Rounded icon badge with soft blue tint */}
@@ -154,7 +152,7 @@ export default function Solutions() {
                       {item.description}
                     </p>
                   </div>
-                </Link>
+                </span>
               );
             })}
           </div>

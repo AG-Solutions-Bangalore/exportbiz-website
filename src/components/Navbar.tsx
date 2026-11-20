@@ -55,14 +55,25 @@ export default function Navbar() {
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2 text-sm font-semibold text-slate-600">
             {navLinks.map((link, idx) => (
-              <a
-                key={idx}
-                href={link.href}
-                onClick={(e) => handleScrollTo(e, link.href)}
-                className="px-3.5 py-2 rounded-full hover:text-brand-blue hover:bg-brand-blue-50/70 transition-colors cursor-pointer"
-              >
-                {link.label}
-              </a>
+              link.label === "Contact" ? (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={openDemoModal}
+                  className="px-3.5 py-2 rounded-full hover:text-brand-blue hover:bg-brand-blue-50/70 transition-colors cursor-pointer"
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <a
+                  key={idx}
+                  href={link.href}
+                  onClick={(e) => handleScrollTo(e, link.href)}
+                  className="px-3.5 py-2 rounded-full hover:text-brand-blue hover:bg-brand-blue-50/70 transition-colors cursor-pointer"
+                >
+                  {link.label}
+                </a>
+              )
             ))}
           </nav>
 
@@ -100,14 +111,28 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="sm:hidden border-t border-gray-100 bg-white px-4 pt-2 pb-6 space-y-2 shadow-lg animate-in slide-in-from-top-2">
           {navLinks.map((link, idx) => (
-            <a
-              key={idx}
-              href={link.href}
-              onClick={(e) => handleScrollTo(e, link.href)}
-              className="block px-3 py-2 rounded-lg text-slate-body hover:bg-gray-50 font-medium text-sm"
-            >
-              {link.label}
-            </a>
+            link.label === "Contact" ? (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  openDemoModal();
+                }}
+                className="w-full text-left block px-3 py-2 rounded-lg text-slate-body hover:bg-gray-50 font-medium text-sm cursor-pointer"
+              >
+                {link.label}
+              </button>
+            ) : (
+              <a
+                key={idx}
+                href={link.href}
+                onClick={(e) => handleScrollTo(e, link.href)}
+                className="block px-3 py-2 rounded-lg text-slate-body hover:bg-gray-50 font-medium text-sm"
+              >
+                {link.label}
+              </a>
+            )
           ))}
           <div className="pt-4 flex flex-col gap-2 border-t border-gray-100">
             <button

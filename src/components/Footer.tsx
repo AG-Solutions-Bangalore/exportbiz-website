@@ -2,8 +2,10 @@ import { Globe } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { COMPANY_INFO } from "../constants";
 import SocialLinks from "./SocialLinks";
+import { useModal } from "../context/ModalContext";
 
 export default function Footer() {
+  const { openDemoModal } = useModal();
   const location = useLocation();
   const isHome = location.pathname === "/" || location.pathname === "";
 
@@ -54,14 +56,25 @@ export default function Footer() {
           {/* Center: Single-Page Navigation Links */}
           <nav className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2 text-xs sm:text-sm font-semibold text-slate-600">
             {links.map((link, idx) => (
-              <a
-                key={idx}
-                href={link.href}
-                onClick={(e) => handleScrollTo(e, link.href)}
-                className="hover:text-brand-blue transition-colors cursor-pointer"
-              >
-                {link.label}
-              </a>
+              link.label === "Contact" ? (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={openDemoModal}
+                  className="hover:text-brand-blue transition-colors cursor-pointer"
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <a
+                  key={idx}
+                  href={link.href}
+                  onClick={(e) => handleScrollTo(e, link.href)}
+                  className="hover:text-brand-blue transition-colors cursor-pointer"
+                >
+                  {link.label}
+                </a>
+              )
             ))}
           </nav>
 
