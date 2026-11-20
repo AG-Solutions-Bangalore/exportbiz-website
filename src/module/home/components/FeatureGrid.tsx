@@ -45,7 +45,7 @@ export default function FeatureGrid() {
   ];
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
         <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight">
