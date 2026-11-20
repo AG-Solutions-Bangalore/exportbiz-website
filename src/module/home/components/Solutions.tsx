@@ -1,7 +1,44 @@
-import { FileSpreadsheet, ArrowLeftRight, Building } from "lucide-react";
+import { useState } from "react";
+import { FileSpreadsheet, ArrowLeftRight, Building, ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useCreateEnquiry } from "../../Enquiry";
 
 export default function Solutions() {
+  const [mobile, setMobile] = useState("");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const { submit, loading } = useCreateEnquiry();
+
+  const handleQuickDemo = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const cleanMobile = mobile.trim().replace(/\D/g, "");
+    if (!cleanMobile) {
+      setErrorMsg("Please enter mobile number");
+      return;
+    }
+    if (!/^[0-9]{10}$/.test(cleanMobile)) {
+      setErrorMsg("Enter a valid 10-digit number");
+      return;
+    }
+
+    setErrorMsg(null);
+    const response = await submit({
+      full_name: "Quick Demo Request",
+      mobile_no: cleanMobile,
+      email_id: "quickdemo@exportbiz.in",
+      remarks: "Quick demo request submitted from Solutions section",
+    });
+
+    if (response) {
+      setIsSuccess(true);
+      setMobile("");
+      setTimeout(() => setIsSuccess(false), 6000);
+    } else {
+      setErrorMsg("Failed to submit. Please try again.");
+    }
+  };
+
   const solutions = [
     {
       icon: FileSpreadsheet,
@@ -27,7 +64,7 @@ export default function Solutions() {
     <section id="solutions" className="py-4 sm:py-6 lg:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="relative bg-[#F5F8FE] border border-blue-100 rounded-2xl overflow-hidden shadow-sm">
         {/* Right side background image of port / cranes / container ship */}
-        <div className="absolute -right-20 top-0 bottom-0 w-[42%] lg:w-[38%] xl:w-[35%] hidden md:block pointer-events-none">
+        <div className="absolute right-0 top-0 bottom-0 w-[42%] lg:w-[38%] xl:w-[35%] hidden md:block pointer-events-none">
           <img
             src="/Sunset_Container_Port.png"
             alt="Port Background"
@@ -40,17 +77,62 @@ export default function Solutions() {
         {/* Content container */}
         <div className="relative z-10 px-6 py-6 sm:px-8 sm:py-7 lg:px-10 lg:py-8 grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 items-center">
           
-          {/* Left: Title & Description */}
+          {/* Left: Title, Description & Quick Demo Input */}
           <div className="md:col-span-5 lg:col-span-5 text-left">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B1536] tracking-tight leading-tight">
               Solutions for Export Businesses
             </h2>
-            <p className="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed max-w-md">
+            <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed max-w-md">
               Designed for exporters, manufacturers, and trading companies handling end-to-end export operations.
             </p>
+
+            {/* Quick Demo Mobile Input */}
+            <div className="mt-4 max-w-sm">
+              {isSuccess ? (
+                <div className="flex items-center gap-2 py-2 px-3 bg-green-50 border border-green-200 rounded-xl text-green-700 text-xs font-semibold animate-in fade-in">
+                  <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0" />
+                  <span>Callback requested! Our team will call you shortly.</span>
+                </div>
+              ) : (
+                <form onSubmit={handleQuickDemo} className="space-y-1" noValidate>
+                  <div className="relative flex items-center">
+                    <input
+                      type="tel"
+                      maxLength={10}
+                      value={mobile}
+                      onChange={(e) => {
+                        setMobile(e.target.value.replace(/\D/g, "").slice(0, 10));
+                        if (errorMsg) setErrorMsg(null);
+                      }}
+                      placeholder="Enter mobile number for demo"
+                      className={`w-full pl-3.5 pr-28 py-2 text-xs sm:text-sm rounded-xl bg-white border ${
+                        errorMsg ? "border-red-400 focus:border-red-500" : "border-blue-200 focus:border-brand-blue"
+                      } text-navy-900 placeholder:text-slate-400 shadow-2xs outline-none transition-all`}
+                    />
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="absolute right-1 px-3 py-1.5 rounded-lg bg-brand-blue hover:bg-brand-blue-hover text-white text-xs font-bold flex items-center gap-1 transition-all shadow-xs disabled:opacity-60 cursor-pointer"
+                    >
+                      {loading ? (
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      ) : (
+                        <>
+                          <span>Get Demo</span>
+                          <ArrowRight className="w-3 h-3" />
+                        </>
+                      )}
+                    </button>
+                  </div>
+                  {errorMsg && (
+                    <p className="text-[11px] text-red-600 font-medium pl-1">{errorMsg}</p>
+                  )}
+                </form>
+              )}
+            </div>
           </div>
 
-          {/* Middle: 3 stacked list items matching the reference */}
+          {/* Middle: 3 stacked list items */}
           <div className="md:col-span-4 lg:col-span-4 space-y-3.5">
             {solutions.map((item, idx) => {
               const Icon = item.icon;
