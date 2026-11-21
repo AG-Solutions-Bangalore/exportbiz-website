@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useCreateEnquiry } from "../hooks/useCreateEnquiry";
-import type { CreateEnquiryPayload } from "../api/enquiryApi";
 import { CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 
 export interface EnquiryFormProps {
@@ -10,13 +9,20 @@ export interface EnquiryFormProps {
   subtitle?: string;
 }
 
+interface EnquiryFormData {
+  full_name: string;
+  mobile_no: string;
+  email_id: string;
+  remarks: string;
+}
+
 export default function EnquiryForm({
   onSuccess,
   className = "",
   title = "Send an Enquiry / Request Demo",
   subtitle = "Please provide your shipment/software needs. We usually reply within 24 hours.",
 }: EnquiryFormProps) {
-  const [formData, setFormData] = useState<CreateEnquiryPayload>({
+  const [formData, setFormData] = useState<EnquiryFormData>({
     full_name: "",
     mobile_no: "",
     email_id: "",

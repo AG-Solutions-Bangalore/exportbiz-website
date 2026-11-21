@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { FileSpreadsheet, ArrowLeftRight, Building, ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
+import {
+  FileSpreadsheet,
+  ArrowLeftRight,
+  Building,
+  ArrowRight,
+  CheckCircle2,
+  Loader2,
+} from "lucide-react";
 import { useCreateEnquiry } from "../../Enquiry";
 
 export default function Solutions() {
@@ -23,13 +30,16 @@ export default function Solutions() {
 
     setErrorMsg(null);
     const response = await submit({
-      full_name: "Quick Demo Request",
       mobile_no: cleanMobile,
-      email_id: "quickdemo@exportbiz.in",
-      remarks: "Quick demo request submitted from Solutions section",
     });
 
-    if (response) {
+    if (
+      response &&
+      (response.code === "200" ||
+        response.code === 200 ||
+        response.status === true ||
+        !response.code)
+    ) {
       setIsSuccess(true);
       setMobile("");
       setTimeout(() => setIsSuccess(false), 6000);
@@ -42,24 +52,28 @@ export default function Solutions() {
     {
       icon: FileSpreadsheet,
       title: "Manufacturers & Exporters",
-      description: "Manage export orders, documents, costing and incentives seamlessly.",
+      description:
+        "Manage export orders, documents, costing and incentives seamlessly.",
     },
     {
       icon: ArrowLeftRight,
       title: "Trading & Merchant Exporters",
-      description: "Keep customer documents, certificates and shipments organized.",
-  
+      description:
+        "Keep customer documents, certificates and shipments organized.",
     },
     {
       icon: Building,
       title: "Multi-Company Groups",
-      description: "Run and manage multiple export companies from a single platform.",
-     
+      description:
+        "Run and manage multiple export companies from a single platform.",
     },
   ];
 
   return (
-    <section id="solutions" className="py-4 sm:py-6 lg:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="solutions"
+      className="py-4 sm:py-6 lg:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+    >
       <div className="relative bg-[#F5F8FE] border border-blue-100 rounded-2xl overflow-hidden shadow-sm">
         {/* Right side background image of port / cranes / container ship */}
         <div className="absolute -right-6 sm:-right-10 lg:-right-12 top-0 bottom-0 w-[46%] lg:w-[40%] xl:w-[35%] hidden md:block pointer-events-none">
@@ -74,14 +88,14 @@ export default function Solutions() {
 
         {/* Content container */}
         <div className="relative z-10 px-5 py-6 sm:px-8 sm:py-7 lg:px-10 lg:py-8 grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 items-center">
-          
           {/* Left: Title, Description & Quick Demo Input */}
           <div className="md:col-span-6 lg:col-span-5 text-left">
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0B1536] tracking-tight leading-tight">
               Solutions for Export Businesses
             </h2>
             <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed max-w-md">
-              Designed for exporters, manufacturers, and trading companies handling end-to-end export operations.
+              Designed for exporters, manufacturers, and trading companies
+              handling end-to-end export operations.
             </p>
 
             {/* Quick Demo Mobile Input */}
@@ -89,22 +103,32 @@ export default function Solutions() {
               {isSuccess ? (
                 <div className="flex items-center gap-2 py-2 px-3 bg-green-50 border border-green-200 rounded-xl text-green-700 text-xs font-semibold animate-in fade-in">
                   <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0" />
-                  <span>Callback requested! Our team will call you shortly.</span>
+                  <span>
+                    Callback requested! Our team will call you shortly.
+                  </span>
                 </div>
               ) : (
-                <form onSubmit={handleQuickDemo} className="space-y-1" noValidate>
+                <form
+                  onSubmit={handleQuickDemo}
+                  className="space-y-1"
+                  noValidate
+                >
                   <div className="relative flex items-center">
                     <input
                       type="tel"
                       maxLength={10}
                       value={mobile}
                       onChange={(e) => {
-                        setMobile(e.target.value.replace(/\D/g, "").slice(0, 10));
+                        setMobile(
+                          e.target.value.replace(/\D/g, "").slice(0, 10),
+                        );
                         if (errorMsg) setErrorMsg(null);
                       }}
                       placeholder="Enter mobile number for demo"
                       className={`w-full pl-3.5 pr-28 py-2.5 text-xs sm:text-sm rounded-xl bg-white border ${
-                        errorMsg ? "border-red-400 focus:border-red-500" : "border-blue-200 focus:border-brand-blue"
+                        errorMsg
+                          ? "border-red-400 focus:border-red-500"
+                          : "border-blue-200 focus:border-brand-blue"
                       } text-navy-900 placeholder:text-slate-400 shadow-2xs outline-none transition-all`}
                     />
                     <button
@@ -123,7 +147,9 @@ export default function Solutions() {
                     </button>
                   </div>
                   {errorMsg && (
-                    <p className="text-[11px] text-red-600 font-medium pl-1">{errorMsg}</p>
+                    <p className="text-[11px] text-red-600 font-medium pl-1">
+                      {errorMsg}
+                    </p>
                   )}
                 </form>
               )}
@@ -158,7 +184,6 @@ export default function Solutions() {
 
           {/* Right spacer for the background image on desktop */}
           <div className="hidden lg:block lg:col-span-3" />
-
         </div>
       </div>
     </section>
