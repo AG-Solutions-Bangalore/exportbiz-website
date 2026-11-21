@@ -12,6 +12,7 @@ import { useLocation } from "react-router-dom";
 import { COMPANY_INFO } from "../constants";
 import { useModal } from "../context/ModalContext";
 import SocialLinks from "./SocialLinks";
+import { scrollToTarget, scrollToTop } from "../utils/scroll";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -53,18 +54,14 @@ export default function Footer() {
       e.preventDefault();
       const targetId = href.replace("/#", "");
       if (targetId === "hero") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        scrollToTop();
       } else {
         const elem = document.getElementById(targetId);
         if (elem) {
-          elem.scrollIntoView({ behavior: "smooth" });
+          scrollToTarget(elem, { offset: -80 });
         }
       }
     }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -265,7 +262,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar: Copyright, Policies & Back to Top (with right padding to prevent collision with floating actions) */}
-        <div className="pt-8 pb-16 sm:pb-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4 sm:pr-28">
+        <div className="pt-8 pb-20 sm:pb-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4 sm:pr-72 lg:pr-80">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-brand-blue shrink-0" />
             <p>

@@ -78,7 +78,7 @@ export default function Solutions() {
         {/* Right side background image of port / cranes / container ship */}
         <div className="absolute -right-6 sm:-right-10 lg:-right-12 top-0 bottom-0 w-[46%] lg:w-[40%] xl:w-[35%] hidden md:block pointer-events-none">
           <img
-            src="/export_biz_cargo_ship.webp"
+            src="/cargo_ship_image.webp"
             alt="Global Export Shipping and Cargo Transportation"
             title="Global Export Shipping and Cargo Transportation"
             className="w-full h-full object-cover object-right select-none"

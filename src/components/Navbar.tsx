@@ -12,6 +12,7 @@ import { Link, useLocation } from "react-router-dom";
 import { COMPANY_INFO } from "../constants";
 import { useModal } from "../context/ModalContext";
 import SocialLinks from "./SocialLinks";
+import { scrollToTarget, scrollToTop } from "../utils/scroll";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -88,11 +89,11 @@ export default function Navbar() {
       e.preventDefault();
       const targetId = href.replace("/#", "");
       if (targetId === "hero") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        scrollToTop();
       } else {
         const elem = document.getElementById(targetId);
         if (elem) {
-          elem.scrollIntoView({ behavior: "smooth" });
+          scrollToTarget(elem, { offset: -80 });
         }
       }
       setMobileMenuOpen(false);
