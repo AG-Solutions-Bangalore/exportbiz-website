@@ -73,9 +73,15 @@ export default function EnquiryPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-navy-900">Location</p>
-                    <p className="text-xs sm:text-sm text-slate-body">
+                    <a
+                      href={COMPANY_INFO.address.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs sm:text-sm text-slate-body hover:text-brand-blue transition-colors block"
+                      title="View on Google Maps"
+                    >
                       {COMPANY_INFO.address.full}
-                    </p>
+                    </a>
                   </div>
                 </div>
               </div>

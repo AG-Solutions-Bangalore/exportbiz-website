@@ -1,21 +1,27 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Export Biz by AG Solutions",
+  "short_name": "Export Biz",
+  "description": "Export documentation and business management software for exporters, manufacturers, and trading companies.",
+  "lang": "en-IN",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#0952F7",
+  "background_color": "#ffffff",
+  "categories": ["business", "productivity"],
   "icons": [
     {
-      "src": "/web-app-manifest-192x192.webp",
+      "src": "/favicon/web-app-manifest-192x192.webp",
       "sizes": "192x192",
       "type": "image/webp",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     },
     {
-      "src": "/web-app-manifest-512x512.webp",
+      "src": "/favicon/web-app-manifest-512x512.webp",
       "sizes": "512x512",
       "type": "image/webp",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
-  ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  ]
 }

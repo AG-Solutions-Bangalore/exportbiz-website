@@ -3,11 +3,13 @@ import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { ModalProvider, useModal } from "../../context/ModalContext";
 import { EnquiryModal } from "../../module/Enquiry";
+import { SiteSeo } from "../../SEO";
 
 function LayoutContent() {
   const { isDemoModalOpen, closeDemoModal } = useModal();
   return (
     <div className="min-h-screen flex flex-col bg-white text-navy-800">
+      <SiteSeo />
       <Navbar />
       <main className="flex-1">
         <Outlet />

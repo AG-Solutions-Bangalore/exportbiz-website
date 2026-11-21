@@ -1,0 +1,7 @@
+# Robots.txt for Export Biz
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /public/api/
+
+Sitemap: https://exportbiz.in/sitemap.xml

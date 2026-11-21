@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import {
   ArrowRight,
-  ArrowUpRight,
   X,
   Phone,
   Mail,
+  MapPin,
   Sparkles,
   Play,
 } from "lucide-react";
@@ -212,9 +212,6 @@ export default function Navbar() {
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-blue animate-pulse" />
                 Navigation Index
               </span>
-              <span className="text-[11px] font-mono text-slate-400">
-                06 Sections
-              </span>
             </div>
 
             <nav className="divide-y divide-slate-100/80">
@@ -234,9 +231,7 @@ export default function Navbar() {
                           {link.label}
                         </span>
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-brand-blue group-hover:text-white flex items-center justify-center text-slate-400 transition-all">
-                        <ArrowUpRight className="w-4 h-4" />
-                      </div>
+                     
                     </button>
                   ) : (
                     <a
@@ -252,9 +247,7 @@ export default function Navbar() {
                           {link.label}
                         </span>
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-brand-blue group-hover:text-white flex items-center justify-center text-slate-400 transition-all">
-                        <ArrowUpRight className="w-4 h-4" />
-                      </div>
+                     
                     </a>
                   )}
                 </div>
@@ -318,6 +311,19 @@ export default function Navbar() {
                   <span className="truncate">{COMPANY_INFO.email}</span>
                 </a>
               </div>
+
+              <div className="pt-2 text-xs text-slate-600 border-t border-slate-200/60">
+                <a
+                  href={COMPANY_INFO.address.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-brand-blue transition-colors truncate"
+                  title="View on Google Maps"
+                >
+                  <MapPin className="w-3.5 h-3.5 text-brand-blue shrink-0" />
+                  <span className="truncate">{COMPANY_INFO.address.full}</span>
+                </a>
+              </div>
             </div>
 
             {/* Parent Brand & Social Links */}
@@ -326,9 +332,16 @@ export default function Navbar() {
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-blue" />
                 <span>
                   By{" "}
-                  <strong className="text-navy-900">
-                    {COMPANY_INFO.parentCompany}
-                  </strong>
+                  <a
+                    href={COMPANY_INFO.parentWebsite}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand-blue hover:underline"
+                  >
+                    <strong className="text-navy-900">
+                      {COMPANY_INFO.parentCompany}
+                    </strong>
+                  </a>
                 </span>
               </div>
 

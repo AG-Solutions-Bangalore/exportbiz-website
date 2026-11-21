@@ -1,4 +1,13 @@
-import { Globe, ArrowUpRight, Mail, Phone, MapPin, Sparkles, ShieldCheck } from "lucide-react";
+import {
+  Globe,
+  ArrowUpRight,
+  ArrowUp,
+  Mail,
+  Phone,
+  MapPin,
+  Sparkles,
+  ShieldCheck,
+} from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { COMPANY_INFO } from "../constants";
 import SocialLinks from "./SocialLinks";
@@ -20,7 +29,10 @@ export default function Footer() {
     { label: "Contact", href: "/#contact" },
   ];
 
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleScrollTo = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
     if (href.startsWith("/#") && isHome) {
       e.preventDefault();
       const targetId = href.replace("/#", "");
@@ -46,16 +58,17 @@ export default function Footer() {
       <div className="absolute -bottom-20 right-10 w-[400px] h-[300px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
 
       {/* Subtle grid backdrop pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-        style={{ backgroundImage: "radial-gradient(#38bdf8 1px, transparent 1px)", backgroundSize: "32px 32px" }}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(#38bdf8 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Top Main Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-slate-800/80">
-          
           {/* Brand & Parent Company Pitch (5 Cols) */}
           <div className="lg:col-span-5 space-y-5">
             <div className="flex items-center gap-3">
@@ -67,7 +80,9 @@ export default function Footer() {
             </div>
 
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
-              The next-generation export documentation and operations workspace. Designed for manufacturers, trading houses, and multi-company groups worldwide.
+              The next-generation export documentation and operations workspace.
+              Designed for manufacturers, trading houses, and multi-company
+              groups worldwide.
             </p>
 
             {/* Parent company badges & website link with icon */}
@@ -104,7 +119,10 @@ export default function Footer() {
                 <span className="w-1 h-1 rounded-full bg-brand-blue" />
                 Official Social Channels
               </span>
-              <SocialLinks colorful={true} className="flex items-center space-x-2.5" />
+              <SocialLinks
+                colorful={true}
+                className="flex items-center space-x-2.5"
+              />
             </div>
           </div>
 
@@ -153,7 +171,10 @@ export default function Footer() {
                 <div className="w-7 h-7 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-brand-blue shrink-0">
                   <Mail className="w-3.5 h-3.5" />
                 </div>
-                <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-white transition-colors truncate">
+                <a
+                  href={`mailto:${COMPANY_INFO.email}`}
+                  className="hover:text-white transition-colors truncate"
+                >
                   {COMPANY_INFO.email}
                 </a>
               </div>
@@ -162,7 +183,10 @@ export default function Footer() {
                 <div className="w-7 h-7 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-brand-blue shrink-0">
                   <Phone className="w-3.5 h-3.5" />
                 </div>
-                <a href={`tel:${COMPANY_INFO.phoneRaw}`} className="hover:text-white transition-colors">
+                <a
+                  href={`tel:${COMPANY_INFO.phoneRaw}`}
+                  className="hover:text-white transition-colors"
+                >
                   {COMPANY_INFO.phoneDisplay}
                 </a>
               </div>
@@ -171,9 +195,15 @@ export default function Footer() {
                 <div className="w-7 h-7 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-brand-blue shrink-0">
                   <MapPin className="w-3.5 h-3.5" />
                 </div>
-                <span className="text-slate-300 text-xs truncate">
+                <a
+                  href={COMPANY_INFO.address.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-300 hover:text-white transition-colors text-xs truncate"
+                  title="View on Google Maps"
+                >
                   {COMPANY_INFO.address.full}
-                </span>
+                </a>
               </div>
 
               <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-300">
@@ -183,14 +213,14 @@ export default function Footer() {
                 <div className="flex items-center justify-between flex-1">
                   <a
                     href={COMPANY_INFO.parentWebsite}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="hover:text-white transition-colors flex items-center gap-1 text-slate-200 font-medium"
                   >
                     <span>ag-solutions.in</span>
                     <ArrowUpRight className="w-3 h-3 text-brand-blue" />
                   </a>
-                  <span className="text-[10px] text-slate-400 font-mono">Parent Website</span>
+                  <span className="text-[10px] text-slate-400 font-mono">
+                    Parent Website
+                  </span>
                 </div>
               </div>
 
@@ -207,36 +237,36 @@ export default function Footer() {
               </div>
             </div>
           </div>
-
         </div>
 
         {/* Bottom Bar: Copyright, Policies & Back to Top */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-brand-blue shrink-0" />
-            <p>© {CURRENT_YEAR} {COMPANY_INFO.fullBrandName}. All rights reserved.</p>
-            <span className="text-slate-600">·</span>
-            <span className="font-mono text-[10px] text-slate-500">v{COMPANY_INFO.version}</span>
+            <p>
+              © {CURRENT_YEAR}{" "}
+              <a
+                href={COMPANY_INFO.parentWebsite}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {COMPANY_INFO.fullBrandName}
+              </a>
+              . All rights reserved.
+            </p>
           </div>
 
           <div className="flex items-center space-x-5">
-            <Link to="/policies/" className="hover:text-slate-300 transition-colors">
-              Privacy Policy
-            </Link>
-            <Link to="/terms-and-conditions/" className="hover:text-slate-300 transition-colors">
-              Terms & Conditions
-            </Link>
             <button
               type="button"
               onClick={scrollToTop}
-              className="text-slate-400 hover:text-white font-medium transition-colors cursor-pointer flex items-center gap-1"
+              className="fixed bottom-8 right-8 z-50 w-10 h-10 rounded-full bg-brand-blue text-white flex items-center justify-center shadow-lg hover:bg-brand-blue-hover transition-all hover:scale-110 active:scale-95 cursor-pointer"
+              aria-label="Back to top"
             >
-              <span>Back to Top</span>
-              <span className="text-xs">↑</span>
+              <ArrowUp className="w-5 h-5" />
             </button>
           </div>
         </div>
-
       </div>
     </footer>
   );
