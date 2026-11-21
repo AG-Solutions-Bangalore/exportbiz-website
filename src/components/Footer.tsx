@@ -257,13 +257,19 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center space-x-5">
+            <Link to="/policies/" className="hover:text-slate-300 transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/terms-and-conditions/" className="hover:text-slate-300 transition-colors">
+              Terms & Conditions
+            </Link>
             <button
               type="button"
               onClick={scrollToTop}
-              className="fixed bottom-8 right-8 z-50 w-10 h-10 rounded-full bg-brand-blue text-white flex items-center justify-center shadow-lg hover:bg-brand-blue-hover transition-all hover:scale-110 active:scale-95 cursor-pointer"
-              aria-label="Back to top"
+              className="text-slate-400 hover:text-white font-medium transition-colors cursor-pointer inline-flex items-center gap-1 group"
             >
-              <ArrowUp className="w-5 h-5" />
+              <span>Back to Top</span>
+              <ArrowUp className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5 text-brand-blue" />
             </button>
           </div>
         </div>

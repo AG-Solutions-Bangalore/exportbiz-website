@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import FloatingActions from "../FloatingActions";
 import { ModalProvider, useModal } from "../../context/ModalContext";
 import { EnquiryModal } from "../../module/Enquiry";
 import { SiteSeo } from "../../SEO";
@@ -15,6 +16,7 @@ function LayoutContent() {
         <Outlet />
       </main>
       <Footer />
+      <FloatingActions />
       <EnquiryModal isOpen={isDemoModalOpen} onClose={closeDemoModal} />
     </div>
   );
