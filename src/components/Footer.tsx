@@ -264,8 +264,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright, Policies & Back to Top */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        {/* Bottom Bar: Copyright, Policies & Back to Top (with right padding to prevent collision with floating actions) */}
+        <div className="pt-8 pb-16 sm:pb-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4 sm:pr-28">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-brand-blue shrink-0" />
             <p>
@@ -282,14 +282,15 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex items-center space-x-5">
+          <div className="flex items-center">
             <button
               type="button"
               onClick={scrollToTop}
-              className="fixed bottom-4 right-8 z-50 w-10 h-10 rounded-full bg-brand-blue text-white flex items-center justify-center shadow-lg hover:bg-brand-blue-hover transition-all hover:scale-110 active:scale-95 cursor-pointer"
+              title="Back to Top"
               aria-label="Back to top"
+              className="w-9 h-9 rounded-full bg-slate-800/90 hover:bg-brand-blue border border-slate-700/70 hover:border-brand-blue text-slate-300 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer group active:scale-95"
             >
-              <ArrowUp className="w-5 h-5" />
+              <ArrowUp className="w-4.5 h-4.5 transition-transform group-hover:-translate-y-0.5" />
             </button>
           </div>
         </div>
