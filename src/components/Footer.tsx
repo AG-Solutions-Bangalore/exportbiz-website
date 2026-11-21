@@ -257,12 +257,6 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center space-x-5">
-            <Link to="/policies/" className="hover:text-slate-300 transition-colors">
-              Privacy Policy
-            </Link>
-            <Link to="/terms-and-conditions/" className="hover:text-slate-300 transition-colors">
-              Terms & Conditions
-            </Link>
             <button
               type="button"
               onClick={scrollToTop}
