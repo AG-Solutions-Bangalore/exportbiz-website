@@ -40,12 +40,12 @@ export default function FloatingActions() {
 
   // Shared animation classes for staggered reveal
   const baseButtonClasses =
-    "group relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl text-white flex items-center justify-center transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform hover:scale-110 active:scale-95";
+    "group relative w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl text-white flex items-center justify-center transition-all duration-350 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform hover:scale-110 active:scale-95";
 
   return (
     <aside
       aria-label="Quick contact actions"
-      className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-40 flex items-center gap-1.5 sm:gap-2.5 print:hidden select-none pointer-events-none"
+      className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2 sm:gap-2.5 print:hidden select-none pointer-events-none"
     >
       {/* 1. WhatsApp Button (1st in sequence) */}
       <a
@@ -53,10 +53,11 @@ export default function FloatingActions() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"
-        className={`${baseButtonClasses} bg-[#25D366] hover:bg-[#20be5b] shadow-lg shadow-[#25D366]/30 hover:shadow-xl hover:shadow-[#25D366]/40 ${
+        style={{ transitionDelay: isVisible ? "0ms" : "150ms" }}
+        className={`${baseButtonClasses} bg-[#25D366] hover:bg-[#20be5b] shadow-lg shadow-[#25D366]/35 hover:shadow-xl hover:shadow-[#25D366]/45 ${
           isVisible
-            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto delay-[0ms]"
-            : "opacity-0 translate-y-8 scale-70 pointer-events-none delay-[150ms]"
+            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+            : "opacity-0 translate-y-8 scale-70 pointer-events-none"
         }`}
       >
         <WhatsAppIcon />
@@ -65,50 +66,53 @@ export default function FloatingActions() {
         </span>
       </a>
 
-      {/* 2. Direct Call Button (2nd in sequence - 80ms delay) */}
+      {/* 2. Direct Call Button (2nd in sequence - 90ms delay) */}
       <a
         href={`tel:${COMPANY_INFO.phoneRaw}`}
         aria-label={`Call us at ${COMPANY_INFO.phoneDisplay}`}
-        className={`${baseButtonClasses} bg-[#FF7A1A] hover:bg-[#f06f0e] shadow-lg shadow-[#FF7A1A]/30 hover:shadow-xl hover:shadow-[#FF7A1A]/40 ${
+        style={{ transitionDelay: isVisible ? "90ms" : "100ms" }}
+        className={`${baseButtonClasses} bg-[#FF7A1A] hover:bg-[#f06f0e] shadow-lg shadow-[#FF7A1A]/35 hover:shadow-xl hover:shadow-[#FF7A1A]/45 ${
           isVisible
-            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto delay-[80ms]"
-            : "opacity-0 translate-y-8 scale-70 pointer-events-none delay-[100ms]"
+            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+            : "opacity-0 translate-y-8 scale-70 pointer-events-none"
         }`}
       >
-        <Phone className="w-4.5 h-4.5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+        <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
         <span className="pointer-events-none hidden sm:block absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-navy-950 text-white text-[11px] font-semibold tracking-wide whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
           Call Now
         </span>
       </a>
 
-      {/* 3. Direct Email Button (3rd in sequence - 160ms delay) */}
+      {/* 3. Direct Email Button (3rd in sequence - 180ms delay) */}
       <a
         href={`mailto:${COMPANY_INFO.email}`}
         aria-label={`Send email to ${COMPANY_INFO.email}`}
-        className={`${baseButtonClasses} bg-[#0F1E36] hover:bg-[#152a4a] shadow-lg shadow-[#0F1E36]/30 hover:shadow-xl hover:shadow-[#0F1E36]/40 ${
+        style={{ transitionDelay: isVisible ? "180ms" : "50ms" }}
+        className={`${baseButtonClasses} bg-[#0F1E36] hover:bg-[#152a4a] shadow-lg shadow-[#0F1E36]/35 hover:shadow-xl hover:shadow-[#0F1E36]/45 ${
           isVisible
-            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto delay-[160ms]"
-            : "opacity-0 translate-y-8 scale-70 pointer-events-none delay-[50ms]"
+            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+            : "opacity-0 translate-y-8 scale-70 pointer-events-none"
         }`}
       >
-        <Mail className="w-4.5 h-4.5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+        <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
         <span className="pointer-events-none hidden sm:block absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-navy-950 text-white text-[11px] font-semibold tracking-wide whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
           Email Us
         </span>
       </a>
 
-      {/* 4. Quick Enquiry Button (4th in sequence - 240ms delay) */}
+      {/* 4. Quick Enquiry Button (4th in sequence - 270ms delay) */}
       <button
         type="button"
         onClick={openDemoModal}
         aria-label="Open Demo & Enquiry Request form"
-        className={`${baseButtonClasses} bg-[#FF7A1A] hover:bg-[#f06f0e] shadow-lg shadow-[#FF7A1A]/30 hover:shadow-xl hover:shadow-[#FF7A1A]/40 cursor-pointer ${
+        style={{ transitionDelay: isVisible ? "270ms" : "0ms" }}
+        className={`${baseButtonClasses} bg-[#FF7A1A] hover:bg-[#f06f0e] shadow-lg shadow-[#FF7A1A]/35 hover:shadow-xl hover:shadow-[#FF7A1A]/45 cursor-pointer ${
           isVisible
-            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto delay-[240ms]"
-            : "opacity-0 translate-y-8 scale-70 pointer-events-none delay-[0ms]"
+            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+            : "opacity-0 translate-y-8 scale-70 pointer-events-none"
         }`}
       >
-        <MessageSquareMore className="w-4.5 h-4.5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+        <MessageSquareMore className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
         <span className="pointer-events-none hidden sm:block absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-navy-950 text-white text-[11px] font-semibold tracking-wide whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
           Quick Enquiry
         </span>

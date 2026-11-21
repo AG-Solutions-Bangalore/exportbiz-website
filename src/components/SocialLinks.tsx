@@ -67,6 +67,7 @@ export default function SocialLinks({
             rel="noopener noreferrer"
             className={linkClassName || defaultClass}
             aria-label={config.label}
+            title={profile.title || config.label}
           >
             {config.icon}
           </a>

@@ -1,17 +1,17 @@
 import {
-  Globe,
-  ArrowUpRight,
   ArrowUp,
+  ArrowUpRight,
+  Globe,
   Mail,
-  Phone,
   MapPin,
-  Sparkles,
+  Phone,
   ShieldCheck,
+  Sparkles,
 } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { COMPANY_INFO } from "../constants";
-import SocialLinks from "./SocialLinks";
 import { useModal } from "../context/ModalContext";
+import SocialLinks from "./SocialLinks";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -21,12 +21,28 @@ export default function Footer() {
   const isHome = location.pathname === "/" || location.pathname === "";
 
   const navLinks = [
-    { label: "Home", href: "/#hero" },
-    { label: "Why Us", href: "/#why-us" },
-    { label: "Documents", href: "/#documents" },
-    { label: "Features", href: "/#features" },
-    { label: "Solutions", href: "/#solutions" },
-    { label: "Contact", href: "/#contact" },
+    { label: "Home", href: "/#hero", title: "Export Biz – Home" },
+    { label: "Why Us", href: "/#why-us", title: "Why Choose Export Biz" },
+    {
+      label: "Documents",
+      href: "/#documents",
+      title: "Export Documentation Management System",
+    },
+    {
+      label: "Features",
+      href: "/#features",
+      title: "Export Biz Features and Capabilities",
+    },
+    {
+      label: "Solutions",
+      href: "/#solutions",
+      title: "Export Solutions for Exporters and Manufacturers",
+    },
+    {
+      label: "Contact",
+      href: "/#contact",
+      title: "Contact Export Biz for Demo and Support",
+    },
   ];
 
   const handleScrollTo = (
@@ -74,7 +90,8 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <img
                 src="/logo_transparent.webp"
-                alt={COMPANY_INFO.fullBrandName}
+                alt="Export Biz – Complete Export Business Workspace"
+                title="Export Biz – Complete Export Business Workspace"
                 className="h-11 sm:h-12 w-auto object-contain filter brightness-0 invert opacity-95"
               />
             </div>
@@ -91,6 +108,7 @@ export default function Footer() {
                 href={COMPANY_INFO.parentWebsite}
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Website Development and Technology Partner"
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 hover:border-brand-blue/60 text-xs text-slate-300 hover:text-white transition-all backdrop-blur-sm group"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -105,6 +123,7 @@ export default function Footer() {
                 href={COMPANY_INFO.parentWebsite}
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Website Development and Technology Partner"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 hover:bg-blue-500/20 text-xs font-semibold text-blue-300 hover:text-white transition-all group"
               >
                 <Globe className="w-3.5 h-3.5 text-brand-blue group-hover:rotate-12 transition-transform" />
@@ -139,6 +158,7 @@ export default function Footer() {
                     <button
                       type="button"
                       onClick={openDemoModal}
+                      title={link.title}
                       className="text-slate-400 hover:text-white transition-colors cursor-pointer flex items-center gap-1 group"
                     >
                       <span>{link.label}</span>
@@ -148,6 +168,7 @@ export default function Footer() {
                     <a
                       href={link.href}
                       onClick={(e) => handleScrollTo(e, link.href)}
+                      title={link.title}
                       className="text-slate-400 hover:text-white transition-colors cursor-pointer flex items-center gap-1 group"
                     >
                       <span>{link.label}</span>
@@ -173,6 +194,7 @@ export default function Footer() {
                 </div>
                 <a
                   href={`mailto:${COMPANY_INFO.email}`}
+                  title="Email Export Biz for Enquiries and Support"
                   className="hover:text-white transition-colors truncate"
                 >
                   {COMPANY_INFO.email}
@@ -185,6 +207,7 @@ export default function Footer() {
                 </div>
                 <a
                   href={`tel:${COMPANY_INFO.phoneRaw}`}
+                  title="Call Export Biz for Enquiries and Support"
                   className="hover:text-white transition-colors"
                 >
                   {COMPANY_INFO.phoneDisplay}
@@ -213,6 +236,7 @@ export default function Footer() {
                 <div className="flex items-center justify-between flex-1">
                   <a
                     href={COMPANY_INFO.parentWebsite}
+                    title="Website Development and Technology Partner"
                     className="hover:text-white transition-colors flex items-center gap-1 text-slate-200 font-medium"
                   >
                     <span>ag-solutions.in</span>
@@ -229,6 +253,7 @@ export default function Footer() {
                 <button
                   type="button"
                   onClick={openDemoModal}
+                  title="Request a Free Demo of Export Biz"
                   className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-brand-blue hover:bg-brand-blue-hover text-white text-xs font-bold transition-all shadow-md hover:shadow-brand-blue/25 cursor-pointer"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
@@ -249,6 +274,7 @@ export default function Footer() {
                 href={COMPANY_INFO.parentWebsite}
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Website Development and Technology Partner"
               >
                 {COMPANY_INFO.fullBrandName}
               </a>
@@ -260,10 +286,10 @@ export default function Footer() {
             <button
               type="button"
               onClick={scrollToTop}
-              className="text-slate-400 hover:text-white font-medium transition-colors cursor-pointer inline-flex items-center gap-1 group"
+              className="fixed bottom-4 right-8 z-50 w-10 h-10 rounded-full bg-brand-blue text-white flex items-center justify-center shadow-lg hover:bg-brand-blue-hover transition-all hover:scale-110 active:scale-95 cursor-pointer"
+              aria-label="Back to top"
             >
-              <span>Back to Top</span>
-              <ArrowUp className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5 text-brand-blue" />
+              <ArrowUp className="w-5 h-5" />
             </button>
           </div>
         </div>

@@ -21,12 +21,42 @@ export default function Navbar() {
   const isHome = location.pathname === "/" || location.pathname === "";
 
   const navLinks = [
-    { label: "Home", href: "/#hero", index: "01" },
-    { label: "Why Us", href: "/#why-us", index: "02" },
-    { label: "Documents", href: "/#documents", index: "03" },
-    { label: "Features", href: "/#features", index: "04" },
-    { label: "Solutions", href: "/#solutions", index: "05" },
-    { label: "Contact", href: "/#contact", index: "06" },
+    {
+      label: "Home",
+      href: "/#hero",
+      index: "01",
+      title: "Export Biz – Complete Export Business Workspace",
+    },
+    {
+      label: "Why Us",
+      href: "/#why-us",
+      index: "02",
+      title: "Why Choose Export Biz",
+    },
+    {
+      label: "Documents",
+      href: "/#documents",
+      index: "03",
+      title: "Explore Export Documentation Solutions",
+    },
+    {
+      label: "Features",
+      href: "/#features",
+      index: "04",
+      title: "Explore Export Biz Platform Features",
+    },
+    {
+      label: "Solutions",
+      href: "/#solutions",
+      index: "05",
+      title: "Export Business Management Solutions",
+    },
+    {
+      label: "Contact",
+      href: "/#contact",
+      index: "06",
+      title: "Export Business Management Solutions",
+    },
   ];
 
   // Lock body scroll when mobile menu is active
@@ -80,10 +110,11 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-18 md:h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 group">
+            <Link to="/" title="Export Biz – Home" className="flex items-center gap-3 group">
               <img
                 src="/logo_transparent.webp"
-                alt={COMPANY_INFO.fullBrandName}
+                alt="Export Biz – Export Business Management Platform"
+                title="Export Biz – Export Business Management Platform"
                 className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-102"
               />
             </Link>
@@ -96,6 +127,7 @@ export default function Navbar() {
                     key={link.index}
                     type="button"
                     onClick={openDemoModal}
+                    title={link.title}
                     className="px-3.5 py-2 rounded-full hover:text-brand-blue hover:bg-brand-blue-50/70 transition-colors cursor-pointer"
                   >
                     {link.label}
@@ -105,6 +137,7 @@ export default function Navbar() {
                     key={link.index}
                     href={link.href}
                     onClick={(e) => handleScrollTo(e, link.href)}
+                    title={link.title}
                     className="px-3.5 py-2 rounded-full hover:text-brand-blue hover:bg-brand-blue-50/70 transition-colors cursor-pointer"
                   >
                     {link.label}
@@ -119,6 +152,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={openDemoModal}
+                title="Request a Free Demo of Export Biz"
                 className="hidden sm:inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold text-white bg-brand-blue hover:bg-brand-blue-hover rounded-full transition-all shadow-sm hover:shadow-md cursor-pointer"
               >
                 <span>Request a Demo</span>
@@ -183,12 +217,14 @@ export default function Navbar() {
         <div className="relative z-10 flex items-center justify-between px-5 sm:px-6 h-18 border-b border-slate-100/80 bg-white/60 backdrop-blur-md">
           <Link
             to="/"
+            title="Export Biz – Home"
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center gap-2"
           >
             <img
               src="/logo_transparent.webp"
-              alt={COMPANY_INFO.fullBrandName}
+              alt="Export Biz – Export Documentation Software"
+              title="Export Biz – Export Documentation Software"
               className="h-10 w-auto object-contain"
             />
           </Link>
@@ -221,6 +257,7 @@ export default function Navbar() {
                     <button
                       type="button"
                       onClick={handleOpenDemo}
+                      title={link.title}
                       className="w-full text-left py-3 px-3.5 rounded-xl hover:bg-brand-blue-50/70 active:bg-brand-blue-50 transition-all flex items-center justify-between group cursor-pointer"
                     >
                       <div className="flex items-baseline gap-3.5">
@@ -237,6 +274,7 @@ export default function Navbar() {
                     <a
                       href={link.href}
                       onClick={(e) => handleScrollTo(e, link.href)}
+                      title={link.title}
                       className="py-3 px-3.5 rounded-xl hover:bg-brand-blue-50/70 active:bg-brand-blue-50 transition-all flex items-center justify-between group"
                     >
                       <div className="flex items-baseline gap-3.5">
@@ -261,6 +299,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={handleOpenDemo}
+                title="Request a Free Demo of Export Biz"
                 className="w-full py-3.5 px-6 rounded-2xl bg-brand-blue hover:bg-brand-blue-hover text-white font-bold text-sm sm:text-base transition-all shadow-md hover:shadow-brand-blue/25 flex items-center justify-center gap-2 cursor-pointer active:scale-98"
               >
                 <Sparkles className="w-4 h-4" />
@@ -272,6 +311,7 @@ export default function Navbar() {
                 href="https://demo.exportbiz.in/signup"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Sign Up for Export Biz"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full py-3 px-6 rounded-2xl bg-slate-100 hover:bg-slate-200 text-navy-900 font-semibold text-sm transition-all flex items-center justify-center gap-2 active:scale-98"
               >
@@ -297,6 +337,7 @@ export default function Navbar() {
               <div className="flex flex-col sm:flex-row gap-2 pt-1 text-xs text-slate-600">
                 <a
                   href={`tel:${COMPANY_INFO.phoneRaw}`}
+                  title="Call Export Biz for Enquiries and Support"
                   className="flex items-center gap-2 hover:text-brand-blue transition-colors"
                 >
                   <Phone className="w-3.5 h-3.5 text-brand-blue shrink-0" />
@@ -305,6 +346,7 @@ export default function Navbar() {
                 <span className="hidden sm:inline text-slate-300">·</span>
                 <a
                   href={`mailto:${COMPANY_INFO.email}`}
+                  title="Email Export Biz for Enquiries and Support"
                   className="flex items-center gap-2 hover:text-brand-blue transition-colors truncate"
                 >
                   <Mail className="w-3.5 h-3.5 text-brand-blue shrink-0" />
@@ -336,6 +378,7 @@ export default function Navbar() {
                     href={COMPANY_INFO.parentWebsite}
                     target="_blank"
                     rel="noopener noreferrer"
+                    title="Website Development and Technology Partner"
                     className="text-brand-blue hover:underline"
                   >
                     <strong className="text-navy-900">

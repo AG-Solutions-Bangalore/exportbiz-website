@@ -61,9 +61,11 @@ export function formatTitle(title: string): string {
 
 const HOME_PAGE: SeoPageConfig = {
   path: "/",
-  title: "Export Documentation & Export Business Management Software",
+  title: "Export Biz | Export Documentation & Business Management Workspace",
   description: COMPANY_INFO.seo.description,
   keywords: COMPANY_INFO.seo.keywords,
+  image: COMPANY_INFO.seo.ogImage,
+  imageAlt: COMPANY_INFO.seo.ogImageAlt,
   changeFrequency: "weekly",
   priority: 1,
   includeSoftwareSchema: true,

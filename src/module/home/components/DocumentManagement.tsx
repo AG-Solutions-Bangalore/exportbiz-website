@@ -26,8 +26,9 @@ export default function DocumentManagement() {
         <div className="lg:col-span-6 relative flex justify-center items-center">
           <div className="relative w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[540px]">
             <img
-              src="/export_biz_documents_transparent.png"
-              alt="Export Documents: Commercial Invoice, Packing List, Bill of Lading"
+              src="/export_biz_documents_transparent.webp"
+              alt="Export Documents – Commercial Invoice, Packing List and Bill of Lading"
+              title="Export Documents – Commercial Invoice, Packing List and Bill of Lading"
               className="w-full h-auto object-contain select-none"
               loading="lazy"
             />

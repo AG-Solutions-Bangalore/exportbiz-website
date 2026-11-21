@@ -39,12 +39,13 @@ export function SiteSeo() {
 
   return (
     <Helmet
-      titleTemplate={COMPANY_INFO.seo.titleTemplate}
+      titleTemplate={seo.title.includes(COMPANY_INFO.name) ? undefined : COMPANY_INFO.seo.titleTemplate}
       prioritizeSeoTags
       htmlAttributes={{ lang: COMPANY_INFO.seo.language }}
     >
       <title>{seo.title}</title>
 
+      <meta name="title" content={seo.fullTitle} />
       <meta name="description" content={seo.description} />
       <meta name="keywords" content={seo.keywords.join(", ")} />
       <meta name="robots" content={robots} />
@@ -54,6 +55,8 @@ export function SiteSeo() {
       <meta name="application-name" content={COMPANY_INFO.name} />
       <meta name="theme-color" content={COMPANY_INFO.seo.themeColor} />
       <meta name="color-scheme" content="light" />
+      <meta name="geo.region" content="IN-KA" />
+      <meta name="geo.placename" content="Bengaluru" />
 
       <link rel="canonical" href={canonicalUrl} />
       {!seo.noindex && (
@@ -75,6 +78,7 @@ export function SiteSeo() {
       <meta property="og:locale" content={COMPANY_INFO.seo.locale} />
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:alt" content={ogImageAlt} />
+      <meta property="og:image:type" content="image/webp" />
       <meta
         property="og:image:width"
         content={String(COMPANY_INFO.seo.ogImageWidth)}

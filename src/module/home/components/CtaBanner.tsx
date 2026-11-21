@@ -11,8 +11,9 @@ export default function CtaBanner() {
         {/* Right side port & container ship background image */}
         <div className="absolute right-0 top-0 bottom-0 w-[42%] lg:w-[38%] hidden md:block pointer-events-none overflow-hidden">
           <img
-            src="/cargo_ship_image.png"
-            alt="Cargo Ship and Port"
+            src="/cargo_ship_image.webp"
+            alt="Cargo Ship at International Shipping Port"
+            title="Cargo Ship at International Shipping Port"
             className="w-full h-full object-cover object-right select-none"
           />
           {/* Smooth gradient blend into the vibrant blue banner */}

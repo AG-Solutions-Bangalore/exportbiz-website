@@ -4,21 +4,25 @@ export default function MetricsBar() {
       image: "/metrics/metric_3d_exporters.webp",
       value: "500+",
       label: "Exporters",
+      title: "Exporters Using Export Biz Platform",
     },
     {
       image: "/metrics/metric_3d_documents.webp",
       value: "10,000+",
       label: "Documents Managed",
+      title: "Export Documents Managed Digitally",
     },
     {
       image: "/metrics/metric_3d_companies.webp",
       value: "Multi-Company",
       label: "Support",
+      title: "Dedicated Support for Export Businesses",
     },
     {
       image: "/metrics/metric_3d_reliable.webp",
       value: "Reliable &",
       label: "Business-Focused",
+      title: "Reliable Export Business Management",
     },
   ];
 
@@ -40,7 +44,8 @@ export default function MetricsBar() {
               <div className="w-9 h-9 sm:w-11 sm:h-11 lg:w-12 lg:h-12 flex items-center justify-center shrink-0">
                 <img
                   src={item.image}
-                  alt={item.label}
+                  alt={item.title}
+                  title={item.title}
                   className="w-full h-full object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform duration-200 select-none"
                   loading="lazy"
                 />

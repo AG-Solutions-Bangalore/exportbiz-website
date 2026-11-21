@@ -6,6 +6,8 @@ export const COMPANY_INFO = {
   tagline: "Simplified Export Documentation & Operations",
   parentCompany: "AG Solutions",
   fullBrandName: "Export Biz by AG Solutions",
+  author: "Export Biz",
+  publisher: "Export Biz",
   version: "1.0.0",
 
   // Contact & Communication
@@ -32,12 +34,12 @@ export const COMPANY_INFO = {
   website: "https://exportbiz.in",
   websiteDisplay: "exportbiz.in",
   parentWebsite: "https://ag-solutions.in/",
-  apiBaseUrl: "http://exportbiz.in/public/api",
+  apiBaseUrl: "https://exportbiz.in/public/api",
   demoUrl: "https://demo.exportbiz.in/signup",
 
   // Brand Assets
   logo: "/logo_transparent.webp",
-  logoAlt: "Export Biz by AG Solutions logo",
+  logoAlt: "Export Biz – Export Business Management Platform",
 
   // SEO Defaults
   seo: {
@@ -45,32 +47,25 @@ export const COMPANY_INFO = {
     languageTag: "en-IN",
     locale: "en_IN",
     titleTemplate: "%s | Export Biz",
-    defaultTitle:
-      "Export Documentation & Export Business Management Software | Export Biz",
+    defaultTitle: "Export Biz | Export Documentation & Business Management Workspace",
     description:
-      "Export documentation & business management software for exporters. Manage shipping documents, compliance, costing, incentives & receivables in one workspace.",
+      "Simplify your export business with Export Biz. Manage export documentation, streamline trade processes, organize compliance and manage your international trade operations in one platform.",
     keywords: [
       "export documentation software",
       "export management software",
-      "export business software",
-      "export documentation",
-      "shipping documents software",
-      "export invoice software",
-      "packing list software",
-      "bill of lading software",
-      "certificate of origin",
-      "export compliance software",
-      "export costing software",
-      "export incentives",
-      "export ERP",
-      "multi-company export software",
-      "India export software",
+      "export business platform",
+      "export-import management",
+      "international trade software",
+      "export documentation management",
+      "EXIM software",
+      "export compliance",
+      "global trade management",
+      "export business solutions",
     ],
-    ogImage: "/hero_image.png",
-    ogImageAlt:
-      "Export Biz export documentation and business management workspace dashboard",
-    ogImageWidth: 1920,
-    ogImageHeight: 819,
+    ogImage: "/hero_image.webp",
+    ogImageAlt: "Export Biz Workspace Dashboard – Export Management Platform",
+    ogImageWidth: 1200,
+    ogImageHeight: 630,
     ogType: "website",
     twitterCard: "summary_large_image",
     themeColor: "#0952F7",
@@ -87,9 +82,9 @@ export const COMPANY_INFO = {
     linkedin: "https://www.linkedin.com/in/export-biz-28637144b/",
   },
   socialProfiles: [
-    { key: "facebook", label: "Facebook" },
-    { key: "instagram", label: "Instagram" },
-    { key: "linkedin", label: "LinkedIn" },
+    { key: "facebook", label: "Facebook", title: "Follow Export Biz on Facebook" },
+    { key: "instagram", label: "Instagram", title: "Follow Export Biz on Instagram" },
+    { key: "linkedin", label: "LinkedIn", title: "Connect with Export Biz on LinkedIn" },
   ],
 } as const;
 

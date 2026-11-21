@@ -7,6 +7,7 @@ export default function PlatformFeatures() {
       description:
         "Prepare and organize essential export documents across the shipment lifecycle.",
       icon: "/icon_doc.webp",
+      imageTitle: "Export Documentation Management",
       cardBg: "from-[#F0F6FF] via-[#F8FAFF] to-white",
       borderColor: "border-blue-100/80 hover:border-blue-300",
       glowColor: "bg-blue-400/15",
@@ -16,6 +17,7 @@ export default function PlatformFeatures() {
       description:
         "Configure customer-specific certificates and document requirements.",
       icon: "/icon_shield.webp",
+      imageTitle: "Export Compliance and Documentation Support",
       cardBg: "from-[#F5F1FE] via-[#FAF7FF] to-white",
       borderColor: "border-purple-100/80 hover:border-purple-300",
       glowColor: "bg-purple-400/15",
@@ -25,6 +27,7 @@ export default function PlatformFeatures() {
       description:
         "Review customer outstanding balances, foreign-currency billing values, and expected export incentives.",
       icon: "/icon_chart.webp",
+      imageTitle: "Financial Tracking and Business Visibility",
       cardBg: "from-[#EFFBF4] via-[#F6FCF8] to-white",
       borderColor: "border-emerald-100/80 hover:border-emerald-300",
       glowColor: "bg-emerald-400/15",
@@ -34,6 +37,7 @@ export default function PlatformFeatures() {
       description:
         "Manage costing templates, reports, multiple companies, and shared business records.",
       icon: "/icon_folder.webp",
+      imageTitle: "Centralized Export Business Operations",
       cardBg: "from-[#FFF9ED] via-[#FFFDF7] to-white",
       borderColor: "border-amber-100/80 hover:border-amber-300",
       glowColor: "bg-amber-400/15",
@@ -77,7 +81,8 @@ export default function PlatformFeatures() {
             <div className="relative z-10 w-20 h-20 sm:w-22 sm:h-22 shrink-0 flex items-center justify-center group-hover:scale-108 transition-transform duration-300">
               <img
                 src={card.icon}
-                alt={card.title}
+                alt={card.imageTitle}
+                title={card.imageTitle}
                 className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.08)] select-none"
                 loading="lazy"
               />

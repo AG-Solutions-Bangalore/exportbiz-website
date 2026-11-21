@@ -1,7 +1,30 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync, readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { gzipSync, brotliCompressSync } from "node:zlib";
 import type { Plugin, ResolvedConfig } from "vite";
 import { absolutePageUrl, SEO_PAGES, SITE_URL } from "./config.ts";
+
+function compressDirectory(dir: string): void {
+  const entries = readdirSync(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const fullPath = resolve(dir, entry.name);
+    if (entry.isDirectory()) {
+      compressDirectory(fullPath);
+    } else if (
+      /\.(html|js|css|svg|json|xml|txt)$/i.test(entry.name) &&
+      !entry.name.endsWith(".gz") &&
+      !entry.name.endsWith(".br")
+    ) {
+      const content = readFileSync(fullPath);
+      if (content.length >= 256) {
+        const gz = gzipSync(content, { level: 9 });
+        writeFileSync(`${fullPath}.gz`, gz);
+        const br = brotliCompressSync(content);
+        writeFileSync(`${fullPath}.br`, br);
+      }
+    }
+  }
+}
 
 function escapeXml(value: string): string {
   return value
@@ -88,6 +111,8 @@ export function seoSiteFilesPlugin(): Plugin {
       mkdirSync(outDir, { recursive: true });
       writeFileSync(resolve(outDir, "robots.txt"), buildRobotsTxt(), "utf8");
       writeFileSync(resolve(outDir, "sitemap.xml"), buildSitemapXml(), "utf8");
+
+      compressDirectory(outDir);
 
       const global = globalThis as { Bun?: unknown; __EXPORTBIZ_PRERENDER_OK__?: boolean };
       const isBun = typeof global.Bun !== "undefined";

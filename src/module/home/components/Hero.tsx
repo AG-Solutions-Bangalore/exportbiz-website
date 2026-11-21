@@ -9,7 +9,7 @@ export default function Hero() {
       {/* Background Banner Image on Desktop: perfectly fitted to the right without being too big */}
       <div
         className="absolute inset-0 bg-no-repeat bg-right bg-contain pointer-events-none hidden lg:block"
-        style={{ backgroundImage: "url('/hero_image.png')" }}
+        style={{ backgroundImage: "url('/hero_image.webp')" }}
       />
 
       {/* Subtle ambient lighting on the left */}
@@ -18,8 +18,9 @@ export default function Hero() {
       {/* Full-width Mobile Image Hero with Floating Badge in Blank Space */}
       <div className="relative w-full h-[220px] sm:h-[290px] overflow-hidden lg:hidden block">
         <img
-          src="/hero_image.png"
-          alt="Export Biz Workspace Dashboard"
+          src="/hero_image.webp"
+          alt="Export Biz Workspace Dashboard – Export Management Platform"
+          title="Export Biz Workspace Dashboard – Export Management Platform"
           className="w-full h-full object-cover object-[72%_center] sm:object-[68%_center] select-none"
           loading="eager"
         />
@@ -82,6 +83,7 @@ export default function Hero() {
                 href="https://demo.exportbiz.in/signup"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Sign Up for Export Biz"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 rounded-full bg-white hover:bg-gray-50 text-navy-800 font-semibold text-xs sm:text-base border border-gray-300 shadow-sm transition-all cursor-pointer"
               >
                 <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full border border-navy-800/60 flex items-center justify-center">

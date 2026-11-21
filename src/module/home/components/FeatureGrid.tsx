@@ -3,41 +3,49 @@ export default function FeatureGrid() {
     {
       image: "/features/icon_3d_doc.webp",
       title: "Export Documentation",
+      imageTitle: "Digital Export Documentation Management",
       href: "/features/documentation/",
     },
     {
       image: "/features/icon_3d_customer.webp",
       title: "Customer Management",
+      imageTitle: "Export Customer and Client Management",
       href: "/features/customers/",
     },
     {
       image: "/features/icon_3d_costing.webp",
       title: "Costing & Product Pricing",
+      imageTitle: "Export Costing and Product Pricing Management",
       href: "/features/costing/",
     },
     {
       image: "/features/icon_3d_compliance.webp",
       title: "Certificates & Compliance",
+      imageTitle: "Export Certificates and Compliance Management",
       href: "/features/compliance/",
     },
     {
       image: "/features/icon_3d_incentives.webp",
       title: "Export Incentives",
+      imageTitle: "Export Incentives and Benefits Management",
       href: "/features/incentives/",
     },
     {
       image: "/features/icon_3d_analytics.webp",
       title: "Reports & Analytics",
+      imageTitle: "Export Business Reports and Analytics",
       href: "/features/analytics/",
     },
     {
       image: "/features/icon_3d_companies.webp",
       title: "Multiple Companies",
+      imageTitle: "Multiple Company Management for Exporters",
       href: "/features/multi-company/",
     },
     {
       image: "/features/icon_3d_sharing.webp",
       title: "Business Files & Sharing",
+      imageTitle: "Export Business File Management and Sharing",
       href: "/features/files/",
     },
   ];
@@ -65,7 +73,8 @@ export default function FeatureGrid() {
             <div className="w-20 h-20 sm:w-20 sm:h-20 lg:w-20 lg:h-20 flex items-center justify-center mb-1.5 sm:mb-2.5 group-hover:scale-110 transition-transform duration-300">
               <img
                 src={item.image}
-                alt={item.title}
+                alt={item.imageTitle}
+                title={item.imageTitle}
                 className="w-full h-full object-contain filter drop-shadow-md select-none"
                 loading="lazy"
               />

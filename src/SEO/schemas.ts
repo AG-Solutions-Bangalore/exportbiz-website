@@ -50,7 +50,15 @@ export function buildOrganizationSchema(): WithContext<Organization> {
       streetAddress: COMPANY_INFO.address.line1,
       addressLocality: COMPANY_INFO.address.city,
       addressRegion: COMPANY_INFO.address.state,
+      postalCode: COMPANY_INFO.address.postalCode,
       addressCountry: COMPANY_INFO.address.countryCode,
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: COMPANY_INFO.phoneRaw,
+      contactType: "customer support",
+      email: COMPANY_INFO.email,
+      areaServed: "IN",
     },
     sameAs: Object.values(COMPANY_INFO.socialLinks),
     parentOrganization: {
@@ -106,7 +114,7 @@ export function buildSoftwareSchema(): WithContext<SoftwareApplication> {
       "@type": "Offer",
       price: "0",
       priceCurrency: "INR",
-      description: "Free trial available",
+      description: "Free Live Demo & Trial",
     },
   };
 }
