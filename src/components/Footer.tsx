@@ -89,6 +89,8 @@ export default function Footer() {
                 src={COMPANY_INFO.logo}
                 alt="Export Biz – Complete Export Business Workspace"
                 title="Export Biz – Complete Export Business Workspace"
+                width="240"
+                height="80"
                 className="h-11 sm:h-12 w-auto object-contain filter brightness-0 invert opacity-95"
               />
             </div>
@@ -142,10 +144,10 @@ export default function Footer() {
 
           {/* Quick Navigation (3 Cols) */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-bold tracking-widest text-slate-400 uppercase flex items-center gap-2">
+            <h3 className="text-xs font-bold tracking-widest text-slate-400 uppercase flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-blue" />
               Navigation
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-sm">
               {navLinks.map((link, idx) => (
                 <li key={idx}>
@@ -175,10 +177,10 @@ export default function Footer() {
 
           {/* Contact & Live Demo CTA Card (4 Cols) */}
           <div className="lg:col-span-4 space-y-4">
-            <h4 className="text-xs font-bold tracking-widest text-slate-400 uppercase flex items-center gap-2">
+            <h3 className="text-xs font-bold tracking-widest text-slate-400 uppercase flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-blue" />
               Get In Touch
-            </h4>
+            </h3>
 
             <div className="bg-slate-900/70 border border-slate-800/80 rounded-2xl p-5 space-y-3.5 backdrop-blur-md">
               <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-300">

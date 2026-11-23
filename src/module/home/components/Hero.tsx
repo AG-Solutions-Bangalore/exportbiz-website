@@ -1,6 +1,5 @@
 import { ArrowRight, Play, Building2, FileText, BarChart3 } from "lucide-react";
 import { useModal } from "../../../context/ModalContext";
-import { COMPANY_INFO } from "../../../constants";
 
 export default function Hero() {
   const { openDemoModal } = useModal();
@@ -10,7 +9,7 @@ export default function Hero() {
       {/* Background Banner Image on Desktop: perfectly fitted to the right without being too big */}
       <div
         className="absolute inset-0 bg-no-repeat bg-right bg-contain pointer-events-none hidden lg:block"
-        style={{ backgroundImage: `url('${COMPANY_INFO.imageBaseUrl}/hero_image.webp')` }}
+        style={{ backgroundImage: "url('/hero_image.webp')" }}
       />
 
       {/* Subtle ambient lighting on the left */}
@@ -19,11 +18,12 @@ export default function Hero() {
       {/* Full-width Mobile Image Hero with Floating Badge in Blank Space */}
       <div className="relative w-full h-[220px] sm:h-[290px] overflow-hidden lg:hidden block">
         <img
-          src={`${COMPANY_INFO.imageBaseUrl}/hero_image.webp`}
+          src="/hero_image.webp"
           alt="Export Biz Workspace Dashboard – Export Management Platform"
           title="Export Biz Workspace Dashboard – Export Management Platform"
           className="w-full h-full object-cover object-[72%_center] sm:object-[68%_center] select-none"
           loading="eager"
+          fetchPriority="high"
         />
 
         {/* Small floating badge positioned in the top-left blank sky area */}

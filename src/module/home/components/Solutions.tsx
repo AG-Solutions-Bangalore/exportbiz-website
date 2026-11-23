@@ -175,7 +175,7 @@ export default function Solutions() {
                     <h3 className="text-xs sm:text-sm font-bold text-[#0B1536] group-hover:text-[#1D68F2] transition-colors leading-snug">
                       {item.title}
                     </h3>
-                    <p className="text-[11px] sm:text-xs text-slate-500 leading-tight mt-0.5">
+                    <p className="text-[11px] sm:text-xs text-slate-600 leading-tight mt-0.5">
                       {item.description}
                     </p>
                   </div>

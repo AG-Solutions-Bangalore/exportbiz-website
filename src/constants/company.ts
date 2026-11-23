@@ -39,7 +39,7 @@ export const COMPANY_INFO = {
   demoUrl: "https://demo.exportbiz.in/signup",
 
   // Brand Assets
-  logo: "https://exportbiz.in/public/assets/images/web_images/logo_transparent.webp",
+  logo: "/logo_transparent.webp",
   logoAlt: "Export Biz – Export Business Management Platform",
 
   // SEO Defaults

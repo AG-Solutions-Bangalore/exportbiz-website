@@ -57,7 +57,7 @@ export default function MetricsBar() {
                 <div className="text-xs sm:text-base lg:text-lg font-extrabold text-navy-900 leading-tight tracking-tight group-hover:text-brand-blue transition-colors">
                   {item.value}
                 </div>
-                <div className="text-[10px] sm:text-xs font-semibold text-slate-500 leading-tight mt-0.5">
+                <div className="text-[10px] sm:text-xs font-semibold text-slate-600 leading-tight mt-0.5">
                   {item.label}
                 </div>
               </div>

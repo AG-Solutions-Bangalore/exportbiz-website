@@ -52,7 +52,7 @@ export default function PlatformFeatures() {
 
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mt-12 sm:mt-16 mb-10 sm:mb-14">
-        <span className="text-xs font-bold tracking-widest text-slate-500 uppercase">
+        <span className="text-xs font-bold tracking-widest text-slate-600 uppercase">
           THE EXPORT BIZ PLATFORM
         </span>
         <h2 className="mt-2.5 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy-900 tracking-tight">
