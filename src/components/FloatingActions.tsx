@@ -52,6 +52,7 @@ export default function FloatingActions() {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
+          title="Contact Export Biz – Export Documentation Software on WhatsApp"
           aria-label="Chat with us on WhatsApp"
           aria-hidden={!actionsShown}
           tabIndex={actionsShown ? 0 : -1}
@@ -71,6 +72,7 @@ export default function FloatingActions() {
         {/* 2. Direct Call Button (appears second) */}
         <a
           href={`tel:${COMPANY_INFO.phoneRaw}`}
+          title={`Call Export Biz at ${COMPANY_INFO.phoneDisplay}`}
           aria-label={`Call us at ${COMPANY_INFO.phoneDisplay}`}
           aria-hidden={!actionsShown}
           tabIndex={actionsShown ? 0 : -1}
@@ -90,6 +92,7 @@ export default function FloatingActions() {
         {/* 3. Direct Email Button (appears first - right to left) */}
         <a
           href={`mailto:${COMPANY_INFO.email}`}
+          title={`Send email to ${COMPANY_INFO.email}`}
           aria-label={`Send email to ${COMPANY_INFO.email}`}
           aria-hidden={!actionsShown}
           tabIndex={actionsShown ? 0 : -1}

@@ -37,7 +37,11 @@ export default function EnquiryPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-navy-900">Email Us</p>
-                    <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-brand-blue transition-colors">
+                    <a
+                      href={`mailto:${COMPANY_INFO.email}`}
+                      title={`Send email to ${COMPANY_INFO.email}`}
+                      className="hover:text-brand-blue transition-colors"
+                    >
                       {COMPANY_INFO.email}
                     </a>
                   </div>
@@ -49,7 +53,11 @@ export default function EnquiryPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-navy-900">Call Us</p>
-                    <a href={`tel:${COMPANY_INFO.phoneRaw}`} className="hover:text-brand-blue transition-colors">
+                    <a
+                      href={`tel:${COMPANY_INFO.phoneRaw}`}
+                      title={`Call Export Biz at ${COMPANY_INFO.phoneDisplay}`}
+                      className="hover:text-brand-blue transition-colors"
+                    >
                       {COMPANY_INFO.phoneDisplay}
                     </a>
                   </div>
@@ -61,7 +69,13 @@ export default function EnquiryPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-navy-900">Official Website</p>
-                    <a href={COMPANY_INFO.website} target="_blank" rel="noopener noreferrer" className="hover:text-brand-blue transition-colors">
+                    <a
+                      href={COMPANY_INFO.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={COMPANY_INFO.website}
+                      className="hover:text-brand-blue transition-colors"
+                    >
                       {COMPANY_INFO.websiteDisplay}
                     </a>
                   </div>
