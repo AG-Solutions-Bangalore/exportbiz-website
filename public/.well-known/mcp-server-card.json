@@ -1,0 +1,64 @@
+{
+  "name": "Export Biz WebMCP Server",
+  "description": "Model Context Protocol tools exposed by Export Biz enabling AI agents to schedule software demonstrations and request trade consultancy callbacks.",
+  "version": "1.0.0",
+  "protocolVersion": "2024-11-05",
+  "serverInfo": {
+    "name": "exportbiz-mcp-server",
+    "version": "1.0.0"
+  },
+  "capabilities": {
+    "tools": {}
+  },
+  "tools": [
+    {
+      "name": "requestDemo",
+      "description": "Submits an enquiry to Export Biz to request a free live demo of export documentation, compliance, and trade operations software.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "full_name": {
+            "type": "string",
+            "description": "Full name of the exporter or business representative requesting the demo."
+          },
+          "email_id": {
+            "type": "string",
+            "format": "email",
+            "description": "Business email address for sending software demo credentials and schedule."
+          },
+          "mobile_no": {
+            "type": "string",
+            "description": "10-digit mobile phone number for verification and coordination."
+          },
+          "remarks": {
+            "type": "string",
+            "description": "Optional notes regarding shipment volume, products exported, or specific software needs."
+          }
+        },
+        "required": [
+          "full_name",
+          "email_id",
+          "mobile_no"
+        ]
+      },
+      "page": "https://exportbiz.in/"
+    },
+    {
+      "name": "requestCallback",
+      "description": "Requests an immediate callback from the Export Biz export advisory team using a 10-digit phone number.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "mobile_no": {
+            "type": "string",
+            "description": "10-digit mobile phone number to receive a direct call from sales."
+          }
+        },
+        "required": [
+          "mobile_no"
+        ]
+      },
+      "page": "https://exportbiz.in/#solutions"
+    }
+  ]
+}

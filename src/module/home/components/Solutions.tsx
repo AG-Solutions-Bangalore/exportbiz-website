@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   FileSpreadsheet,
   ArrowLeftRight,
@@ -7,13 +7,30 @@ import {
   CheckCircle2,
   Loader2,
 } from "lucide-react";
-import { useCreateEnquiry } from "../../Enquiry";
-import { COMPANY_INFO } from "../../../constants";
+import { useCreateEnquiry } from "../../Enquiry/hooks/useCreateEnquiry";
+import { COMPANY_INFO, WEBMCP_TOOLS } from "../../../constants";
 
 export default function Solutions() {
   const [mobile, setMobile] = useState("");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "350px" }
+    );
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const { submit, loading } = useCreateEnquiry();
 
@@ -72,18 +89,25 @@ export default function Solutions() {
 
   return (
     <section
+      ref={sectionRef}
       id="solutions"
       className="py-4 sm:py-6 lg:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
     >
       <div className="relative bg-[#F5F8FE] border border-blue-100 rounded-2xl overflow-hidden shadow-sm">
         {/* Right side background image of port / cranes / container ship */}
         <div className="absolute -right-6 sm:-right-10 lg:-right-12 top-0 bottom-0 w-[46%] lg:w-[40%] xl:w-[35%] hidden md:block pointer-events-none">
-          <img
-            src={`${COMPANY_INFO.imageBaseUrl}/cargo_ship_image.webp`}
-            alt="Global Export Shipping and Cargo Transportation"
-            title="Global Export Shipping and Cargo Transportation"
-            className="w-full h-full object-cover object-right select-none"
-          />
+          {isVisible ? (
+            <img
+              src={`${COMPANY_INFO.imageBaseUrl}/cargo_ship_image.webp`}
+              alt="Global Export Shipping and Cargo Transportation"
+              title="Global Export Shipping and Cargo Transportation"
+              width={500}
+              height={300}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-cover object-right select-none"
+            />
+          ) : null}
           {/* Subtle horizontal gradient to seamlessly blend image into background */}
           <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#F5F8FE] to-transparent" />
         </div>
@@ -114,11 +138,15 @@ export default function Solutions() {
                   onSubmit={handleQuickDemo}
                   className="space-y-1"
                   noValidate
+                  data-toolname={WEBMCP_TOOLS.requestCallback.name}
+                  data-tooldescription={WEBMCP_TOOLS.requestCallback.description}
                 >
                   <div className="relative flex items-center">
                     <input
                       type="tel"
+                      name="mobile_no"
                       maxLength={10}
+                      required
                       value={mobile}
                       onChange={(e) => {
                         setMobile(
@@ -127,6 +155,8 @@ export default function Solutions() {
                         if (errorMsg) setErrorMsg(null);
                       }}
                       placeholder="Enter mobile number for demo"
+                      aria-label="Mobile number for a demo callback"
+                      data-toolparamdescription="Ten-digit mobile number for the Export Biz team to call back."
                       className={`w-full pl-3.5 pr-28 py-2.5 text-xs sm:text-sm rounded-xl bg-white border ${
                         errorMsg
                           ? "border-red-400 focus:border-red-500"
@@ -175,7 +205,7 @@ export default function Solutions() {
                     <h3 className="text-xs sm:text-sm font-bold text-[#0B1536] group-hover:text-[#1D68F2] transition-colors leading-snug">
                       {item.title}
                     </h3>
-                    <p className="text-[11px] sm:text-xs text-slate-500 leading-tight mt-0.5">
+                    <p className="text-[11px] sm:text-xs text-slate-600 leading-tight mt-0.5">
                       {item.description}
                     </p>
                   </div>

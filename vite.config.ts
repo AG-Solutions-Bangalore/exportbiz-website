@@ -24,4 +24,7 @@ export default defineConfig({
       additionalPrerenderRoutes: [...SEO_ROUTES],
     }),
   ],
+  build: {
+    cssCodeSplit: true,
+  },
 });

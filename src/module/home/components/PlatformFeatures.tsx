@@ -1,7 +1,25 @@
+import { useState, useEffect, useRef } from "react";
 import MetricsBar from "./MetricsBar";
 import { COMPANY_INFO } from "../../../constants";
 
 export default function PlatformFeatures() {
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const [cardsVisible, setCardsVisible] = useState(false);
+
+  useEffect(() => {
+    if (!cardsRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCardsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px" }
+    );
+    observer.observe(cardsRef.current);
+    return () => observer.disconnect();
+  }, []);
   const cards = [
     {
       title: "Export Documentation",
@@ -52,7 +70,7 @@ export default function PlatformFeatures() {
 
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mt-12 sm:mt-16 mb-10 sm:mb-14">
-        <span className="text-xs font-bold tracking-widest text-slate-500 uppercase">
+        <span className="text-xs font-bold tracking-widest text-slate-600 uppercase">
           THE EXPORT BIZ PLATFORM
         </span>
         <h2 className="mt-2.5 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy-900 tracking-tight">
@@ -67,7 +85,7 @@ export default function PlatformFeatures() {
       </div>
 
       {/* 4 Cards Grid: Left side full image, Right side content, gradient background, NO arrow button */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-5">
+      <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-5">
         {cards.map((card, idx) => (
           <div
             key={idx}
@@ -80,13 +98,18 @@ export default function PlatformFeatures() {
 
             {/* Left side full 3D image container */}
             <div className="relative z-10 w-20 h-20 sm:w-22 sm:h-22 shrink-0 flex items-center justify-center group-hover:scale-108 transition-transform duration-300">
-              <img
-                src={card.icon}
-                alt={card.imageTitle}
-                title={card.imageTitle}
-                className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.08)] select-none"
-                loading="lazy"
-              />
+              {cardsVisible ? (
+                <img
+                  src={card.icon}
+                  alt={card.imageTitle}
+                  title={card.imageTitle}
+                  width={88}
+                  height={88}
+                  className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.08)] select-none"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : null}
             </div>
 
             {/* Right side: Title & Description */}

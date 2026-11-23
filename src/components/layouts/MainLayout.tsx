@@ -1,11 +1,15 @@
+import { lazy, Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import FloatingActions from "../FloatingActions";
 import SmoothScroll from "../SmoothScroll";
 import { ModalProvider, useModal } from "../../context/ModalContext";
-import { EnquiryModal } from "../../module/Enquiry";
 import { SiteSeo } from "../../SEO";
+
+const EnquiryModal = lazy(
+  () => import("../../module/Enquiry/components/EnquiryModal"),
+);
 
 function LayoutContent() {
   const { isDemoModalOpen, closeDemoModal } = useModal();
@@ -19,7 +23,11 @@ function LayoutContent() {
         </main>
         <Footer />
         <FloatingActions />
-        <EnquiryModal isOpen={isDemoModalOpen} onClose={closeDemoModal} />
+        {isDemoModalOpen && (
+          <Suspense fallback={null}>
+            <EnquiryModal isOpen={isDemoModalOpen} onClose={closeDemoModal} />
+          </Suspense>
+        )}
       </div>
     </SmoothScroll>
   );

@@ -1,6 +1,24 @@
+import { useState, useEffect, useRef } from "react";
 import { COMPANY_INFO } from "../../../constants";
 
 export default function FeatureGrid() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px" }
+    );
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
   const features = [
     {
       image: `${COMPANY_INFO.imageBaseUrl}/features/icon_3d_doc.webp`,
@@ -53,7 +71,7 @@ export default function FeatureGrid() {
   ];
 
   return (
-    <section id="features" className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={sectionRef} id="features" className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy-900 tracking-tight">
@@ -73,13 +91,18 @@ export default function FeatureGrid() {
           >
             {/* Even Bigger 3D Icon Container on small devices */}
             <div className="w-20 h-20 sm:w-20 sm:h-20 lg:w-20 lg:h-20 flex items-center justify-center mb-1.5 sm:mb-2.5 group-hover:scale-110 transition-transform duration-300">
-              <img
-                src={item.image}
-                alt={item.imageTitle}
-                title={item.imageTitle}
-                className="w-full h-full object-contain filter drop-shadow-md select-none"
-                loading="lazy"
-              />
+              {isVisible ? (
+                <img
+                  src={item.image}
+                  alt={item.imageTitle}
+                  title={item.imageTitle}
+                  width={80}
+                  height={80}
+                  className="w-full h-full object-contain filter drop-shadow-md select-none"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : null}
             </div>
 
             {/* Feature Label: Compact and readable */}

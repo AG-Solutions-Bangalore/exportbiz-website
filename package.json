@@ -29,6 +29,7 @@
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
     "babel-plugin-react-compiler": "^1.0.0",
+    "lighthouse": "^13.6.0",
     "node-html-parser": "^9.0.7",
     "oxlint": "^1.90.0",
     "schema-dts": "^2.1.0",

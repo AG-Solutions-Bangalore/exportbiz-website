@@ -19,17 +19,50 @@ export const ModalProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setIsDemoModalOpen(false);
   }, []);
 
-  // One-time automatic popup trigger on initial visit
+  // Optimized smart auto-popup: triggers on user engagement (scroll > 350px, exit intent, or 7s timer)
+  // Ensures 0 impact on initial PageSpeed/Speed Index while capturing maximum real visitor leads
   useEffect(() => {
-    const hasSeenAutoPopup = sessionStorage.getItem("hasSeenEnquiryPopup");
-    if (!hasSeenAutoPopup) {
-      const timer = setTimeout(() => {
-        setIsDemoModalOpen(true);
-        sessionStorage.setItem("hasSeenEnquiryPopup", "true");
-      }, 2500); // Trigger smoothly after 2.5 seconds
+    if (typeof window === "undefined") return;
 
-      return () => clearTimeout(timer);
-    }
+    const hasSeenAutoPopup = sessionStorage.getItem("hasSeenEnquiryPopup");
+    if (hasSeenAutoPopup) return;
+
+    let triggered = false;
+
+    const triggerPopup = () => {
+      if (triggered) return;
+      triggered = true;
+      sessionStorage.setItem("hasSeenEnquiryPopup", "true");
+      setIsDemoModalOpen(true);
+      cleanup();
+    };
+
+    const handleScroll = () => {
+      if (window.scrollY > 350) {
+        triggerPopup();
+      }
+    };
+
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 10) {
+        triggerPopup();
+      }
+    };
+
+    const timer = setTimeout(() => {
+      triggerPopup();
+    }, 7000);
+
+    const cleanup = () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      clearTimeout(timer);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    document.addEventListener("mouseleave", handleMouseLeave);
+
+    return cleanup;
   }, []);
 
   return (

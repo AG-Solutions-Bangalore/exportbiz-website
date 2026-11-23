@@ -1,9 +1,27 @@
+import { useState, useEffect, useRef } from "react";
 import { Check, ArrowRight } from "lucide-react";
 import { useModal } from "../../../context/ModalContext";
 import { COMPANY_INFO } from "../../../constants";
 
 export default function DocumentManagement() {
   const { openDemoModal } = useModal();
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "350px" }
+    );
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const checklist = [
     "Commercial Contracts & Orders",
@@ -16,15 +34,20 @@ export default function DocumentManagement() {
 
   return (
     <section
+      ref={sectionRef}
       id="documents"
       className="relative overflow-hidden bg-[#F4F8FE] pt-0 pb-12 sm:pt-6 sm:pb-16 lg:py-[3.4rem]"
     >
       {/* Background Banner Image on Desktop: perfectly fitted to the left like hero section */}
       <div
         className="absolute inset-0 bg-no-repeat bg-left bg-contain pointer-events-none hidden lg:block"
-        style={{
-          backgroundImage: `url('${COMPANY_INFO.imageBaseUrl}/Export%20Biz%20Invoice%20Document%20Stack.png')`,
-        }}
+        style={
+          isVisible
+            ? {
+                backgroundImage: `url('${COMPANY_INFO.imageBaseUrl}/Export%20Biz%20Invoice%20Document%20Stack.png')`,
+              }
+            : undefined
+        }
       />
 
       {/* Subtle ambient lighting orb on the right */}
@@ -32,13 +55,18 @@ export default function DocumentManagement() {
 
       {/* Full-width Mobile Image Hero with smooth gradient blend */}
       <div className="relative w-full h-[220px] sm:h-[290px] overflow-hidden lg:hidden block">
-        <img
-          src={`${COMPANY_INFO.imageBaseUrl}/Export%20Biz%20Invoice%20Document%20Stack.png`}
-          alt="Export Documents – Commercial Invoice, Packing List and Bill of Lading"
-          title="Export Documents – Commercial Invoice, Packing List and Bill of Lading"
-          className="w-full h-full object-cover object-[-2%_center] sm:object-[20%_center] select-none"
-          loading="lazy"
-        />
+        {isVisible ? (
+          <img
+            src={`${COMPANY_INFO.imageBaseUrl}/Export%20Biz%20Invoice%20Document%20Stack.png`}
+            alt="Export Documents – Commercial Invoice, Packing List and Bill of Lading"
+            title="Export Documents – Commercial Invoice, Packing List and Bill of Lading"
+            width={800}
+            height={341}
+            className="w-full h-full object-cover object-[-2%_center] sm:object-[20%_center] select-none"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : null}
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 -mt-8 sm:-mt-10 lg:mt-0">

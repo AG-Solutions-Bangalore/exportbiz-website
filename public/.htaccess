@@ -1,0 +1,84 @@
+# MIME Types for Agentic Browsing & AI Discovery
+<IfModule mod_mime.c>
+  AddType application/ai-catalog+json ai-catalog.json
+  AddType application/mcp-server-card+json mcp-server-card.json
+  AddType application/agent-card+json agent-card.json
+  AddType application/json ard.json webmcp-tools.json json
+  AddType text/plain llms.txt llms-full.txt txt
+  AddType application/manifest+json webmanifest
+  AddType image/webp webp
+</IfModule>
+
+# Deflate / Gzip Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml application/rss+xml font/truetype font/opentype application/vnd.ms-fontobject image/svg+xml application/ai-catalog+json application/mcp-server-card+json application/agent-card+json
+</IfModule>
+
+# URL Rewriting & SPA Fallback
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Allow direct access to .well-known directory
+  RewriteRule ^\.well-known/ - [L]
+
+  # Allow existing files and directories
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # SPA fallback to index.html
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# CORS Headers for Agentic Discovery & Manifests
+<IfModule mod_headers.c>
+  <FilesMatch "(ai-catalog\.json|ard\.json|agent-card\.json|mcp-server-card\.json|webmcp-tools\.json|llms\.txt|llms-full\.txt)$">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Accept"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive on
+
+  # Images
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/ico "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # CSS & JavaScript
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+
+  # Fonts
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/x-font-woff "access plus 1 year"
+
+  # Agentic discovery & manifests
+  ExpiresByType application/json "access plus 1 day"
+  ExpiresByType application/ai-catalog+json "access plus 1 day"
+  ExpiresByType application/mcp-server-card+json "access plus 1 day"
+  ExpiresByType application/agent-card+json "access plus 1 day"
+
+  # Default
+  ExpiresDefault "access plus 2 days"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(webp|png|jpg|jpeg|gif|svg|ico|css|js|woff2|woff|ttf|eot)$">
+    Header set Cache-Control "max-age=31536000, public, immutable"
+  </FilesMatch>
+
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "max-age=60, public, must-revalidate"
+  </FilesMatch>
+</IfModule>

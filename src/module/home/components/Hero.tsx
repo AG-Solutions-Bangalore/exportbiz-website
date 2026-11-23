@@ -1,29 +1,32 @@
 import { ArrowRight, Play, Building2, FileText, BarChart3 } from "lucide-react";
 import { useModal } from "../../../context/ModalContext";
-import { COMPANY_INFO } from "../../../constants";
 
 export default function Hero() {
   const { openDemoModal } = useModal();
 
   return (
-    <section id="hero" className="relative overflow-hidden bg-[#EAF3FE] pt-0 pb-12 sm:pt-6 sm:pb-16 lg:pb-20">
-      {/* Background Banner Image on Desktop: perfectly fitted to the right without being too big */}
+    <section id="hero" className="relative overflow-hidden bg-[#EAF3FE] pt-0 pb-12 sm:pb-16 lg:pt-8 lg:pb-20">
+      {/* Background Banner Image on Desktop: takes full 100% container height without distortion */}
       <div
-        className="absolute inset-0 bg-no-repeat bg-right bg-contain pointer-events-none hidden lg:block"
-        style={{ backgroundImage: `url('${COMPANY_INFO.imageBaseUrl}/hero_image.webp')` }}
+        className="absolute inset-0 bg-no-repeat bg-right bg-[length:auto_100%] pointer-events-none hidden lg:block"
+        style={{ backgroundImage: "url('/hero_image.webp?v=2')" }}
       />
 
       {/* Subtle ambient lighting on the left */}
       <div className="absolute top-0 left-0 w-72 h-72 sm:w-96 sm:h-96 bg-white/40 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Full-width Mobile Image Hero with Floating Badge in Blank Space */}
-      <div className="relative w-full h-[220px] sm:h-[290px] overflow-hidden lg:hidden block">
+      {/* Full-width Mobile/Tablet Image Hero: completely flush with navbar (pt-0) across all devices */}
+      <div className="relative w-full h-[220px] sm:h-[300px] md:h-[360px] overflow-hidden lg:hidden block">
         <img
-          src={`${COMPANY_INFO.imageBaseUrl}/hero_image.webp`}
+          src="/hero_image_mobile.webp?v=2"
+          width={800}
+          height={341}
           alt="Export Biz Workspace Dashboard – Export Management Platform"
           title="Export Biz Workspace Dashboard – Export Management Platform"
           className="w-full h-full object-cover object-[72%_center] sm:object-[68%_center] select-none"
           loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
 
         {/* Small floating badge positioned in the top-left blank sky area */}
