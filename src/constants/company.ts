@@ -35,10 +35,11 @@ export const COMPANY_INFO = {
   websiteDisplay: "exportbiz.in",
   parentWebsite: "https://ag-solutions.in/",
   apiBaseUrl: "https://exportbiz.in/public/api",
+  imageBaseUrl: "https://exportbiz.in/public/assets/images/web_images",
   demoUrl: "https://demo.exportbiz.in/signup",
 
   // Brand Assets
-  logo: "/logo_transparent.webp",
+  logo: "https://exportbiz.in/public/assets/images/web_images/logo_transparent.webp",
   logoAlt: "Export Biz – Export Business Management Platform",
 
   // SEO Defaults
@@ -62,7 +63,7 @@ export const COMPANY_INFO = {
       "global trade management",
       "export business solutions",
     ],
-    ogImage: "/hero_image.webp",
+    ogImage: "https://exportbiz.in/public/assets/images/web_images/hero_image.webp",
     ogImageAlt: "Export Biz Workspace Dashboard – Export Management Platform",
     ogImageWidth: 1200,
     ogImageHeight: 630,

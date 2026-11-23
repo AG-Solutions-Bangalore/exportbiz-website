@@ -1,4 +1,5 @@
 import MetricsBar from "./MetricsBar";
+import { COMPANY_INFO } from "../../../constants";
 
 export default function PlatformFeatures() {
   const cards = [
@@ -6,7 +7,7 @@ export default function PlatformFeatures() {
       title: "Export Documentation",
       description:
         "Prepare and organize essential export documents across the shipment lifecycle.",
-      icon: "/icon_doc.webp",
+      icon: `${COMPANY_INFO.imageBaseUrl}/icon_doc.webp`,
       imageTitle: "Export Documentation Management",
       cardBg: "from-[#F0F6FF] via-[#F8FAFF] to-white",
       borderColor: "border-blue-100/80 hover:border-blue-300",
@@ -16,7 +17,7 @@ export default function PlatformFeatures() {
       title: "Compliance Support",
       description:
         "Configure customer-specific certificates and document requirements.",
-      icon: "/icon_shield.webp",
+      icon: `${COMPANY_INFO.imageBaseUrl}/icon_shield.webp`,
       imageTitle: "Export Compliance and Documentation Support",
       cardBg: "from-[#F5F1FE] via-[#FAF7FF] to-white",
       borderColor: "border-purple-100/80 hover:border-purple-300",
@@ -26,7 +27,7 @@ export default function PlatformFeatures() {
       title: "Financial Visibility",
       description:
         "Review customer outstanding balances, foreign-currency billing values, and expected export incentives.",
-      icon: "/icon_chart.webp",
+      icon: `${COMPANY_INFO.imageBaseUrl}/icon_chart.webp`,
       imageTitle: "Financial Tracking and Business Visibility",
       cardBg: "from-[#EFFBF4] via-[#F6FCF8] to-white",
       borderColor: "border-emerald-100/80 hover:border-emerald-300",
@@ -36,7 +37,7 @@ export default function PlatformFeatures() {
       title: "Business Operations",
       description:
         "Manage costing templates, reports, multiple companies, and shared business records.",
-      icon: "/icon_folder.webp",
+      icon: `${COMPANY_INFO.imageBaseUrl}/icon_folder.webp`,
       imageTitle: "Centralized Export Business Operations",
       cardBg: "from-[#FFF9ED] via-[#FFFDF7] to-white",
       borderColor: "border-amber-100/80 hover:border-amber-300",

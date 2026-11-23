@@ -113,7 +113,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link to="/" title="Export Biz – Home" className="flex items-center gap-3 group">
               <img
-                src="/logo_transparent.webp"
+                src={COMPANY_INFO.logo}
                 alt="Export Biz – Export Business Management Platform"
                 title="Export Biz – Export Business Management Platform"
                 className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-102"
@@ -223,7 +223,7 @@ export default function Navbar() {
             className="flex items-center gap-2"
           >
             <img
-              src="/logo_transparent.webp"
+              src={COMPANY_INFO.logo}
               alt="Export Biz – Export Documentation Software"
               title="Export Biz – Export Documentation Software"
               className="h-10 w-auto object-contain"

@@ -86,7 +86,7 @@ export default function Footer() {
           <div className="lg:col-span-5 space-y-5">
             <div className="flex items-center gap-3">
               <img
-                src="/logo_transparent.webp"
+                src={COMPANY_INFO.logo}
                 alt="Export Biz – Complete Export Business Workspace"
                 title="Export Biz – Complete Export Business Workspace"
                 className="h-11 sm:h-12 w-auto object-contain filter brightness-0 invert opacity-95"

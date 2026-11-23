@@ -1,49 +1,51 @@
+import { COMPANY_INFO } from "../../../constants";
+
 export default function FeatureGrid() {
   const features = [
     {
-      image: "/features/icon_3d_doc.webp",
+      image: `${COMPANY_INFO.imageBaseUrl}/features/icon_3d_doc.webp`,
       title: "Export Documentation",
       imageTitle: "Digital Export Documentation Management",
       href: "/features/documentation/",
     },
     {
-      image: "/features/icon_3d_customer.webp",
+      image: `${COMPANY_INFO.imageBaseUrl}/features/icon_3d_customer.webp`,
       title: "Customer Management",
       imageTitle: "Export Customer and Client Management",
       href: "/features/customers/",
     },
     {
-      image: "/features/icon_3d_costing.webp",
+      image: `${COMPANY_INFO.imageBaseUrl}/features/icon_3d_costing.webp`,
       title: "Costing & Product Pricing",
       imageTitle: "Export Costing and Product Pricing Management",
       href: "/features/costing/",
     },
     {
-      image: "/features/icon_3d_compliance.webp",
+      image: `${COMPANY_INFO.imageBaseUrl}/features/icon_3d_compliance.webp`,
       title: "Certificates & Compliance",
       imageTitle: "Export Certificates and Compliance Management",
       href: "/features/compliance/",
     },
     {
-      image: "/features/icon_3d_incentives.webp",
+      image: `${COMPANY_INFO.imageBaseUrl}/features/icon_3d_incentives.webp`,
       title: "Export Incentives",
       imageTitle: "Export Incentives and Benefits Management",
       href: "/features/incentives/",
     },
     {
-      image: "/features/icon_3d_analytics.webp",
+      image: `${COMPANY_INFO.imageBaseUrl}/features/icon_3d_analytics.webp`,
       title: "Reports & Analytics",
       imageTitle: "Export Business Reports and Analytics",
       href: "/features/analytics/",
     },
     {
-      image: "/features/icon_3d_companies.webp",
+      image: `${COMPANY_INFO.imageBaseUrl}/features/icon_3d_companies.webp`,
       title: "Multiple Companies",
       imageTitle: "Multiple Company Management for Exporters",
       href: "/features/multi-company/",
     },
     {
-      image: "/features/icon_3d_sharing.webp",
+      image: `${COMPANY_INFO.imageBaseUrl}/features/icon_3d_sharing.webp`,
       title: "Business Files & Sharing",
       imageTitle: "Export Business File Management and Sharing",
       href: "/features/files/",

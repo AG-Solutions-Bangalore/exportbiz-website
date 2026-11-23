@@ -1,25 +1,27 @@
+import { COMPANY_INFO } from "../../../constants";
+
 export default function MetricsBar() {
   const metrics = [
     {
-      image: "/metrics/metric_3d_exporters.webp",
+      image: `${COMPANY_INFO.imageBaseUrl}/metrics/metric_3d_exporters.webp`,
       value: "500+",
       label: "Exporters",
       title: "Exporters Using Export Biz Platform",
     },
     {
-      image: "/metrics/metric_3d_documents.webp",
+      image: `${COMPANY_INFO.imageBaseUrl}/metrics/metric_3d_documents.webp`,
       value: "10,000+",
       label: "Documents Managed",
       title: "Export Documents Managed Digitally",
     },
     {
-      image: "/metrics/metric_3d_companies.webp",
+      image: `${COMPANY_INFO.imageBaseUrl}/metrics/metric_3d_companies.webp`,
       value: "Multi-Company",
       label: "Support",
       title: "Dedicated Support for Export Businesses",
     },
     {
-      image: "/metrics/metric_3d_reliable.webp",
+      image: `${COMPANY_INFO.imageBaseUrl}/metrics/metric_3d_reliable.webp`,
       value: "Reliable &",
       label: "Business-Focused",
       title: "Reliable Export Business Management",

@@ -1,5 +1,6 @@
 import { Check, ArrowRight } from "lucide-react";
 import { useModal } from "../../../context/ModalContext";
+import { COMPANY_INFO } from "../../../constants";
 
 export default function DocumentManagement() {
   const { openDemoModal } = useModal();
@@ -22,7 +23,7 @@ export default function DocumentManagement() {
       <div
         className="absolute inset-0 bg-no-repeat bg-left bg-contain pointer-events-none hidden lg:block"
         style={{
-          backgroundImage: "url('/Export Biz Invoice Document Stack.png')",
+          backgroundImage: `url('${COMPANY_INFO.imageBaseUrl}/Export%20Biz%20Invoice%20Document%20Stack.png')`,
         }}
       />
 
@@ -32,7 +33,7 @@ export default function DocumentManagement() {
       {/* Full-width Mobile Image Hero with smooth gradient blend */}
       <div className="relative w-full h-[220px] sm:h-[290px] overflow-hidden lg:hidden block">
         <img
-          src="/Export Biz Invoice Document Stack.png"
+          src={`${COMPANY_INFO.imageBaseUrl}/Export%20Biz%20Invoice%20Document%20Stack.png`}
           alt="Export Documents – Commercial Invoice, Packing List and Bill of Lading"
           title="Export Documents – Commercial Invoice, Packing List and Bill of Lading"
           className="w-full h-full object-cover object-[-2%_center] sm:object-[20%_center] select-none"
