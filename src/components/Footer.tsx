@@ -113,7 +113,6 @@ export default function Footer() {
                 <strong className="text-white font-bold tracking-wide group-hover:text-blue-300 transition-colors">
                   {COMPANY_INFO.parentCompany}
                 </strong>
-                <ArrowUpRight className="w-3 h-3 text-slate-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </a>
 
               <a
@@ -125,7 +124,6 @@ export default function Footer() {
               >
                 <Globe className="w-3.5 h-3.5 text-brand-blue group-hover:rotate-12 transition-transform" />
                 <span>ag-solutions.in</span>
-                <ArrowUpRight className="w-3 h-3 text-blue-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </a>
             </div>
 
@@ -159,7 +157,6 @@ export default function Footer() {
                       className="text-slate-400 hover:text-white transition-colors cursor-pointer flex items-center gap-1 group"
                     >
                       <span>{link.label}</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-brand-blue" />
                     </button>
                   ) : (
                     <a
@@ -169,7 +166,6 @@ export default function Footer() {
                       className="text-slate-400 hover:text-white transition-colors cursor-pointer flex items-center gap-1 group"
                     >
                       <span>{link.label}</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-brand-blue" />
                     </a>
                   )}
                 </li>
@@ -239,9 +235,6 @@ export default function Footer() {
                     <span>ag-solutions.in</span>
                     <ArrowUpRight className="w-3 h-3 text-brand-blue" />
                   </a>
-                  <span className="text-[10px] text-slate-400 font-mono">
-                    Parent Website
-                  </span>
                 </div>
               </div>
 
