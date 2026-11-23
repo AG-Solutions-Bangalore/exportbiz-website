@@ -4,4 +4,5 @@ Allow: /
 Disallow: /api/
 Disallow: /public/api/
 
+Agentmap: https://exportbiz.in/ard.json
 Sitemap: https://exportbiz.in/sitemap.xml
