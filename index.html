@@ -1,40 +1,29 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="sNTYHvZNIyZmfP4mfQjULMvrxbWCCKK06V64rL8AdRs">
 
     <!-- Favicon & PWA Icons -->
-    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
-    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.webp" />
-    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.webp">
+    <link rel="manifest" href="/favicon/site.webmanifest">
 
     <!-- Agentic Resource Discovery (ARD & AI-Catalog) -->
-    <link rel="ai-catalog" href="/.well-known/ai-catalog.json" type="application/ai-catalog+json" />
-    <link rel="ai-catalog" href="/ai-catalog.json" type="application/ai-catalog+json" />
-    <link rel="ard" href="/.well-known/ard.json" type="application/json" />
-    <link rel="describedby" href="/llms.txt" type="text/markdown" />
-    <link rel="agent-card" href="/.well-known/agent-card.json" type="application/agent-card+json" />
-    <link rel="mcp-server-card" href="/.well-known/mcp-server-card.json" type="application/mcp-server-card+json" />
+    <link rel="ai-catalog" href="/.well-known/ai-catalog.json" type="application/ai-catalog+json">
+    <link rel="ai-catalog" href="/ai-catalog.json" type="application/ai-catalog+json">
+    <link rel="ard" href="/.well-known/ard.json" type="application/json">
+    <link rel="describedby" href="/llms.txt" type="text/markdown">
+    <link rel="agent-card" href="/.well-known/agent-card.json" type="application/agent-card+json">
+    <link rel="mcp-server-card" href="/.well-known/mcp-server-card.json" type="application/mcp-server-card+json">
 
-    <!-- LCP image preloads (hero + logo, responsive local) -->
-    <link rel="preload" as="image" fetchpriority="high" href="/hero_image_mobile.webp" media="(max-width: 768px)" />
-    <link rel="preload" as="image" fetchpriority="high" href="/hero_image.webp" media="(min-width: 769px)" />
-    <link rel="preload" as="image" href="/logo_transparent.webp" />
-
-    <!-- Typography & Fonts with optimal loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" />
-    </noscript>
+    <!-- Critical Assets Preload (Font, Responsive Hero, and Logo) -->
+    <link rel="preload" href="/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" as="image" fetchpriority="high" href="/hero_image_mobile.webp?v=2" media="(max-width: 1023px)">
+    <link rel="preload" as="image" fetchpriority="high" href="/hero_image.webp?v=2" media="(min-width: 1024px)">
+    <link rel="preload" as="image" href="/logo_transparent.webp?v=2">
   </head>
   <body
     class="bg-white text-navy-800 antialiased font-sans selection:bg-brand-blue selection:text-white"

@@ -1,6 +1,5 @@
 import {
   ArrowUp,
-  ArrowUpRight,
   Globe,
   Mail,
   MapPin,
@@ -92,6 +91,7 @@ export default function Footer() {
                 width="240"
                 height="80"
                 loading="lazy"
+                decoding="async"
                 className="h-11 sm:h-12 w-auto object-contain filter brightness-0 invert opacity-95"
               />
             </div>
@@ -236,7 +236,6 @@ export default function Footer() {
                     className="hover:text-white transition-colors flex items-center gap-1 text-slate-200 font-medium"
                   >
                     <span>ag-solutions.in</span>
-                    <ArrowUpRight className="w-3 h-3 text-brand-blue" />
                   </a>
                 </div>
               </div>

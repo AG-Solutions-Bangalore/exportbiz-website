@@ -268,14 +268,14 @@ export default function Navbar() {
                       title={link.title}
                       className="w-full text-left py-3 px-3.5 rounded-xl hover:bg-brand-blue-50/70 active:bg-brand-blue-50 transition-all flex items-center justify-between group cursor-pointer"
                     >
-                      <div className="flex items-baseline gap-3.5">
+                      <span className="flex items-baseline gap-3.5">
                         <span className="text-xs font-mono font-bold text-brand-blue/70 group-hover:text-brand-blue transition-colors">
                           {link.index}
                         </span>
                         <span className="text-xl sm:text-2xl font-extrabold text-navy-900 group-hover:text-brand-blue transition-colors tracking-tight">
                           {link.label}
                         </span>
-                      </div>
+                      </span>
                      
                     </button>
                   ) : (
