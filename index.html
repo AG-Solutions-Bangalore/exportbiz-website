@@ -10,11 +10,19 @@
     <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.webp" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
 
-    <!-- LCP image preloads (hero + logo, local) -->
-    <link rel="preload" as="image" fetchpriority="high" href="/hero_image.webp" />
-    <link rel="preload" as="image" href="/logo_transparent.webp" />
+    <!-- Agentic Resource Discovery (ARD & AI-Catalog) -->
+    <link rel="ai-catalog" href="/.well-known/ai-catalog.json" type="application/ai-catalog+json" />
+    <link rel="ai-catalog" href="/ai-catalog.json" type="application/ai-catalog+json" />
+    <link rel="ard" href="/.well-known/ard.json" type="application/json" />
+    <link rel="describedby" href="/llms.txt" type="text/markdown" />
+    <link rel="agent-card" href="/.well-known/agent-card.json" type="application/agent-card+json" />
+    <link rel="mcp-server-card" href="/.well-known/mcp-server-card.json" type="application/mcp-server-card+json" />
 
-    <!-- Typography & Fonts -->
+    <!-- LCP image preloads (hero + logo, server) -->
+    <link rel="preload" as="image" fetchpriority="high" href="https://exportbiz.in/public/assets/images/web_images/hero_image.webp" />
+    <link rel="preload" as="image" href="https://exportbiz.in/public/assets/images/web_images/logo_transparent.webp" />
+
+    <!-- Typography & Fonts with optimal loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,6 +31,9 @@
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
+    </noscript>
   </head>
   <body
     class="bg-white text-navy-800 antialiased font-sans selection:bg-brand-blue selection:text-white"

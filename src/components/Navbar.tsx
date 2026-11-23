@@ -118,6 +118,7 @@ export default function Navbar() {
                 title="Export Biz – Export Business Management Platform"
                 width="240"
                 height="80"
+                loading="lazy"
                 className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-102"
               />
             </Link>
@@ -230,6 +231,7 @@ export default function Navbar() {
               title="Export Biz – Export Documentation Software"
               width="240"
               height="80"
+              loading="lazy"
               className="h-10 w-auto object-contain"
             />
           </Link>

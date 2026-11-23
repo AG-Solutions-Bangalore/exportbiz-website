@@ -91,6 +91,7 @@ export default function Footer() {
                 title="Export Biz – Complete Export Business Workspace"
                 width="240"
                 height="80"
+                loading="lazy"
                 className="h-11 sm:h-12 w-auto object-contain filter brightness-0 invert opacity-95"
               />
             </div>

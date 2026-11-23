@@ -1,0 +1,24 @@
+# Export Biz
+
+> Export Documentation & Business Management Workspace
+
+Export Biz is an export operations and documentation platform built for manufacturers, merchant exporters, and multi-company trade groups. It centralizes export invoicing, packing lists, shipping bills, logistics compliance, and customer payment tracking.
+
+## Core Capabilities
+- Export Documentation: Generate, organize, and track commercial invoices, packing lists, and regulatory export forms.
+- Order & Shipment Tracking: Monitor shipment milestones from proforma confirmation through customs dispatch.
+- Customer & Receivables Management: Track outstanding receivables, bank realization certificates (eBRC), and duty drawdowns.
+- Multi-Company Support: Run multiple export firms and trade branches under unified role-based controls.
+
+## Key Resources
+- [Website](https://exportbiz.in/)
+- [Request Demo](https://exportbiz.in/#solutions)
+- [Contact Support](https://exportbiz.in/#contact)
+- [WebMCP Server Manifest](https://exportbiz.in/.well-known/mcp-server-card.json)
+- [AI Catalog](https://exportbiz.in/.well-known/ai-catalog.json)
+
+## Contact Information
+- Website: https://exportbiz.in
+- Email: sales@exportbiz.in
+- Phone: +91 97277 12760
+- Address: 304, Fortune Sky, Nana Mauva Circle, 150 Feet Ring Road, Rajkot, Gujarat - 360005, India

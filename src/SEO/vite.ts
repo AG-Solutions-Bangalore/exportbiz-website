@@ -2,7 +2,20 @@ import { mkdirSync, writeFileSync, readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { gzipSync, brotliCompressSync } from "node:zlib";
 import type { Plugin, ResolvedConfig } from "vite";
-import { absolutePageUrl, SEO_PAGES, SITE_URL } from "./config.ts";
+import {
+  buildAiCatalogJson,
+  buildArdManifestJson,
+  buildMcpServerCardJson,
+  buildAgentCardJson,
+  buildLlmsTxt,
+  buildLlmsFullTxt,
+  buildWebMcpToolsJson,
+} from "../agentic/index.ts";
+import {
+  absolutePageUrl,
+  SEO_PAGES,
+  SITE_URL,
+} from "./config.ts";
 
 function compressDirectory(dir: string): void {
   const entries = readdirSync(dir, { withFileTypes: true });
@@ -39,6 +52,8 @@ function buildRobotsTxt(): string {
   return [
     "User-agent: *",
     "Allow: /",
+    "Disallow: /api/",
+    "Disallow: /public/api/",
     "",
     `Sitemap: ${SITE_URL}/sitemap.xml`,
     "",
@@ -102,6 +117,60 @@ export function seoSiteFilesPlugin(): Plugin {
           return;
         }
 
+        if (pathname === "/llms.txt") {
+          res.setHeader("Content-Type", "text/plain; charset=utf-8");
+          res.end(buildLlmsTxt());
+          return;
+        }
+
+        if (pathname === "/llms-full.txt") {
+          res.setHeader("Content-Type", "text/plain; charset=utf-8");
+          res.end(buildLlmsFullTxt());
+          return;
+        }
+
+        if (pathname === "/ard.json" || pathname === "/.well-known/ard.json") {
+          res.setHeader("Content-Type", "application/json; charset=utf-8");
+          res.end(buildArdManifestJson());
+          return;
+        }
+
+        if (
+          pathname === "/ai-catalog.json" ||
+          pathname === "/.well-known/ai-catalog.json"
+        ) {
+          res.setHeader(
+            "Content-Type",
+            "application/ai-catalog+json; charset=utf-8",
+          );
+          res.end(buildAiCatalogJson());
+          return;
+        }
+
+        if (pathname === "/.well-known/mcp-server-card.json") {
+          res.setHeader(
+            "Content-Type",
+            "application/mcp-server-card+json; charset=utf-8",
+          );
+          res.end(buildMcpServerCardJson());
+          return;
+        }
+
+        if (pathname === "/.well-known/agent-card.json") {
+          res.setHeader(
+            "Content-Type",
+            "application/agent-card+json; charset=utf-8",
+          );
+          res.end(buildAgentCardJson());
+          return;
+        }
+
+        if (pathname === "/.well-known/webmcp-tools.json") {
+          res.setHeader("Content-Type", "application/json; charset=utf-8");
+          res.end(buildWebMcpToolsJson());
+          return;
+        }
+
         next();
       });
     },
@@ -109,8 +178,49 @@ export function seoSiteFilesPlugin(): Plugin {
       if (isSsrBuild || !outDir) return;
 
       mkdirSync(outDir, { recursive: true });
+      const wellKnownDir = resolve(outDir, ".well-known");
+      mkdirSync(wellKnownDir, { recursive: true });
+
+      // Core indexing
       writeFileSync(resolve(outDir, "robots.txt"), buildRobotsTxt(), "utf8");
       writeFileSync(resolve(outDir, "sitemap.xml"), buildSitemapXml(), "utf8");
+      writeFileSync(resolve(outDir, "llms.txt"), buildLlmsTxt(), "utf8");
+      writeFileSync(resolve(outDir, "llms-full.txt"), buildLlmsFullTxt(), "utf8");
+
+      // Root discovery manifests
+      writeFileSync(resolve(outDir, "ard.json"), buildArdManifestJson(), "utf8");
+      writeFileSync(
+        resolve(outDir, "ai-catalog.json"),
+        buildAiCatalogJson(),
+        "utf8",
+      );
+
+      // .well-known agentic discovery manifests
+      writeFileSync(
+        resolve(wellKnownDir, "ard.json"),
+        buildArdManifestJson(),
+        "utf8",
+      );
+      writeFileSync(
+        resolve(wellKnownDir, "ai-catalog.json"),
+        buildAiCatalogJson(),
+        "utf8",
+      );
+      writeFileSync(
+        resolve(wellKnownDir, "mcp-server-card.json"),
+        buildMcpServerCardJson(),
+        "utf8",
+      );
+      writeFileSync(
+        resolve(wellKnownDir, "agent-card.json"),
+        buildAgentCardJson(),
+        "utf8",
+      );
+      writeFileSync(
+        resolve(wellKnownDir, "webmcp-tools.json"),
+        buildWebMcpToolsJson(),
+        "utf8",
+      );
 
       compressDirectory(outDir);
 

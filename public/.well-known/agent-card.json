@@ -1,0 +1,27 @@
+{
+  "name": "Export Biz Assistant",
+  "description": "AI agent representation for Export Biz export documentation and business management workspace.",
+  "version": "1.0.0",
+  "url": "https://exportbiz.in/",
+  "documentationUrl": "https://exportbiz.in/llms.txt",
+  "provider": {
+    "name": "Export Biz",
+    "url": "https://exportbiz.in"
+  },
+  "capabilities": {
+    "streaming": false,
+    "tools": true
+  },
+  "skills": [
+    {
+      "id": "export-documentation",
+      "name": "Export Documentation Workflow",
+      "description": "Guides exporters through commercial invoices, packing lists, shipping bills, certificates of origin, and compliance."
+    },
+    {
+      "id": "demo-coordination",
+      "name": "Schedule Product Demo",
+      "description": "Coordinates live demonstration sessions with export trade and software specialists."
+    }
+  ]
+}

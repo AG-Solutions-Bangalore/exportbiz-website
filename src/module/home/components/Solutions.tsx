@@ -8,7 +8,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { useCreateEnquiry } from "../../Enquiry";
-import { COMPANY_INFO } from "../../../constants";
+import { COMPANY_INFO, WEBMCP_TOOLS } from "../../../constants";
 
 export default function Solutions() {
   const [mobile, setMobile] = useState("");
@@ -82,6 +82,7 @@ export default function Solutions() {
             src={`${COMPANY_INFO.imageBaseUrl}/cargo_ship_image.webp`}
             alt="Global Export Shipping and Cargo Transportation"
             title="Global Export Shipping and Cargo Transportation"
+            loading="lazy"
             className="w-full h-full object-cover object-right select-none"
           />
           {/* Subtle horizontal gradient to seamlessly blend image into background */}
@@ -114,11 +115,15 @@ export default function Solutions() {
                   onSubmit={handleQuickDemo}
                   className="space-y-1"
                   noValidate
+                  toolname={WEBMCP_TOOLS.requestCallback.name}
+                  tooldescription={WEBMCP_TOOLS.requestCallback.description}
                 >
                   <div className="relative flex items-center">
                     <input
                       type="tel"
+                      name="mobile_no"
                       maxLength={10}
+                      required
                       value={mobile}
                       onChange={(e) => {
                         setMobile(
@@ -127,6 +132,8 @@ export default function Solutions() {
                         if (errorMsg) setErrorMsg(null);
                       }}
                       placeholder="Enter mobile number for demo"
+                      aria-label="Mobile number for a demo callback"
+                      toolparamdescription="Ten-digit mobile number for the Export Biz team to call back."
                       className={`w-full pl-3.5 pr-28 py-2.5 text-xs sm:text-sm rounded-xl bg-white border ${
                         errorMsg
                           ? "border-red-400 focus:border-red-500"

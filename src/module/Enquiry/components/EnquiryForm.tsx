@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useCreateEnquiry } from "../hooks/useCreateEnquiry";
 import { CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { WEBMCP_TOOLS } from "../../../constants";
 
 export interface EnquiryFormProps {
   onSuccess?: () => void;
@@ -128,7 +129,13 @@ export default function EnquiryForm({
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5" noValidate>
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 sm:space-y-5"
+          noValidate
+          toolname={WEBMCP_TOOLS.requestDemo.name}
+          tooldescription={WEBMCP_TOOLS.requestDemo.description}
+        >
           {submitStatus === "error" && error && (
             <div
               role="alert"
@@ -149,9 +156,11 @@ export default function EnquiryForm({
                 id="full_name"
                 name="full_name"
                 type="text"
+                required
                 value={formData.full_name}
                 onChange={handleChange}
                 placeholder="e.g. John Doe"
+                toolparamdescription="Full name of the person requesting the demo."
                 className={`w-full px-3.5 py-2.5 rounded-xl border text-sm text-navy-900 placeholder:text-slate-400 bg-white transition-all outline-none ${
                   fieldErrors.full_name
                     ? "border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"
@@ -172,9 +181,11 @@ export default function EnquiryForm({
                 name="mobile_no"
                 type="tel"
                 maxLength={10}
+                required
                 value={formData.mobile_no}
                 onChange={handleChange}
                 placeholder="10-digit mobile number"
+                toolparamdescription="Ten-digit mobile number where the Export Biz team can call back."
                 className={`w-full px-3.5 py-2.5 rounded-xl border text-sm text-navy-900 placeholder:text-slate-400 bg-white transition-all outline-none ${
                   fieldErrors.mobile_no
                     ? "border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"
@@ -196,9 +207,11 @@ export default function EnquiryForm({
               id="email_id"
               name="email_id"
               type="email"
+              required
               value={formData.email_id}
               onChange={handleChange}
               placeholder="name@company.com"
+              toolparamdescription="Work email address for the demo invitation and follow-up."
               className={`w-full px-3.5 py-2.5 rounded-xl border text-sm text-navy-900 placeholder:text-slate-400 bg-white transition-all outline-none ${
                 fieldErrors.email_id
                   ? "border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"
@@ -222,6 +235,7 @@ export default function EnquiryForm({
               value={formData.remarks}
               onChange={handleChange}
               placeholder="Any specific instructions, export destination, questions..."
+              toolparamdescription="Optional details about export operations, shipment volume, or features to cover in the demo."
               className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm text-navy-900 placeholder:text-slate-400 bg-white transition-all outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue-50"
             />
           </div>
