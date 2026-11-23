@@ -7,7 +7,7 @@ import {
   CheckCircle2,
   Loader2,
 } from "lucide-react";
-import { useCreateEnquiry } from "../../Enquiry";
+import { useCreateEnquiry } from "../../Enquiry/hooks/useCreateEnquiry";
 import { COMPANY_INFO, WEBMCP_TOOLS } from "../../../constants";
 
 export default function Solutions() {

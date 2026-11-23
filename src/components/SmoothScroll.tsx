@@ -16,6 +16,14 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     // SSR guard
     if (typeof window === "undefined") return;
 
+    // Disable smooth scroll on mobile touch devices and when user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+    if (prefersReducedMotion || isTouchDevice) {
+      return;
+    }
+
     const lenis = new Lenis({
       duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -23,7 +31,6 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 0.9,
-      touchMultiplier: 1.2,
       infinite: false,
     });
 

@@ -116,9 +116,10 @@ export default function Navbar() {
                 src={COMPANY_INFO.logo}
                 alt="Export Biz – Export Business Management Platform"
                 title="Export Biz – Export Business Management Platform"
-                width="240"
-                height="80"
-                loading="lazy"
+                width="160"
+                height="48"
+                loading="eager"
+                decoding="async"
                 className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-102"
               />
             </Link>

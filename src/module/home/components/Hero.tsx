@@ -18,12 +18,17 @@ export default function Hero() {
       {/* Full-width Mobile Image Hero with Floating Badge in Blank Space */}
       <div className="relative w-full h-[220px] sm:h-[290px] overflow-hidden lg:hidden block">
         <img
-          src="/hero_image.webp"
+          src="/hero_image_mobile.webp"
+          srcSet="/hero_image_mobile.webp 800w, /hero_image.webp 1920w"
+          sizes="(max-width: 768px) 100vw, 1200px"
+          width={800}
+          height={341}
           alt="Export Biz Workspace Dashboard – Export Management Platform"
           title="Export Biz Workspace Dashboard – Export Management Platform"
           className="w-full h-full object-cover object-[72%_center] sm:object-[68%_center] select-none"
           loading="eager"
           fetchPriority="high"
+          decoding="async"
         />
 
         {/* Small floating badge positioned in the top-left blank sky area */}

@@ -18,21 +18,22 @@
     <link rel="agent-card" href="/.well-known/agent-card.json" type="application/agent-card+json" />
     <link rel="mcp-server-card" href="/.well-known/mcp-server-card.json" type="application/mcp-server-card+json" />
 
-    <!-- LCP image preloads (hero + logo, server) -->
-    <link rel="preload" as="image" fetchpriority="high" href="https://exportbiz.in/public/assets/images/web_images/hero_image.webp" />
-    <link rel="preload" as="image" href="https://exportbiz.in/public/assets/images/web_images/logo_transparent.webp" />
+    <!-- LCP image preloads (hero + logo, responsive) -->
+    <link rel="preload" as="image" fetchpriority="high" href="/hero_image_mobile.webp" media="(max-width: 768px)" />
+    <link rel="preload" as="image" fetchpriority="high" href="/hero_image.webp" media="(min-width: 769px)" />
+    <link rel="preload" as="image" href="/logo_transparent.webp" />
 
     <!-- Typography & Fonts with optimal loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" />
     </noscript>
   </head>
   <body

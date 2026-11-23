@@ -6,6 +6,12 @@
   AddType application/json ard.json webmcp-tools.json json
   AddType text/plain llms.txt llms-full.txt txt
   AddType application/manifest+json webmanifest
+  AddType image/webp webp
+</IfModule>
+
+# Deflate / Gzip Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml application/rss+xml font/truetype font/opentype application/vnd.ms-fontobject image/svg+xml application/ai-catalog+json application/mcp-server-card+json application/agent-card+json
 </IfModule>
 
 # URL Rewriting & SPA Fallback
@@ -69,7 +75,7 @@
 
 <IfModule mod_headers.c>
   <FilesMatch "\.(webp|png|jpg|jpeg|gif|svg|ico|css|js|woff2|woff|ttf|eot)$">
-    Header set Cache-Control "max-age=31536000, public"
+    Header set Cache-Control "max-age=31536000, public, immutable"
   </FilesMatch>
 
   <FilesMatch "\.(html|htm)$">

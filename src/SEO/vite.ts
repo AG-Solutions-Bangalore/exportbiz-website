@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync, readdirSync, readFileSync } from "node:fs";
+import { mkdirSync, writeFileSync, readdirSync, readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { gzipSync, brotliCompressSync } from "node:zlib";
 import type { Plugin, ResolvedConfig } from "vite";
@@ -221,6 +221,39 @@ export function seoSiteFilesPlugin(): Plugin {
         buildWebMcpToolsJson(),
         "utf8",
       );
+
+      // Inline CSS into index.html to eliminate all render-blocking CSS requests
+      const indexHtmlPath = resolve(outDir, "index.html");
+      if (existsSync(indexHtmlPath)) {
+        let html = readFileSync(indexHtmlPath, "utf-8");
+        const cssLinkRegex =
+          /<link[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+\.css)["'][^>]*\/?>/g;
+        let combinedCss = "";
+        const matchedLinks: string[] = [];
+
+        let match: RegExpExecArray | null;
+        while ((match = cssLinkRegex.exec(html)) !== null) {
+          const fullTag = match[0];
+          const href = match[1];
+          if (href.startsWith("http://") || href.startsWith("https://")) continue;
+          const cssFilePath = resolve(outDir, href.replace(/^\//, ""));
+          if (existsSync(cssFilePath)) {
+            matchedLinks.push(fullTag);
+            combinedCss += `\n${readFileSync(cssFilePath, "utf-8")}`;
+          }
+        }
+
+        if (combinedCss) {
+          for (const linkTag of matchedLinks) {
+            html = html.replace(linkTag, "");
+          }
+          html = html.replace(
+            "</head>",
+            `<style id="app-critical-css">${combinedCss}</style></head>`,
+          );
+          writeFileSync(indexHtmlPath, html, "utf-8");
+        }
+      }
 
       compressDirectory(outDir);
 
