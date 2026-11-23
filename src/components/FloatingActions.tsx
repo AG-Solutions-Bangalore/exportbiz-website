@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Phone, Mail, MessageSquareMore } from "lucide-react";
 import { COMPANY_INFO } from "../constants";
-import { useModal } from "../context/ModalContext";
 
 const WhatsAppIcon = () => (
   <svg
@@ -15,22 +14,12 @@ const WhatsAppIcon = () => (
 
 export default function FloatingActions() {
   const [isVisible, setIsVisible] = useState(false);
-  const { openDemoModal } = useModal();
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Don't show on initial page load; only reveal when user scrolls down
-      if (window.scrollY > 220) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Reveal shortly after page load, no scrolling required
+    const timer = window.setTimeout(() => setIsVisible(true), 300);
+    return () => window.clearTimeout(timer);
   }, []);
 
   const whatsappNumber = COMPANY_INFO.phoneRaw.replace(/\D/g, "");
@@ -38,85 +27,103 @@ export default function FloatingActions() {
     "Hello! I am interested in Export Biz export documentation software."
   )}`;
 
-  // Shared animation classes for staggered reveal
   const baseButtonClasses =
     "group relative w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl text-white flex items-center justify-center transition-all duration-350 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform hover:scale-110 active:scale-95";
+
+  const actionsShown = isVisible && isExpanded;
 
   return (
     <aside
       aria-label="Quick contact actions"
-      className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2 sm:gap-2.5 print:hidden select-none pointer-events-none"
+      className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-40 print:hidden select-none pointer-events-none"
     >
-      {/* 1. WhatsApp Button (1st in sequence) */}
-      <a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat with us on WhatsApp"
-        style={{ transitionDelay: isVisible ? "0ms" : "150ms" }}
-        className={`${baseButtonClasses} bg-[#25D366] hover:bg-[#20be5b] shadow-lg shadow-[#25D366]/35 hover:shadow-xl hover:shadow-[#25D366]/45 ${
-          isVisible
-            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
-            : "opacity-0 translate-y-8 scale-70 pointer-events-none"
-        }`}
+      <div
+        id="floating-contact-actions"
+        className="relative flex items-center gap-2 sm:gap-2.5 pointer-events-auto"
+        onMouseLeave={() => setIsExpanded(false)}
+        onBlur={(e) => {
+          if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+            setIsExpanded(false);
+          }
+        }}
       >
-        <WhatsAppIcon />
-        <span className="pointer-events-none hidden sm:block absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-navy-950 text-white text-[11px] font-semibold tracking-wide whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-          WhatsApp
-        </span>
-      </a>
+        {/* 1. WhatsApp Button (appears last - right to left) */}
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat with us on WhatsApp"
+          aria-hidden={!actionsShown}
+          tabIndex={actionsShown ? 0 : -1}
+          style={{ transitionDelay: actionsShown ? "140ms" : "0ms" }}
+          className={`${baseButtonClasses} bg-[#25D366] hover:bg-[#20be5b] shadow-lg shadow-[#25D366]/35 hover:shadow-xl hover:shadow-[#25D366]/45 ${
+            actionsShown
+              ? "opacity-100 translate-x-0 scale-100 pointer-events-auto"
+              : "opacity-0 translate-x-4 scale-95 pointer-events-none"
+          }`}
+        >
+          <WhatsAppIcon />
+          <span className="pointer-events-none hidden sm:block absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-navy-950 text-white text-[11px] font-semibold tracking-wide whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+            WhatsApp
+          </span>
+        </a>
 
-      {/* 2. Direct Call Button (2nd in sequence - 90ms delay) */}
-      <a
-        href={`tel:${COMPANY_INFO.phoneRaw}`}
-        aria-label={`Call us at ${COMPANY_INFO.phoneDisplay}`}
-        style={{ transitionDelay: isVisible ? "90ms" : "100ms" }}
-        className={`${baseButtonClasses} bg-[#FF7A1A] hover:bg-[#f06f0e] shadow-lg shadow-[#FF7A1A]/35 hover:shadow-xl hover:shadow-[#FF7A1A]/45 ${
-          isVisible
-            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
-            : "opacity-0 translate-y-8 scale-70 pointer-events-none"
-        }`}
-      >
-        <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
-        <span className="pointer-events-none hidden sm:block absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-navy-950 text-white text-[11px] font-semibold tracking-wide whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-          Call Now
-        </span>
-      </a>
+        {/* 2. Direct Call Button (appears second) */}
+        <a
+          href={`tel:${COMPANY_INFO.phoneRaw}`}
+          aria-label={`Call us at ${COMPANY_INFO.phoneDisplay}`}
+          aria-hidden={!actionsShown}
+          tabIndex={actionsShown ? 0 : -1}
+          style={{ transitionDelay: actionsShown ? "70ms" : "0ms" }}
+          className={`${baseButtonClasses} bg-[#FF7A1A] hover:bg-[#f06f0e] shadow-lg shadow-[#FF7A1A]/35 hover:shadow-xl hover:shadow-[#FF7A1A]/45 ${
+            actionsShown
+              ? "opacity-100 translate-x-0 scale-100 pointer-events-auto"
+              : "opacity-0 translate-x-4 scale-95 pointer-events-none"
+          }`}
+        >
+          <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+          <span className="pointer-events-none hidden sm:block absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-navy-950 text-white text-[11px] font-semibold tracking-wide whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+            Call Now
+          </span>
+        </a>
 
-      {/* 3. Direct Email Button (3rd in sequence - 180ms delay) */}
-      <a
-        href={`mailto:${COMPANY_INFO.email}`}
-        aria-label={`Send email to ${COMPANY_INFO.email}`}
-        style={{ transitionDelay: isVisible ? "180ms" : "50ms" }}
-        className={`${baseButtonClasses} bg-[#0F1E36] hover:bg-[#152a4a] shadow-lg shadow-[#0F1E36]/35 hover:shadow-xl hover:shadow-[#0F1E36]/45 ${
-          isVisible
-            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
-            : "opacity-0 translate-y-8 scale-70 pointer-events-none"
-        }`}
-      >
-        <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
-        <span className="pointer-events-none hidden sm:block absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-navy-950 text-white text-[11px] font-semibold tracking-wide whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-          Email Us
-        </span>
-      </a>
+        {/* 3. Direct Email Button (appears first - right to left) */}
+        <a
+          href={`mailto:${COMPANY_INFO.email}`}
+          aria-label={`Send email to ${COMPANY_INFO.email}`}
+          aria-hidden={!actionsShown}
+          tabIndex={actionsShown ? 0 : -1}
+          style={{ transitionDelay: actionsShown ? "0ms" : "0ms" }}
+          className={`${baseButtonClasses} bg-[#0F1E36] hover:bg-[#152a4a] shadow-lg shadow-[#0F1E36]/35 hover:shadow-xl hover:shadow-[#0F1E36]/45 ${
+            actionsShown
+              ? "opacity-100 translate-x-0 scale-100 pointer-events-auto"
+              : "opacity-0 translate-x-4 scale-95 pointer-events-none"
+          }`}
+        >
+          <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+          <span className="pointer-events-none hidden sm:block absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-navy-950 text-white text-[11px] font-semibold tracking-wide whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+            Email Us
+          </span>
+        </a>
 
-      {/* 4. Quick Enquiry Button (4th in sequence - 270ms delay) */}
-      <button
-        type="button"
-        onClick={openDemoModal}
-        aria-label="Open Demo & Enquiry Request form"
-        style={{ transitionDelay: isVisible ? "270ms" : "0ms" }}
-        className={`${baseButtonClasses} bg-[#FF7A1A] hover:bg-[#f06f0e] shadow-lg shadow-[#FF7A1A]/35 hover:shadow-xl hover:shadow-[#FF7A1A]/45 cursor-pointer ${
-          isVisible
-            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
-            : "opacity-0 translate-y-8 scale-70 pointer-events-none"
-        }`}
-      >
-        <MessageSquareMore className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
-        <span className="pointer-events-none hidden sm:block absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-navy-950 text-white text-[11px] font-semibold tracking-wide whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-          Quick Enquiry
-        </span>
-      </button>
+        {/* 4. Toggle Button - only shows/hides the other 3 buttons */}
+        <button
+          type="button"
+          onMouseEnter={() => setIsExpanded(true)}
+          onFocus={() => setIsExpanded(true)}
+          aria-label="Show or hide quick contact actions"
+          aria-expanded={actionsShown}
+          aria-controls="floating-contact-actions"
+          style={{ transitionDelay: "0ms" }}
+          className={`${baseButtonClasses} bg-[#FF7A1A] hover:bg-[#f06f0e] shadow-lg shadow-[#FF7A1A]/35 hover:shadow-xl hover:shadow-[#FF7A1A]/45 cursor-pointer ${
+            isVisible
+              ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+              : "opacity-0 translate-y-8 scale-70 pointer-events-none"
+          }`}
+        >
+          <MessageSquareMore className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+        </button>
+      </div>
     </aside>
   );
 }
