@@ -1,6 +1,7 @@
 import EnquiryForm from "../components/EnquiryForm";
 import { Mail, Phone, MapPin, Globe } from "lucide-react";
 import { COMPANY_INFO } from "../../../constants";
+import SocialLinks from "../../../components/SocialLinks";
 
 export default function EnquiryPage() {
   return (
@@ -72,11 +73,25 @@ export default function EnquiryPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-navy-900">Location</p>
-                    <p className="text-xs sm:text-sm text-slate-body">
+                    <a
+                      href={COMPANY_INFO.address.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs sm:text-sm text-slate-body hover:text-brand-blue transition-colors block"
+                      title="View on Google Maps"
+                    >
                       {COMPANY_INFO.address.full}
-                    </p>
+                    </a>
                   </div>
                 </div>
+              </div>
+
+              <div className="pt-5 border-t border-gray-100">
+                <p className="font-semibold text-navy-900 mb-3">Follow Us</p>
+                <SocialLinks
+                  className="flex items-center gap-2"
+                  linkClassName="w-9 h-9 rounded-xl bg-brand-blue-50 border border-brand-blue-100 flex items-center justify-center text-brand-blue hover:bg-brand-blue hover:text-white transition-colors"
+                />
               </div>
             </div>
 

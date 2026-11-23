@@ -1,115 +1,99 @@
-import {
-  FileText,
-  Award,
-  ClipboardList,
-  Shield,
-  Truck,
-  File,
-  ArrowRight,
-} from "lucide-react";
-import { Link } from "react-router-dom";
+import { Check, ArrowRight } from "lucide-react";
+import { useModal } from "../../../context/ModalContext";
+import { COMPANY_INFO } from "../../../constants";
 
 export default function DocumentManagement() {
+  const { openDemoModal } = useModal();
+
   const checklist = [
-    {
-      label: "Commercial Contracts & Orders",
-      Icon: FileText,
-      color: "bg-blue-100 text-blue-600",
-    },
-    {
-      label: "Certificate of Origin",
-      Icon: Award,
-      color: "bg-purple-100 text-purple-600",
-    },
-    {
-      label: "Invoice, Packing List & PL",
-      Icon: ClipboardList,
-      color: "bg-indigo-100 text-indigo-600",
-    },
-    {
-      label: "Inspection Certificates",
-      Icon: Shield,
-      color: "bg-emerald-100 text-emerald-600",
-    },
-    {
-      label: "Bill of Lading (B/L)",
-      Icon: Truck,
-      color: "bg-amber-100 text-amber-600",
-    },
-    {
-      label: "Other Shipment Documents",
-      Icon: File,
-      color: "bg-slate-100 text-slate-600",
-    },
+    "Commercial Contracts & Orders",
+    "Certificate of Origin",
+    "Invoice, Packing List & PL",
+    "Inspection Certificates",
+    "Bill of Lading (B/L)",
+    "Other Shipment Documents",
   ];
 
   return (
-    <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-        
-        {/* Left Column: Floating Documents Mockup */}
-        <div className="lg:col-span-6 relative flex justify-center items-center">
-          <div className="relative w-full max-w-[540px]">
-            {/* Subtle glow underneath */}
-            <div className="absolute inset-0 bg-brand-blue-100/40 rounded-full blur-3xl -z-10" />
-            <img
-              src="/export_biz_documents_transparent.webp"
-              alt="Export Documents: Commercial Invoice, Packing List, Bill of Lading"
-              className="w-full scale-[1.11] h-auto object-contain drop-shadow-xl select-none"
-              loading="lazy"
-            />
-          </div>
-        </div>
+    <section
+      id="documents"
+      className="relative overflow-hidden bg-[#F4F8FE] pt-0 pb-12 sm:pt-6 sm:pb-16 lg:py-[3.4rem]"
+    >
+      {/* Background Banner Image on Desktop: perfectly fitted to the left like hero section */}
+      <div
+        className="absolute inset-0 bg-no-repeat bg-left bg-contain pointer-events-none hidden lg:block"
+        style={{
+          backgroundImage: `url('${COMPANY_INFO.imageBaseUrl}/Export%20Biz%20Invoice%20Document%20Stack.png')`,
+        }}
+      />
 
-        {/* Right Column: Copy & Checklist */}
-        <div className="lg:col-span-6 text-left">
-          {/* Eyebrow Badge */}
-          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-badge-bg border border-badge-border mb-4">
-            <span className="text-[11px] sm:text-xs font-bold text-badge-text tracking-wider uppercase">
-              EXPORT DOCUMENTATION MANAGEMENT
-            </span>
-          </div>
+      {/* Subtle ambient lighting orb on the right */}
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-72 h-72 sm:w-96 sm:h-96 bg-white/50 rounded-full blur-3xl pointer-events-none" />
 
-          {/* Heading */}
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-navy-900 tracking-tight leading-tight">
-            Every Export Document. <br />
-            Organized in One Place.
-          </h2>
+      {/* Full-width Mobile Image Hero with smooth gradient blend */}
+      <div className="relative w-full h-[220px] sm:h-[290px] overflow-hidden lg:hidden block">
+        <img
+          src={`${COMPANY_INFO.imageBaseUrl}/Export%20Biz%20Invoice%20Document%20Stack.png`}
+          alt="Export Documents – Commercial Invoice, Packing List and Bill of Lading"
+          title="Export Documents – Commercial Invoice, Packing List and Bill of Lading"
+          className="w-full h-full object-cover object-[-2%_center] sm:object-[20%_center] select-none"
+          loading="lazy"
+        />
+      </div>
 
-          {/* Subtitle */}
-          <p className="mt-4 text-base sm:text-lg text-slate-body leading-relaxed max-w-xl">
-            Create, manage and track all key export documents from contract to shipment, with a
-            clear and structured workflow.
-          </p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 -mt-8 sm:-mt-10 lg:mt-0">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+          {/* Left Column Spacer on desktop so background documents shine through cleanly */}
+          <div className="hidden lg:block lg:col-span-6" aria-hidden="true" />
 
-          {/* Checklist 2-Column Grid */}
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-2">
-            {checklist.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-2">
-                <div
-                  className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 border border-white/60 shadow-sm ${item.color}`}
-                >
-                  <item.Icon className="w-5 h-5" />
+          {/* Right Column: Copy & Checklist */}
+          <div className="w-full lg:col-span-6 text-left">
+            {/* Eyebrow Badge */}
+            <div className="inline-flex items-center px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white/90 border border-blue-200/80 mb-3 sm:mb-4 shadow-xs">
+              <span className="text-[10px] sm:text-xs font-bold text-brand-blue tracking-wider uppercase">
+                EXPORT DOCUMENTATION MANAGEMENT
+              </span>
+            </div>
+
+            {/* Heading */}
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy-900 tracking-tight leading-tight">
+              Every Export Document. <br />
+              Organized in One Place.
+            </h2>
+
+            {/* Subtitle */}
+            <p className="mt-3 sm:mt-4 text-xs sm:text-base lg:text-lg text-slate-body leading-relaxed max-w-xl">
+              Create, manage and track all key export documents from contract to
+              shipment, with a clear and structured workflow.
+            </p>
+
+            {/* Checklist 2-Column Grid */}
+            <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-3">
+              {checklist.map((label, idx) => (
+                <div key={idx} className="flex items-center gap-2">
+                  <div className="w-5 h-5 rounded-full bg-brand-blue flex items-center justify-center shrink-0 shadow-xs">
+                    <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
+                  </div>
+                  <span className="text-xs sm:text-sm font-semibold text-navy-800">
+                    {label}
+                  </span>
                 </div>
-                <span className="text-sm font-semibold text-navy-800">
-                  {item.label}
-                </span>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          {/* CTA Button */}
-          <div className="mt-8">
-            <Link
-              to="/features/documentation/"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white font-semibold text-sm transition-all shadow-sm hover:shadow"
-            >
-              Explore Documentation
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+            {/* CTA Button: Outlined like in reference image 2 */}
+            <div className="mt-6 sm:mt-8">
+              <button
+                type="button"
+                onClick={openDemoModal}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:py-3 rounded-full bg-white hover:bg-brand-blue border border-brand-blue text-brand-blue hover:text-white font-semibold text-xs sm:text-sm transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer group active:scale-98"
+              >
+                <span>Explore Documentation</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+              </button>
+            </div>
           </div>
         </div>
-
       </div>
     </section>
   );

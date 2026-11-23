@@ -1,6 +1,11 @@
 import { RouterProvider } from "react-router-dom";
+import { SEOProvider } from "./SEO";
 import { router } from "./routes";
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <SEOProvider>
+      <RouterProvider router={router} />
+    </SEOProvider>
+  );
 }
