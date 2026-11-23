@@ -48,8 +48,11 @@ export default function MetricsBar() {
                   src={item.image}
                   alt={item.title}
                   title={item.title}
+                  width={48}
+                  height={48}
                   className="w-full h-full object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform duration-200 select-none"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
 

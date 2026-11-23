@@ -15,7 +15,10 @@ export default function CtaBanner() {
             src={`${COMPANY_INFO.imageBaseUrl}/cargo_ship_image.webp`}
             alt="Cargo Ship at International Shipping Port"
             title="Cargo Ship at International Shipping Port"
+            width={500}
+            height={250}
             loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover object-right select-none"
           />
           {/* Smooth gradient blend into the vibrant blue banner */}

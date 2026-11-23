@@ -84,8 +84,11 @@ export default function PlatformFeatures() {
                 src={card.icon}
                 alt={card.imageTitle}
                 title={card.imageTitle}
+                width={88}
+                height={88}
                 className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.08)] select-none"
                 loading="lazy"
+                decoding="async"
               />
             </div>
 

@@ -77,8 +77,11 @@ export default function FeatureGrid() {
                 src={item.image}
                 alt={item.imageTitle}
                 title={item.imageTitle}
+                width={80}
+                height={80}
                 className="w-full h-full object-contain filter drop-shadow-md select-none"
                 loading="lazy"
+                decoding="async"
               />
             </div>
 

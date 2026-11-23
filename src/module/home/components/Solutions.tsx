@@ -82,7 +82,10 @@ export default function Solutions() {
             src={`${COMPANY_INFO.imageBaseUrl}/cargo_ship_image.webp`}
             alt="Global Export Shipping and Cargo Transportation"
             title="Global Export Shipping and Cargo Transportation"
+            width={500}
+            height={300}
             loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover object-right select-none"
           />
           {/* Subtle horizontal gradient to seamlessly blend image into background */}

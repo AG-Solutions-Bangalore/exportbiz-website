@@ -36,8 +36,11 @@ export default function DocumentManagement() {
           src={`${COMPANY_INFO.imageBaseUrl}/Export%20Biz%20Invoice%20Document%20Stack.png`}
           alt="Export Documents – Commercial Invoice, Packing List and Bill of Lading"
           title="Export Documents – Commercial Invoice, Packing List and Bill of Lading"
+          width={800}
+          height={341}
           className="w-full h-full object-cover object-[-2%_center] sm:object-[20%_center] select-none"
           loading="lazy"
+          decoding="async"
         />
       </div>
 
