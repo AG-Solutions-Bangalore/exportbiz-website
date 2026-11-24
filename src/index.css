@@ -25,6 +25,17 @@
   --color-brand-blue-600: #0952F7;
   --color-brand-blue-700: #053EC0;
 
+  /* Brand Orange: sampled directly from the "Bi" in the Export BiZ logo */
+  --color-brand-orange: #F25E01;
+  --color-brand-orange-hover: #D95301;
+  --color-brand-orange-dark: #C44A00;
+  --color-brand-orange-50: #FFF7ED;
+  --color-brand-orange-100: #FFEDD5;
+  --color-brand-orange-200: #FED7AA;
+  --color-brand-orange-500: #F25E01;
+  --color-brand-orange-600: #D95301;
+  --color-brand-orange-700: #C44A00;
+
   /* Primary aliases */
   --color-primary: #0952F7;
   --color-primary-hover: #0645D0;

@@ -53,6 +53,7 @@ export default function EnquiryModal({ isOpen, onClose }: EnquiryModalProps) {
           onSuccess={() => {
             // Can remain open to show success screen or auto-close
           }}
+          onClose={onClose}
           className="shadow-none border-none p-6 sm:p-8"
         />
       </div>

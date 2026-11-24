@@ -114,7 +114,7 @@ export default function DocumentManagement() {
               <button
                 type="button"
                 onClick={openDemoModal}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:py-3 rounded-full bg-white hover:bg-brand-blue border border-brand-blue text-brand-blue hover:text-white font-semibold text-xs sm:text-sm transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer group active:scale-98"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:py-3 rounded-full bg-brand-orange hover:bg-brand-orange-hover text-white font-semibold text-xs sm:text-sm transition-all duration-200 shadow-sm hover:shadow-md hover:shadow-brand-orange/25 cursor-pointer group active:scale-98"
               >
                 <span>Explore Documentation</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />

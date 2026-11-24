@@ -77,7 +77,7 @@ export default function FloatingActions() {
           aria-hidden={!actionsShown}
           tabIndex={actionsShown ? 0 : -1}
           style={{ transitionDelay: actionsShown ? "70ms" : "0ms" }}
-          className={`${baseButtonClasses} bg-[#FF7A1A] hover:bg-[#f06f0e] shadow-lg shadow-[#FF7A1A]/35 hover:shadow-xl hover:shadow-[#FF7A1A]/45 ${
+          className={`${baseButtonClasses} bg-brand-orange hover:bg-brand-orange-hover shadow-lg shadow-brand-orange/35 hover:shadow-xl hover:shadow-brand-orange/45 ${
             actionsShown
               ? "opacity-100 translate-x-0 scale-100 pointer-events-auto"
               : "opacity-0 translate-x-4 scale-95 pointer-events-none"
@@ -118,7 +118,7 @@ export default function FloatingActions() {
           aria-expanded={actionsShown}
           aria-controls="floating-contact-actions"
           style={{ transitionDelay: "0ms" }}
-          className={`${baseButtonClasses} bg-[#FF7A1A] hover:bg-[#f06f0e] shadow-lg shadow-[#FF7A1A]/35 hover:shadow-xl hover:shadow-[#FF7A1A]/45 cursor-pointer ${
+          className={`${baseButtonClasses} bg-brand-orange hover:bg-brand-orange-hover shadow-lg shadow-brand-orange/35 hover:shadow-xl hover:shadow-brand-orange/45 cursor-pointer ${
             isVisible
               ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
               : "opacity-0 translate-y-8 scale-70 pointer-events-none"

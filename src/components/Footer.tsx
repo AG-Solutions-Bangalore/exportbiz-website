@@ -246,7 +246,7 @@ export default function Footer() {
                   type="button"
                   onClick={openDemoModal}
                   title="Request a Free Demo of Export Biz"
-                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-brand-blue hover:bg-brand-blue-hover text-white text-xs font-bold transition-all shadow-md hover:shadow-brand-blue/25 cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-brand-orange hover:bg-brand-orange-hover text-white text-xs font-bold transition-all shadow-md hover:shadow-brand-orange/25 cursor-pointer"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>Request Live Demonstration</span>
@@ -280,7 +280,7 @@ export default function Footer() {
               onClick={scrollToTop}
               title="Back to Top"
               aria-label="Back to top"
-              className="w-9 h-9 rounded-full bg-slate-800/90 hover:bg-brand-blue border border-slate-700/70 hover:border-brand-blue text-slate-300 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer group active:scale-95"
+              className="w-9 h-9 rounded-full bg-slate-800/90 hover:bg-brand-orange border border-slate-700/70 hover:border-brand-orange text-slate-300 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer group active:scale-95"
             >
               <ArrowUp className="w-4.5 h-4.5 transition-transform group-hover:-translate-y-0.5" />
             </button>

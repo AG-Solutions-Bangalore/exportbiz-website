@@ -63,7 +63,7 @@ export default function CtaBanner() {
             <button
               type="button"
               onClick={openDemoModal}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-blue-50 text-[#1B68F8] font-bold text-xs sm:text-sm shadow-sm hover:shadow transition-all cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-brand-orange hover:bg-brand-orange-hover text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg hover:shadow-brand-orange/30 transition-all cursor-pointer"
             >
               Request a Free Demo
               <ArrowRight className="w-4 h-4" />

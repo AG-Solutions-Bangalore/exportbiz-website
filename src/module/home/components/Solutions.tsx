@@ -166,7 +166,7 @@ export default function Solutions() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="absolute right-1 px-3 py-1.5 rounded-lg bg-brand-blue hover:bg-brand-blue-hover text-white text-xs font-bold flex items-center gap-1 transition-all shadow-xs disabled:opacity-60 cursor-pointer"
+                      className="absolute right-1 px-3 py-1.5 rounded-lg bg-brand-orange hover:bg-brand-orange-hover text-white text-xs font-bold flex items-center gap-1 transition-all shadow-xs hover:shadow-brand-orange/25 disabled:opacity-60 cursor-pointer"
                     >
                       {loading ? (
                         <Loader2 className="w-3.5 h-3.5 animate-spin" />
