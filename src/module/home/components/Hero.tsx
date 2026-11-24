@@ -77,7 +77,7 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={openDemoModal}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white font-semibold text-xs sm:text-base shadow-md hover:shadow-lg transition-all cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 rounded-full bg-brand-orange hover:bg-brand-orange-hover text-white font-semibold text-xs sm:text-base shadow-md hover:shadow-lg hover:shadow-brand-orange/25 transition-all cursor-pointer"
               >
                 Request a Free Demo
                 <ArrowRight className="w-4 h-4" />

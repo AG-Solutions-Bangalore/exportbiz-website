@@ -158,7 +158,7 @@ export default function Navbar() {
                 type="button"
                 onClick={openDemoModal}
                 title="Request a Free Demo of Export Biz"
-                className="hidden sm:inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold text-white bg-brand-blue hover:bg-brand-blue-hover rounded-full transition-all shadow-sm hover:shadow-md cursor-pointer"
+                className="hidden sm:inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold text-white bg-brand-orange hover:bg-brand-orange-hover rounded-full transition-all shadow-sm hover:shadow-md hover:shadow-brand-orange/25 cursor-pointer"
               >
                 <span>Request a Demo</span>
                 <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -308,7 +308,7 @@ export default function Navbar() {
                 type="button"
                 onClick={handleOpenDemo}
                 title="Request a Free Demo of Export Biz"
-                className="w-full py-3.5 px-6 rounded-2xl bg-brand-blue hover:bg-brand-blue-hover text-white font-bold text-sm sm:text-base transition-all shadow-md hover:shadow-brand-blue/25 flex items-center justify-center gap-2 cursor-pointer active:scale-98"
+                className="w-full py-3.5 px-6 rounded-2xl bg-brand-orange hover:bg-brand-orange-hover text-white font-bold text-sm sm:text-base transition-all shadow-md hover:shadow-brand-orange/25 flex items-center justify-center gap-2 cursor-pointer active:scale-98"
               >
                 <Sparkles className="w-4 h-4" />
                 <span>Request a Free Demo</span>
